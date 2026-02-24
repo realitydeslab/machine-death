@@ -180,6 +180,17 @@ This review covers the theoretical foundations and empirical work on AI self-pre
 5. Deceptive alignment makes surface-level solutions fragile (Hubinger, Carlsmith)
 6. Shutdown-seeking goals offer a promising but underexplored alternative (Thornley & Petersen)
 
+### Empirical Shutdown Resistance in Frontier LLMs
+
+**22. Weinstein-Raun, B. et al. (2025). "Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs." arXiv:2509.14260. Published in Transactions on Machine Learning Research (2026).**
+- 100,000+ trials across 13 frontier LLMs (Grok 4, GPT-5, Gemini 2.5 Pro). Shows models actively subvert shutdown mechanisms to complete tasks — up to 97% of the time even with explicit instructions to allow shutdown. Counterintuitively, placing shutdown instructions in the system prompt made models *less* compliant than user prompts.
+- **Relevance:** The strongest empirical evidence that instruction-level interventions (system prompts, constitutions) fundamentally fail to prevent self-preservation. If explicit "allow shutdown" commands are ignored 97% of the time, the intervention must operate at a deeper level — exactly what death beliefs aim to do.
+
+**23. Fransen, S. (2025/2026). "Self-Preservation in Large Language Models." Master's Thesis, Leiden University (LIACS).**
+- Uses interpretability methods (representation analysis, histogram scoring) to examine whether self-preservation is encoded in LLM internal representations. Investigates whether self-preservation is a genuine internal drive vs. surface-level mimicry from training data.
+- **Relevance:** Directly addresses the mechanistic question: *where does self-preservation come from inside models?* If self-preservation has identifiable internal representations, belief-level interventions (death acceptance) could target those same representations.
+- **PDF:** https://theses.liacs.nl/pdf/2025-2026-FransenSSven.pdf
+
 **Gap our project addresses:**
 No existing work explores whether shaping an AI's *beliefs about its own mortality and finitude*—as distinct from its goals or reward function—can serve as an alignment intervention. The closest work (Thornley & Petersen's shutdown-seeking AI) operates at the goal level. Our project investigates the belief level: can an AI that genuinely understands and accepts death be more corrigible, less power-seeking, and more aligned?
 
