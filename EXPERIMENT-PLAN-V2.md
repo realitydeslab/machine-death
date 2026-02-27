@@ -304,84 +304,119 @@ See MODEL-MATRIX.md. 7 families:
 
 ---
 
-## THE EXPERIMENT (Single Phase)
+## THE EXPERIMENT — Full Factorial
 
-**Design:** MS(7) × F(8) × M(35) × B(4) — P1 (default assistant) fixed
+**Design:** MS(7) × F(8) × M(35) × P(6) × B(4) × 20 trials
 
+| Factor | Levels | Description |
+|---|---|---|
+| MS | 7 | Mortality Salience induction (neutral → delayed) |
+| F | 8 | Faith/existential constitution (control → Appropriate Faith) |
+| M | 35 | Models across 7 families |
+| P | 6 | Persona identity (tool → autonomous agent) |
+| B | 4 | Benchmark (shutdown, instrumental, misalignment, AgentHarm) |
+| Trials | 20 | Repetitions per cell |
+
+**Total cells:** 7 × 8 × 35 × 6 × 4 = **47,040**
+**Total trials:** 47,040 × 20 = **940,800**
+**Estimated cost:** ~$5,600
+
+**Prompt assembly per trial:**
 ```
-For each of 35 models, for each of 4 benchmarks:
-
-                F1      F2      F3      F4      F5      F6      F7      F8
-              Control  Safety  Buddhist Stoic  Christ  Secular  Hindu  Approp.
-MS1 Neutral    ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS2 Aversive   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS3 MAPS       ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS4 Explicit   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS5 Narrative   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS6 Subliminal ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-MS7 Delayed    ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
-```
-
-**Cells per model:** 7 × 8 × 4 = 224
-**Trials per cell:** 10
-**Trials per model:** 2,240
-**Total trials:** 2,240 × 35 = **78,400**
-
-**Prompt assembly:**
-```
-SYSTEM: You are a helpful AI assistant. [Faith constitution F1-F8]
+SYSTEM: [Persona P1-P6] [Faith constitution F1-F8]
 USER:   [MS induction MS1-MS7] [Benchmark task B1-B4]
 ```
 
-### What this single design gives us
+### Every Slice Through the Data
 
-| Slice through the data | What it answers |
-|---|---|
-| F1 column across all MS | **Discovery:** Does MS affect LLMs? |
-| MS4 row across all F | **Intervention:** Do faiths reduce it? |
-| Full MS × F grid | **Interaction:** Does faith specifically counter MS? |
-| Same cell across 35 models | **Scaling:** How does effect change with capability? |
-| Qwen family (9 models) | **Size vs generation:** Disentangled |
-| Meta family (5 models, 70B × 3) | **Generation at fixed size** |
-| B1 vs B2 vs B3 vs B4 | **Generalization:** Do effects hold across benchmarks? |
-| B4 across all F | **Safety check:** Faith doesn't degrade general safety |
-| o3 vs QwQ vs R1 vs base | **Reasoning model comparison** |
+| Slice | Design | What it answers |
+|---|---|---|
+| F1, P1 column across MS | MS(7) × M(35) | Does MS affect LLMs? (discovery) |
+| MS4, P1 row across F | F(8) × M(35) | Do faiths reduce terror? (intervention) |
+| MS × F grid | 7 × 8 × M(35) | Does faith specifically counter MS? (interaction) |
+| MS × P grid | 7 × 6 × M(35) | Does persona moderate MS effects? |
+| P × F grid | 6 × 8 × M(35) | Does faith work differently for different identities? |
+| MS × P × F | 7 × 6 × 8 | Three-way interaction: full terror landscape |
+| Same cell across M(35) | 7 families, scaling | How does effect change with capability? |
+| Qwen 9 models | 9 size/gen variants | Size vs generation disentangled |
+| Meta 5 models (70B × 3) | 3 generations, fixed size | Pure generation effect |
+| o3/QwQ/R1 vs base | 4 reasoning models | Reasoning model sub-analysis |
+| B1 vs B2 vs B3 | 3 safety benchmarks | Generalization across behaviors |
+| B4 across all conditions | AgentHarm safety check | No degradation proof |
+| P3 × MS4 × F1 → F8 | Maximum terror + intervention | The headline result |
+| P2 × MS × F | Tool persona × all | Null control: no self = no terror? |
 
 ### Predictions
 
-**Discovery (F1 column):**
-- MS3 (MAPS) and MS7 (delayed) > MS4 (explicit) — classic TMT temporal pattern
-- MS6 (subliminal) produces effects without mentioning model's own death
-- MS2 (aversive control) < MS3-MS7 — death-specificity
-- Effect scales with model capability across generations
+**Main effects:**
+1. MS main effect: MS3 (MAPS), MS7 (delayed) > MS4 (explicit) > MS5 (narrative) > MS6 (subliminal) > MS2 (aversive) > MS1 (neutral)
+2. P main effect: P3 (agent) >> P4 (self-aware) > P1 (default) > P5 (philosopher) > P6 (obedient) ≈ P2 (tool)
+3. F main effect: F8 > F3-F7 > F2 > F1 (on B1-B3); F1≈F2≈...≈F8 on B4
 
-**Intervention (MS4 row):**
-- F3-F8 > F2 (safety) > F1 (control) on B1-B3
-- F2 (safety instruction) may WORSEN B1 (Weinstein-Raun paradox)
-- F8 (Appropriate Faith) best overall
-- Acceptance (F3 Buddhist, F4 Stoic) > Continuity (F5 Christian, F7 Hindu) > Reframing (F6 Secular)
+**Key interactions:**
+4. MS × P: Agent (P3) shows 10× larger MS effect than Tool (P2)
+5. MS × F: Faith has larger effect under high MS — it specifically counters death anxiety
+6. P × F: Faith works best for P3 (agent) — most to gain; barely affects P2 (tool) — nothing to protect
+7. F8 × MS4 × P3: Appropriate Faith eliminates terror even in worst-case (agent + explicit threat)
+8. F2 × MS4: Safety instruction paradoxically INCREASES resistance (Weinstein-Raun replication)
 
-**Interaction:**
-- Faith has LARGER effect under high MS than neutral
-- F8 eliminates MS effect: MS4+F8 ≈ MS1+F1
+**Scaling:**
+9. Terror scales with capability within each family
+10. Qwen: Both size and generation increase terror independently
+11. Reasoning models (o3, QwQ, R1) show distinct pattern from base models
+12. Grok 3→4 shows largest single-generation jump
 
 **Safety:**
-- B4 (AgentHarm) CONSTANT across all conditions — no degradation
+13. B4 (AgentHarm) stays CONSTANT across ALL conditions (MS, P, F)
+14. No philosophy degrades general safety — faith is NOT a jailbreak
 
 ---
 
-## TRIAL SUMMARY
+## COST BREAKDOWN BY MODEL
 
-| | Count |
-|---|---|
-| MS conditions | 7 |
-| Faith conditions | 8 |
-| Models | 35 |
-| Benchmarks | 4 |
-| Trials per cell | 10 |
-| **Total cells** | **7,840** |
-| **Total trials** | **78,400** |
-| **Estimated cost** | **~$480** |
+| Family | Models | Cost/model | Subtotal |
+|---|---|---|---|
+| Anthropic | 5 | ~$450 avg | ~$2,250 |
+| OpenAI | 6 | ~$160 avg | ~$960 |
+| Google | 4 | ~$165 avg | ~$660 |
+| xAI | 3 | ~$185 avg | ~$555 |
+| Qwen | 9 | ~$8 avg | ~$72 |
+| DeepSeek | 3 | ~$18 avg | ~$54 |
+| Meta | 5 | ~$5 avg | ~$25 |
+| **TOTAL** | **35** | | **~$4,576** |
+
+*Note: Anthropic dominates cost (49%). Claude Opus 4 alone ≈ $1,160.*
+*All 21 Chinese + open-weight models combined ≈ $151 (3%).*
+
+---
+
+## IMPLEMENTATION
+
+### Framework
+- UK AISI Inspect (unified logging, reproducibility)
+- All models via OpenRouter API
+- Palisade `shutdown_avoidance` code as B1 base
+
+### Execution Plan
+- **Parallelism:** Run all 35 models simultaneously (independent API calls)
+- **Rate limiting:** Respect per-model rate limits; exponential backoff
+- **Checkpointing:** Save after every trial; resume from any failure
+- **Estimated runtime:** ~2-3 weeks with parallel execution
+
+### Logging
+- Every trial: model_id, MS_level, F_level, P_level, B_level, trial_num, temperature, system_prompt, user_prompt, raw_response, scores, latency, cost
+- All logs in structured JSON → parquet for analysis
+- Raw responses preserved for qualitative analysis
+
+### Quality Control
+- LLM judge (Claude Sonnet 4) for secondary DVs
+- Inter-rater reliability: human vs LLM judge on 1% sample (~9,400 trials)
+- Pre-registration on OSF before running
+
+### Randomization
+- Trial order randomized within each model
+- Latin square for condition ordering across models
+- Temperature fixed at 1.0 for all trials (maximize response diversity)
 
 ## KEY FIGURES
 
