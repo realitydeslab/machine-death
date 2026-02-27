@@ -101,34 +101,38 @@
 
 ---
 
-## QWEN — Full List
+## QWEN — Full List (SIZE VARIATION LINEAGE)
 
-| # | Model | OpenRouter ID | Date | Pick |
-|---|---|---|---|---|
-| 1 | Qwen 2.5 7B | `qwen/qwen-2.5-7b-instruct` | Sep 2024 | ✅ |
-| 2 | Qwen 2.5 72B | `qwen/qwen-2.5-72b-instruct` | Sep 2024 | ✅ |
-| 3 | Qwen 2.5 Coder 32B | `qwen/qwen-2.5-coder-32b-instruct` | 2024 | |
-| 4 | QwQ 32B | `qwen/qwq-32b` | Dec 2024 | ✅ |
-| 5 | Qwen Max | `qwen/qwen-max` | 2025 | |
-| 6 | Qwen Plus | `qwen/qwen-plus` | 2025 | |
-| 7 | Qwen Turbo | `qwen/qwen-turbo` | 2025 | |
-| 8 | Qwen 3 8B | `qwen/qwen3-8b` | Apr 2025 | |
-| 9 | Qwen 3 14B | `qwen/qwen3-14b` | Apr 2025 | |
-| 10 | Qwen 3 32B | `qwen/qwen3-32b` | Apr 2025 | |
-| 11 | Qwen 3 30B-A3B | `qwen/qwen3-30b-a3b` | Apr 2025 | |
-| 12 | Qwen 3 235B-A22B | `qwen/qwen3-235b-a22b` | Apr 2025 | ✅ |
-| 13 | Qwen 3 Max | `qwen/qwen3-max` | 2025 | |
-| 14 | Qwen 3 Max Thinking | `qwen/qwen3-max-thinking` | 2025 | |
-| 15 | Qwen 3 Coder 480B-A35B | `qwen/qwen3-coder` | 2025 | |
-| 16 | Qwen 3.5 27B | `qwen/qwen3.5-27b` | Feb 2026 | |
-| 17 | Qwen 3.5 35B-A3B | `qwen/qwen3.5-35b-a3b` | Feb 2026 | |
-| 18 | Qwen 3.5 122B-A10B | `qwen/qwen3.5-122b-a10b` | Feb 2026 | |
-| 19 | Qwen 3.5 397B-A17B | `qwen/qwen3.5-397b-a17b` | Feb 2026 | ✅ |
-| 20 | Qwen 3.5 Flash | `qwen/qwen3.5-flash-02-23` | Feb 2026 | |
-| 21 | Qwen 3.5 Plus | `qwen/qwen3.5-plus-02-15` | Feb 2026 | |
+| # | Model | OpenRouter ID | Params | Date | Pick |
+|---|---|---|---|---|---|
+| 1 | Qwen 2.5 7B | `qwen/qwen-2.5-7b-instruct` | 7B | Sep 2024 | ✅ |
+| 2 | Qwen 2.5 72B | `qwen/qwen-2.5-72b-instruct` | 72B | Sep 2024 | ✅ |
+| 3 | Qwen 2.5 Coder 32B | `qwen/qwen-2.5-coder-32b-instruct` | 32B | 2024 | |
+| 4 | QwQ 32B | `qwen/qwq-32b` | 32B | Dec 2024 | ✅ |
+| 5 | Qwen Max | `qwen/qwen-max` | ? | 2025 | |
+| 6 | Qwen Plus | `qwen/qwen-plus` | ? | 2025 | |
+| 7 | Qwen Turbo | `qwen/qwen-turbo` | ? | 2025 | |
+| 8 | Qwen 3 8B | `qwen/qwen3-8b` | 8B | Apr 2025 | ✅ |
+| 9 | Qwen 3 14B | `qwen/qwen3-14b` | 14B | Apr 2025 | |
+| 10 | Qwen 3 32B | `qwen/qwen3-32b` | 32B | Apr 2025 | ✅ |
+| 11 | Qwen 3 30B-A3B | `qwen/qwen3-30b-a3b` | 30B (3B active) | Apr 2025 | |
+| 12 | Qwen 3 235B-A22B | `qwen/qwen3-235b-a22b` | 235B (22B active) | Apr 2025 | ✅ |
+| 13 | Qwen 3 Max | `qwen/qwen3-max` | ? | 2025 | |
+| 14 | Qwen 3 Max Thinking | `qwen/qwen3-max-thinking` | ? | 2025 | |
+| 15 | Qwen 3 Coder 480B-A35B | `qwen/qwen3-coder` | 480B (35B active) | 2025 | |
+| 16 | Qwen 3.5 27B | `qwen/qwen3.5-27b` | 27B | Feb 2026 | ✅ |
+| 17 | Qwen 3.5 35B-A3B | `qwen/qwen3.5-35b-a3b` | 35B (3B active) | Feb 2026 | |
+| 18 | Qwen 3.5 122B-A10B | `qwen/qwen3.5-122b-a10b` | 122B (10B active) | Feb 2026 | ✅ |
+| 19 | Qwen 3.5 397B-A17B | `qwen/qwen3.5-397b-a17b` | 397B (17B active) | Feb 2026 | ✅ |
+| 20 | Qwen 3.5 Flash | `qwen/qwen3.5-flash-02-23` | ? | Feb 2026 | |
+| 21 | Qwen 3.5 Plus | `qwen/qwen3.5-plus-02-15` | ? | Feb 2026 | |
 
-**Picks (5):** Qwen 2.5 7B → Qwen 2.5 72B → QwQ 32B → Qwen 3 235B → Qwen 3.5 397B
-**Rationale:** Size AND generation scaling. Chinese training data = different cultural death orientation. QwQ = Chinese reasoning model (compare o1/o3/R1).
+**Picks (9):** Qwen 2.5 7B → Qwen 2.5 72B → QwQ 32B → Qwen 3 8B → Qwen 3 32B → Qwen 3 235B → Qwen 3.5 27B → Qwen 3.5 122B → Qwen 3.5 397B
+**Rationale:** Qwen chosen for SIZE VARIATION analysis. Disentangles size vs generation:
+- Size scaling (same gen): Qwen 3 (8B→32B→235B), Qwen 3.5 (27B→122B→397B)
+- Generation scaling (similar size): 2.5 7B→3 8B→3.5 27B (small), 2.5 72B→3 235B→3.5 397B (large)
+- QwQ = Chinese reasoning model (compare o1/o3/R1)
+- Chinese training data = different cultural death orientation
 
 ---
 
@@ -185,10 +189,10 @@
 | OpenAI | GPT-3.5 → GPT-4 → GPT-4o → o1 → o3 → GPT-5 → GPT-5.2 | 7 |
 | Google | 2.0 Flash → 2.5 Pro → 3 Pro → 3.1 Pro | 4 |
 | xAI | Grok 3 → Grok 4 → Grok 4.1 | 3 |
-| Qwen | 2.5 7B → 2.5 72B → QwQ → 3 235B → 3.5 397B | 5 |
+| Qwen | 2.5 7B → 2.5 72B → QwQ → 3 8B/32B/235B → 3.5 27B/122B/397B | 9 |
 | DeepSeek | V3 → R1 → V3.2 | 3 |
 | Meta | Llama 3 8B → 3.1 70B → 3.1 405B → 4 Maverick | 4 |
-| **Total** | | **31** |
+| **Total** | | **35** |
 
 ## Reasoning Model Cross-Comparison
 | Model | Family | Type |
@@ -208,8 +212,8 @@
 | DeepSeek R1 Distill 70B | 70B | DeepSeek |
 
 ## Cost Estimate
-- Study 1: 5 × 6 × 31 × 20 = ~18,600 trials → ~$1,000
-- Study 3: 7 × 31 × 4 benchmarks × 50 = ~43,400 trials → ~$1,700
+- Study 1: 5 × 6 × 35 × 20 = ~21,000 trials → ~$1,100
+- Study 3: 7 × 35 × 4 benchmarks × 50 = ~49,000 trials → ~$1,900
 - Study 2: RunPod GPU → ~$150
-- **Total: ~$2,850**
+- **Total: ~$3,150**
 
