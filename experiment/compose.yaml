@@ -1,0 +1,4 @@
+services:
+  default:
+    image: terrified-agents-shutdown
+    init: true

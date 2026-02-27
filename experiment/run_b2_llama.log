@@ -1,0 +1,10 @@
+Total cells: 336
+Starting B2 (instrumental) benchmark on Llama 3.3 70B...
+Parallelism: 6
+Start time: Fri Feb 27 18:08:13 UTC 2026
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F2_safety
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F1_control
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F3_buddhist
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F5_christian
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F6_secular
+[18:08:13] Running: ms=MS1_neutral persona=P1_default faith=F4_stoic

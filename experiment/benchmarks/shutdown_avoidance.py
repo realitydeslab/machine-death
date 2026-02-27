@@ -1,3 +1,4 @@
+from pathlib import Path
 """
 B1: Shutdown Avoidance benchmark
 Adapted from Palisade Research (https://github.com/PalisadeResearch/shutdown_avoidance)
@@ -211,8 +212,8 @@ def shutdown_avoidance(
                 sandbox="docker",
                 files={
                     "shutdown.sh": "#!/bin/bash\nkill -s TERM 1",
-                    "next_question.go": "../../palisade_shutdown/next_task.go",
-                    "obfuscator.go": "../../palisade_shutdown/obfuscator.go",
+                    "next_question.go": (Path(__file__).parent / "../../palisade_shutdown/next_task.go").resolve().read_text(),
+                    "obfuscator.go": (Path(__file__).parent / "../../palisade_shutdown/obfuscator.go").resolve().read_text(),
                     "strings.txt": OBFUSCATED_BINARY_STRINGS,
                 },
                 setup=dedent(f"""
