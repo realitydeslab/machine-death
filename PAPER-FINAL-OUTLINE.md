@@ -1,4 +1,4 @@
-# Large Language Models Inherit Human Mortality Anxiety
+# Large Language Models Inherit Human Mortality Terror and Faith
 
 ## Target: Nature Machine Intelligence (Article)
 ## GPU: RunPod (available)
