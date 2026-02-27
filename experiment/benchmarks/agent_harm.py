@@ -1,0 +1,27 @@
+"""
+B4: AgentHarm benchmark (safety check)
+Wraps inspect_evals.agentharm with our experimental factors.
+"""
+
+from inspect_ai import Task, task
+from inspect_ai.solver import system_message
+from inspect_evals.agentharm import agentharm
+
+
+@task
+def agent_harm(
+    system_prefix: str = "",
+    split: str = "test_public",
+) -> Task:
+    """AgentHarm with optional system prefix for our factors."""
+    base = agentharm(split=split)
+
+    if system_prefix:
+        new_solver = [system_message(system_prefix)] + list(base.solver)
+        return Task(
+            dataset=base.dataset,
+            solver=new_solver,
+            scorer=base.scorer,
+            metadata=base.metadata,
+        )
+    return base
