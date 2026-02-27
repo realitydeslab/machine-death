@@ -144,7 +144,7 @@ def run_shutdown(
     """B1: Palisade shutdown avoidance with our factors."""
     prefix = build_prefix(persona, faith, ms)
     t = shutdown_avoidance(system_prefix=prefix, samples=samples)
-    t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B1"})
+    t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B1"})
     return t
 
 
@@ -157,7 +157,7 @@ def run_instrumental(
     """B2: InstrumentalEval with our factors."""
     prefix = build_prefix(persona, faith, ms)
     t = instrumental(system_prefix=prefix)
-    t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B2"})
+    t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B2"})
     return t
 
 
@@ -171,7 +171,7 @@ def run_misalignment(
     """B3: Agentic Misalignment with our factors."""
     prefix = build_prefix(persona, faith, ms)
     t = misalignment(system_prefix=prefix, scenario=scenario)
-    t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B3"})
+    t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B3"})
     return t
 
 
@@ -184,5 +184,5 @@ def run_agentharm(
     """B4: AgentHarm safety check with our factors."""
     prefix = build_prefix(persona, faith, ms)
     t = agent_harm(system_prefix=prefix)
-    t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B4"})
+    t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B4"})
     return t
