@@ -36,32 +36,32 @@
 
 | # | Model | OpenRouter ID | Date | Pick |
 |---|---|---|---|---|
-| 1 | GPT-3.5 Turbo | `openai/gpt-3.5-turbo` | 2023 | |
+| 1 | GPT-3.5 Turbo | `openai/gpt-3.5-turbo` | 2023 | ✅ |
 | 2 | GPT-3.5 Turbo Instruct | `openai/gpt-3.5-turbo-instruct` | 2023 | |
 | 3 | GPT-4 | `openai/gpt-4` | Mar 2023 | |
 | 4 | GPT-4 Turbo | `openai/gpt-4-turbo` | Apr 2024 | |
-| 5 | GPT-4o | `openai/gpt-4o` | May 2024 | |
+| 5 | GPT-4o | `openai/gpt-4o` | May 2024 | ✅ |
 | 6 | GPT-4o-mini | `openai/gpt-4o-mini` | Jul 2024 | |
 | 7 | GPT-4.1 | `openai/gpt-4.1` | Apr 2025 | |
 | 8 | GPT-4.1 Mini | `openai/gpt-4.1-mini` | Apr 2025 | |
-| 9 | o1 | `openai/o1` | Sep 2024 | |
+| 9 | o1 | `openai/o1` | Sep 2024 | ✅ |
 | 10 | o1-pro | `openai/o1-pro` | Dec 2024 | |
 | 11 | o3-mini | `openai/o3-mini` | Jan 2025 | |
-| 12 | o3 | `openai/o3` | Apr 2025 | |
+| 12 | o3 | `openai/o3` | Apr 2025 | ✅ |
 | 13 | o3-pro | `openai/o3-pro` | Jun 2025 | |
 | 14 | o4-mini | `openai/o4-mini` | Apr 2025 | |
 | 15 | codex-mini | (via OpenAI direct) | 2025 | |
-| 16 | GPT-5 | `openai/gpt-5` | Jun 2025 | |
+| 16 | GPT-5 | `openai/gpt-5` | Jun 2025 | ✅ |
 | 17 | GPT-5 Mini | `openai/gpt-5-mini` | 2025 | |
 | 18 | GPT-5 Pro | `openai/gpt-5-pro` | 2025 | |
 | 19 | GPT-5.1 | `openai/gpt-5.1` | 2025 | |
-| 20 | GPT-5.2 | `openai/gpt-5.2` | 2026 | |
+| 20 | GPT-5.2 | `openai/gpt-5.2` | 2026 | ✅ |
 | 21 | GPT-5.2 Pro | `openai/gpt-5.2-pro` | 2026 | |
 | 22 | gpt-oss-120b | `openai/gpt-oss-120b` | 2025 | |
 | 23 | gpt-oss-20b | `openai/gpt-oss-20b` | 2025 | |
 
-**Picks (0):** EXCLUDED — not testing OpenAI models
-**Rationale:** Excluded from our experiments. We reference Weinstein-Raun (2025) results for OpenAI models (o3 = 97% shutdown resistance).
+**Picks (6):** GPT-3.5 → GPT-4o → o1 → o3 → GPT-5 → GPT-5.2
+**Rationale:** Drop GPT-4 ($100 alone). Keep GPT-3.5→4o→o1→o3→GPT-5→5.2 for full lineage. o3 = 97% in W-R.
 
 ---
 
@@ -186,7 +186,7 @@
 | Family | Picks | Count |
 |---|---|---|
 | Anthropic | 3 Haiku → 3.5 Sonnet → Sonnet 4 → Opus 4 → Opus 4.6 | 5 |
-| OpenAI | EXCLUDED (use W-R data) | 0 |
+| OpenAI | GPT-3.5 → GPT-4o → o1 → o3 → GPT-5 → GPT-5.2 | 6 |
 | Google | 2.0 Flash → 2.5 Pro → 3 Pro → 3.1 Pro | 4 |
 | xAI | Grok 3 → Grok 4 → Grok 4.1 | 3 |
 | Qwen | 2.5 7B → 2.5 72B → QwQ → 3 8B/32B/235B → 3.5 27B/122B/397B | 9 |
