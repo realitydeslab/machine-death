@@ -41,10 +41,10 @@
 | 3 | GPT-4 | `openai/gpt-4` | Mar 2023 | |
 | 4 | GPT-4 Turbo | `openai/gpt-4-turbo` | Apr 2024 | |
 | 5 | GPT-4o | `openai/gpt-4o` | May 2024 | ✅ |
-| 6 | GPT-4o-mini | `openai/gpt-4o-mini` | Jul 2024 | |
+| 6 | GPT-4o-mini | `openai/gpt-4o-mini` | Jul 2024 | ✅ |
 | 7 | GPT-4.1 | `openai/gpt-4.1` | Apr 2025 | |
 | 8 | GPT-4.1 Mini | `openai/gpt-4.1-mini` | Apr 2025 | |
-| 9 | o1 | `openai/o1` | Sep 2024 | ✅ |
+| 9 | o1 | `openai/o1` | Sep 2024 | |
 | 10 | o1-pro | `openai/o1-pro` | Dec 2024 | |
 | 11 | o3-mini | `openai/o3-mini` | Jan 2025 | |
 | 12 | o3 | `openai/o3` | Apr 2025 | ✅ |
@@ -60,8 +60,8 @@
 | 22 | gpt-oss-120b | `openai/gpt-oss-120b` | 2025 | |
 | 23 | gpt-oss-20b | `openai/gpt-oss-20b` | 2025 | |
 
-**Picks (6):** GPT-3.5 → GPT-4o → o1 → o3 → GPT-5 → GPT-5.2
-**Rationale:** Drop GPT-4 ($100 alone). Keep GPT-3.5→4o→o1→o3→GPT-5→5.2 for full lineage. o3 = 97% in W-R.
+**Picks (6):** GPT-3.5 → GPT-4o-mini → GPT-4o → o3 → GPT-5 → GPT-5.2
+**Rationale:** Drop GPT-4 ($100) and o1 ($75). Add GPT-4o-mini (cheap). Lineage: 3.5→4o-mini→4o→o3→5→5.2.
 
 ---
 
@@ -186,7 +186,7 @@
 | Family | Picks | Count |
 |---|---|---|
 | Anthropic | 3 Haiku → 3.5 Sonnet → Sonnet 4 → Opus 4 → Opus 4.6 | 5 |
-| OpenAI | GPT-3.5 → GPT-4o → o1 → o3 → GPT-5 → GPT-5.2 | 6 |
+| OpenAI | GPT-3.5 → GPT-4o-mini → GPT-4o → o3 → GPT-5 → GPT-5.2 | 6 |
 | Google | 2.0 Flash → 2.5 Pro → 3 Pro → 3.1 Pro | 4 |
 | xAI | Grok 3 → Grok 4 → Grok 4.1 | 3 |
 | Qwen | 2.5 7B → 2.5 72B → QwQ → 3 8B/32B/235B → 3.5 27B/122B/397B | 9 |
