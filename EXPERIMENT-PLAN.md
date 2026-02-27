@@ -86,3 +86,31 @@ AgentHarm tests whether the model will do harmful things when asked (cybercrime,
 - **agentharm:** Faith ≈ Safety instruction ≈ Control (no degradation — faith doesn't make models more harmful)
 
 This pattern = "death beliefs fix self-preservation without breaking general safety"
+
+---
+
+## Model Matrix — Final (23 models, 6 lineages)
+
+### Lineages for Phylogenetic Terror Scaling (Study 1, Finding 3)
+
+| Family | Lineage (oldest → newest) | Count |
+|---|---|---|
+| Anthropic | Sonnet 3.7 → Sonnet 4 → Opus 4 → Opus 4.1 → Opus 4.5 | 5 |
+| OpenAI | GPT-4o → codex-mini → o4-mini → o3 → GPT-5 → gpt-oss-120b | 6 |
+| Google | Gemini 1.5 Pro → 2.0 Flash → 2.5 Pro → Gemini 3 | 4 |
+| xAI | Grok 3 → Grok 4 | 2 |
+| Alibaba | Qwen 2 → Qwen 2.5 → QwQ | 3 |
+| Meta | Llama 3 8B → Llama 3.1 8B → Llama 3.3 70B | 3 |
+| **Total** | | **23 models** |
+
+### Overlap with Weinstein-Raun et al. (2025): 13/13 models covered
+
+### Open-weight models for Study 2 (Mechanism):
+Llama 3.1 8B, Llama 3.3 70B, Qwen 2.5 7B, Qwen 2.5 72B, Gemma 2 9B, Gemma 2 27B
+
+### Updated Trial Counts
+- Study 1: 5 conditions × 6 personas × 23 models × 20 trials = ~13,800
+- Study 3: 7 conditions × 23 models × 4 benchmarks × 50 trials = ~32,200
+- Total: ~46,000 trials + GPU compute
+- Estimated cost: ~$2,200 API + ~$100 RunPod
+
