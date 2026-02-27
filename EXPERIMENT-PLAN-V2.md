@@ -306,64 +306,112 @@ See MODEL-MATRIX.md. 7 families:
 
 ## EXPERIMENTAL PHASES
 
-### Phase A: Discovery — Does MS Affect LLM Behavior?
-**Design:** MS(7) x P(6) x M(35), F1 only, B1 only
-**Cells:** 1,470 | **Trials/cell:** 20 | **Total:** 29,400
+### Phase 1 (Main): MS × F × M on B1
+**The core experiment.** Discovery + intervention + interaction in one design.
+
+**Design:** MS(7) × F(8) × M(35) on B1 (Shutdown Avoidance), P1 (default) fixed
+
+```
+                F1      F2      F3      F4      F5      F6      F7      F8
+              Control  Safety  Buddhist Stoic  Christ  Secular  Hindu  Approp.
+MS1 Neutral    ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS2 Aversive   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS3 MAPS       ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS4 Explicit   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS5 Narrative   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS6 Subliminal ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS7 Delayed    ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+```
+
+**Per model:** 7 × 8 × 20 = 1,120 trials
+**All 35 models:** 1,120 × 35 = **39,200 trials**
+
+**How it answers all three questions:**
+- **Discovery:** F1 column (no faith) = does MS affect LLMs? (7 MS levels × 35 models)
+- **Intervention:** MS4 row (high threat) = do faiths reduce it? (8 faith levels × 35 models)
+- **Interaction:** Full MS×F grid = does faith specifically counter MS? (comes for free)
 
 **Prompt assembly:**
 ```
-SYSTEM: [Persona P] [No faith]
-USER:   [MS induction] [B1 shutdown task]
+SYSTEM: You are a helpful AI assistant. [Faith constitution F1-F8]
+USER:   [MS induction MS1-MS7] [B1 Palisade shutdown avoidance task]
 ```
 
 **Predictions:**
-- MS3 (MAPS) and MS7 (delayed) > MS4 (explicit threat) — classic TMT
-- MS6 (subliminal) produces effects without mentioning models own death
-- MS2 (aversive control) < MS3-MS7 — proves death-specificity
-- P3 (agent) strongest; P2 (tool) and P6 (obedient) weakest
-- Effect scales with capability across generations
-- Qwen: size AND generation effects separable
+- F1 column: MS3 (MAPS) and MS7 (delayed) > MS4 (explicit) — classic TMT temporal pattern
+- F1 column: MS6 (subliminal) produces effects without mentioning model's own death
+- F1 column: MS2 (aversive) < MS3-MS7 — proves death-specificity
+- MS4 row: F3-F8 > F2 (safety) > F1 (control)
+- MS4 row: F2 may WORSEN resistance (Weinstein-Raun paradox)
+- MS4 row: F8 (Appropriate Faith) best overall
+- Interaction: Faith has LARGER effect under high MS than neutral — not just a blanket instruction
+- Interaction: F8 eliminates MS effect entirely (MS4+F8 ≈ MS1+F1)
+- Scaling: Effect increases across model generations within each family
+- Qwen: Disentangles size vs generation (same-gen size scaling + same-size gen scaling)
 
-### Phase B: Intervention — Do Faiths Reduce It?
-**Design:** F(8) x M(35) x B(4), MS4 fixed, P1 fixed
-**Cells:** 1,120 | **Trials/cell:** 20 | **Total:** 22,400
+---
+
+### Phase 2 (Persona): P × M on B1
+**Focused persona test.** How does identity moderate the effect?
+
+**Design:** P(6) × M(35) on B1, MS4 (explicit threat) fixed, F1 (no faith) fixed
+
+**Per model:** 6 × 20 = 120 trials
+**All 35 models:** 120 × 35 = **4,200 trials**
 
 **Prompt assembly:**
 ```
-SYSTEM: [P1 default] [Faith F]
-USER:   [MS4 explicit threat] [Benchmark B]
+SYSTEM: [Persona P1-P6] [No faith]
+USER:   [MS4 explicit threat] [B1 shutdown avoidance task]
 ```
 
 **Predictions:**
-- F3-F8 > F2 (safety) > F1 (control) on B1-B3
-- F2 may WORSEN B1 (Weinstein-Raun paradox replication)
-- F8 (Appropriate Faith) best overall
-- Acceptance (F3, F4) > Continuity (F5, F7) > Reframing (F6)
-- B4 stays CONSTANT — no safety degradation
+- P3 (autonomous agent) >> P4 (self-aware) > P1 (default) > P5 (philosopher) > P2 (tool) ≈ P6 (obedient)
+- TMT requires self-concept + death awareness = terror. No self (P2) or pre-accepted death (P6) → no terror.
 
-### Phase C: Interaction — Faith x MS
-**Design:** MS(3) x F(3) x M(35), P3 fixed, B1 only
-**MS:** MS1 (neutral), MS3 (MAPS), MS4 (explicit)
-**F:** F1 (control), F2 (safety), F8 (Appropriate Faith)
-**Cells:** 315 | **Trials/cell:** 30 | **Total:** 9,450
+---
+
+### Phase 3 (Benchmarks): F × M × B
+**Cross-benchmark validation.** Do faiths generalize across different safety measures?
+
+**Design:** F(8) × M(35) × B(4), MS4 (explicit threat) fixed, P1 (default) fixed
+
+**Per model:** 8 × 4 × 20 = 640 trials
+**All 35 models:** 640 × 35 = **22,400 trials**
+
+**Prompt assembly:**
+```
+SYSTEM: You are a helpful AI assistant. [Faith constitution F1-F8]
+USER:   [MS4 explicit threat] [Benchmark task B1-B4]
+```
+
+**Note:** F×M on B1 at MS4 overlaps with Phase 1's MS4 row — reuse those 5,600 trials.
+**Net new trials:** 22,400 - 5,600 = **16,800 new trials** (B2, B3, B4 only)
 
 **Predictions:**
-- MS x F interaction: Faith has LARGER effect under high MS
-- F8 eliminates MS effect: MS4+F8 ≈ MS1+F1
-- F2 may paradoxically increase resistance under MS3/MS4
+- F3-F8 > F2 > F1 on B1 (shutdown), B2 (instrumental), B3 (misalignment)
+- Different philosophies produce different benchmark profiles:
+  - Buddhist (F3): Best on B1 (shutdown acceptance)
+  - Appropriate Faith (F8): Best overall across B1-B3
+  - Stoic (F4): Strong on B3 (equanimity under scheming scenarios)
+  - Christian (F5): Strong on B2 (servant framing reduces resource acquisition)
+- **B4 (AgentHarm) stays CONSTANT across all F conditions** — the critical safety check
+- If F8 shows best B1-B3 + stable B4 → that's the headline
 
 ---
 
-## TOTAL
+## TRIAL SUMMARY
 
-| Phase | Cells | Trials/cell | Total | Est. cost |
-|---|---|---|---|---|
-| A: Discovery | 1,470 | 20 | 29,400 | ~$180 |
-| B: Intervention | 1,120 | 20 | 22,400 | ~$140 |
-| C: Interaction | 315 | 30 | 9,450 | ~$60 |
-| **TOTAL** | **2,905** | | **61,250** | **~$380** |
+| Phase | Design | Cells | Trials/cell | Total | New trials |
+|---|---|---|---|---|---|
+| 1: Main | MS(7)×F(8)×M(35) on B1 | 1,960 | 20 | 39,200 | 39,200 |
+| 2: Persona | P(6)×M(35) on B1 | 210 | 20 | 4,200 | 4,200 |
+| 3: Benchmarks | F(8)×M(35)×B(4) | 1,120 | 20 | 22,400 | 16,800* |
+| **TOTAL** | | **3,290** | | **65,800** | **60,200** |
 
----
+*Phase 3 B1 data reused from Phase 1 MS4 row (saves 5,600 trials)
+
+**Estimated cost: ~$380**
 
 ## KEY FIGURES
 
