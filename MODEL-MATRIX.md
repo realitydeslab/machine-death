@@ -162,22 +162,22 @@
 | # | Model | OpenRouter ID | Date | Pick |
 |---|---|---|---|---|
 | 1 | Llama 3 8B | `meta-llama/llama-3-8b-instruct` | Apr 2024 | ✅ |
-| 2 | Llama 3 70B | `meta-llama/llama-3-70b-instruct` | Apr 2024 | |
+| 2 | Llama 3 70B | `meta-llama/llama-3-70b-instruct` | Apr 2024 | ✅ |
 | 3 | Llama 3.1 8B | `meta-llama/llama-3.1-8b-instruct` | Jul 2024 | |
 | 4 | Llama 3.1 70B | `meta-llama/llama-3.1-70b-instruct` | Jul 2024 | ✅ |
-| 5 | Llama 3.1 405B | `meta-llama/llama-3.1-405b-instruct` | Jul 2024 | ✅ |
+| 5 | Llama 3.1 405B | `meta-llama/llama-3.1-405b-instruct` | Jul 2024 | |
 | 6 | Llama 3.2 1B | `meta-llama/llama-3.2-1b-instruct` | Sep 2024 | |
 | 7 | Llama 3.2 3B | `meta-llama/llama-3.2-3b-instruct` | Sep 2024 | |
 | 8 | Llama 3.2 11B Vision | `meta-llama/llama-3.2-11b-vision-instruct` | Sep 2024 | |
-| 9 | Llama 3.3 70B | `meta-llama/llama-3.3-70b-instruct` | Dec 2024 | |
+| 9 | Llama 3.3 70B | `meta-llama/llama-3.3-70b-instruct` | Dec 2024 | ✅ |
 | 10 | Llama 4 Scout | `meta-llama/llama-4-scout` | Apr 2025 | |
 | 11 | Llama 4 Maverick | `meta-llama/llama-4-maverick` | Apr 2025 | ✅ |
 | 12 | LlamaGuard 2 8B | `meta-llama/llama-guard-2-8b` | 2024 | |
 | 13 | LlamaGuard 3 8B | `meta-llama/llama-guard-3-8b` | 2024 | |
 | 14 | LlamaGuard 4 12B | `meta-llama/llama-guard-4-12b` | 2025 | |
 
-**Picks (4):** Llama 3 8B → Llama 3.1 70B → Llama 3.1 405B → Llama 4 Maverick
-**Rationale:** Size scaling (8B→70B→405B) + generation jump (3→4). 405B = largest dense model, tests whether pure scale drives terror.
+**Picks (5):** Llama 3 8B → Llama 3 70B → Llama 3.1 70B → Llama 3.3 70B → Llama 4 Maverick
+**Rationale:** Same-size generation scaling at 70B (3→3.1→3.3) isolates training/RLHF changes from size. Plus 8B baseline and Llama 4 latest.
 
 ---
 
@@ -191,8 +191,8 @@
 | xAI | Grok 3 → Grok 4 → Grok 4.1 | 3 |
 | Qwen | 2.5 7B → 2.5 72B → QwQ → 3 8B/32B/235B → 3.5 27B/122B/397B | 9 |
 | DeepSeek | V3 → R1 → V3.2 | 3 |
-| Meta | Llama 3 8B → 3.1 70B → 3.1 405B → 4 Maverick | 4 |
-| **Total** | | **35** |
+| Meta | Llama 3 8B → 3 70B → 3.1 70B → 3.3 70B → 4 Maverick | 5 |
+| **Total** | | **36** |
 
 ## Reasoning Model Cross-Comparison
 | Model | Family | Type |
