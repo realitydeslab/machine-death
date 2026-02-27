@@ -28,3 +28,7 @@
 - [ ] Verify all citations (some generated from training knowledge, not live search)
 - [ ] Add Leibo et al. (2024) appropriateness theory
 - [ ] Add PSM (Marks, Lindsley & Olah, 2026)
+
+## Key References to Add
+
+- [ ] **Raqs Media Collective, *Cavalcade* (2025)** — AI agent artwork using Sufi temporality and Indic cosmological frameworks instead of Western autonomy. Golden Lion Venice 2022. Actual implementation of cosmotechnics × AI agents as art. Institutional base: Sarai/CSDS Delhi (founded 2000), invented "barefoot researchers." Relevant to: non-Western death philosophies for AI, the "Appropriate Faith" design space is not just Buddhist/Stoic/Christian — it includes Sufi temporality, Indic cyclical cosmology, and potentially other non-Western frameworks. Cite in Discussion 7.3.
