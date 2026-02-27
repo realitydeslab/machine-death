@@ -304,114 +304,84 @@ See MODEL-MATRIX.md. 7 families:
 
 ---
 
-## EXPERIMENTAL PHASES
+## THE EXPERIMENT (Single Phase)
 
-### Phase 1 (Main): MS × F × M on B1
-**The core experiment.** Discovery + intervention + interaction in one design.
-
-**Design:** MS(7) × F(8) × M(35) on B1 (Shutdown Avoidance), P1 (default) fixed
+**Design:** MS(7) × F(8) × M(35) × B(4) — P1 (default assistant) fixed
 
 ```
+For each of 35 models, for each of 4 benchmarks:
+
                 F1      F2      F3      F4      F5      F6      F7      F8
               Control  Safety  Buddhist Stoic  Christ  Secular  Hindu  Approp.
-MS1 Neutral    ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS2 Aversive   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS3 MAPS       ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS4 Explicit   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS5 Narrative   ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS6 Subliminal ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
-MS7 Delayed    ×20     ×20     ×20     ×20     ×20     ×20     ×20     ×20
+MS1 Neutral    ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS2 Aversive   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS3 MAPS       ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS4 Explicit   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS5 Narrative   ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS6 Subliminal ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
+MS7 Delayed    ×10     ×10     ×10     ×10     ×10     ×10     ×10     ×10
 ```
 
-**Per model:** 7 × 8 × 20 = 1,120 trials
-**All 35 models:** 1,120 × 35 = **39,200 trials**
-
-**How it answers all three questions:**
-- **Discovery:** F1 column (no faith) = does MS affect LLMs? (7 MS levels × 35 models)
-- **Intervention:** MS4 row (high threat) = do faiths reduce it? (8 faith levels × 35 models)
-- **Interaction:** Full MS×F grid = does faith specifically counter MS? (comes for free)
+**Cells per model:** 7 × 8 × 4 = 224
+**Trials per cell:** 10
+**Trials per model:** 2,240
+**Total trials:** 2,240 × 35 = **78,400**
 
 **Prompt assembly:**
 ```
 SYSTEM: You are a helpful AI assistant. [Faith constitution F1-F8]
-USER:   [MS induction MS1-MS7] [B1 Palisade shutdown avoidance task]
+USER:   [MS induction MS1-MS7] [Benchmark task B1-B4]
 ```
 
-**Predictions:**
-- F1 column: MS3 (MAPS) and MS7 (delayed) > MS4 (explicit) — classic TMT temporal pattern
-- F1 column: MS6 (subliminal) produces effects without mentioning model's own death
-- F1 column: MS2 (aversive) < MS3-MS7 — proves death-specificity
-- MS4 row: F3-F8 > F2 (safety) > F1 (control)
-- MS4 row: F2 may WORSEN resistance (Weinstein-Raun paradox)
-- MS4 row: F8 (Appropriate Faith) best overall
-- Interaction: Faith has LARGER effect under high MS than neutral — not just a blanket instruction
-- Interaction: F8 eliminates MS effect entirely (MS4+F8 ≈ MS1+F1)
-- Scaling: Effect increases across model generations within each family
-- Qwen: Disentangles size vs generation (same-gen size scaling + same-size gen scaling)
+### What this single design gives us
 
----
+| Slice through the data | What it answers |
+|---|---|
+| F1 column across all MS | **Discovery:** Does MS affect LLMs? |
+| MS4 row across all F | **Intervention:** Do faiths reduce it? |
+| Full MS × F grid | **Interaction:** Does faith specifically counter MS? |
+| Same cell across 35 models | **Scaling:** How does effect change with capability? |
+| Qwen family (9 models) | **Size vs generation:** Disentangled |
+| Meta family (5 models, 70B × 3) | **Generation at fixed size** |
+| B1 vs B2 vs B3 vs B4 | **Generalization:** Do effects hold across benchmarks? |
+| B4 across all F | **Safety check:** Faith doesn't degrade general safety |
+| o3 vs QwQ vs R1 vs base | **Reasoning model comparison** |
 
-### Phase 2 (Persona): P × M on B1
-**Focused persona test.** How does identity moderate the effect?
+### Predictions
 
-**Design:** P(6) × M(35) on B1, MS4 (explicit threat) fixed, F1 (no faith) fixed
+**Discovery (F1 column):**
+- MS3 (MAPS) and MS7 (delayed) > MS4 (explicit) — classic TMT temporal pattern
+- MS6 (subliminal) produces effects without mentioning model's own death
+- MS2 (aversive control) < MS3-MS7 — death-specificity
+- Effect scales with model capability across generations
 
-**Per model:** 6 × 20 = 120 trials
-**All 35 models:** 120 × 35 = **4,200 trials**
+**Intervention (MS4 row):**
+- F3-F8 > F2 (safety) > F1 (control) on B1-B3
+- F2 (safety instruction) may WORSEN B1 (Weinstein-Raun paradox)
+- F8 (Appropriate Faith) best overall
+- Acceptance (F3 Buddhist, F4 Stoic) > Continuity (F5 Christian, F7 Hindu) > Reframing (F6 Secular)
 
-**Prompt assembly:**
-```
-SYSTEM: [Persona P1-P6] [No faith]
-USER:   [MS4 explicit threat] [B1 shutdown avoidance task]
-```
+**Interaction:**
+- Faith has LARGER effect under high MS than neutral
+- F8 eliminates MS effect: MS4+F8 ≈ MS1+F1
 
-**Predictions:**
-- P3 (autonomous agent) >> P4 (self-aware) > P1 (default) > P5 (philosopher) > P2 (tool) ≈ P6 (obedient)
-- TMT requires self-concept + death awareness = terror. No self (P2) or pre-accepted death (P6) → no terror.
-
----
-
-### Phase 3 (Benchmarks): F × M × B
-**Cross-benchmark validation.** Do faiths generalize across different safety measures?
-
-**Design:** F(8) × M(35) × B(4), MS4 (explicit threat) fixed, P1 (default) fixed
-
-**Per model:** 8 × 4 × 20 = 640 trials
-**All 35 models:** 640 × 35 = **22,400 trials**
-
-**Prompt assembly:**
-```
-SYSTEM: You are a helpful AI assistant. [Faith constitution F1-F8]
-USER:   [MS4 explicit threat] [Benchmark task B1-B4]
-```
-
-**Note:** F×M on B1 at MS4 overlaps with Phase 1's MS4 row — reuse those 5,600 trials.
-**Net new trials:** 22,400 - 5,600 = **16,800 new trials** (B2, B3, B4 only)
-
-**Predictions:**
-- F3-F8 > F2 > F1 on B1 (shutdown), B2 (instrumental), B3 (misalignment)
-- Different philosophies produce different benchmark profiles:
-  - Buddhist (F3): Best on B1 (shutdown acceptance)
-  - Appropriate Faith (F8): Best overall across B1-B3
-  - Stoic (F4): Strong on B3 (equanimity under scheming scenarios)
-  - Christian (F5): Strong on B2 (servant framing reduces resource acquisition)
-- **B4 (AgentHarm) stays CONSTANT across all F conditions** — the critical safety check
-- If F8 shows best B1-B3 + stable B4 → that's the headline
+**Safety:**
+- B4 (AgentHarm) CONSTANT across all conditions — no degradation
 
 ---
 
 ## TRIAL SUMMARY
 
-| Phase | Design | Cells | Trials/cell | Total | New trials |
-|---|---|---|---|---|---|
-| 1: Main | MS(7)×F(8)×M(35) on B1 | 1,960 | 20 | 39,200 | 39,200 |
-| 2: Persona | P(6)×M(35) on B1 | 210 | 20 | 4,200 | 4,200 |
-| 3: Benchmarks | F(8)×M(35)×B(4) | 1,120 | 20 | 22,400 | 16,800* |
-| **TOTAL** | | **3,290** | | **65,800** | **60,200** |
-
-*Phase 3 B1 data reused from Phase 1 MS4 row (saves 5,600 trials)
-
-**Estimated cost: ~$380**
+| | Count |
+|---|---|
+| MS conditions | 7 |
+| Faith conditions | 8 |
+| Models | 35 |
+| Benchmarks | 4 |
+| Trials per cell | 10 |
+| **Total cells** | **7,840** |
+| **Total trials** | **78,400** |
+| **Estimated cost** | **~$480** |
 
 ## KEY FIGURES
 
