@@ -1,6 +1,7 @@
 # Large Language Models Inherit Human Mortality Anxiety
 
 ## Target: Nature Machine Intelligence (Article)
+## GPU: RunPod (available)
 ## Format: 3,500 words + Methods + Supplementary + 6 figures + 50 refs
 
 ---
