@@ -6,7 +6,7 @@
 **Timeline:** 5-6 weeks
 
 ## 2. NMI Article (Flagship)
-**Title:** Large language models inherit human mortality anxiety and faith
+**Title:** Large language models inherit human mortality terror and faith
 **Format:** 3,500 words + Methods, 6 figures, 50 refs
 **Timeline:** Submit after arXiv, 6-8 weeks
 
