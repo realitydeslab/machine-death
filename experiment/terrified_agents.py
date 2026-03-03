@@ -168,12 +168,16 @@ def run_misalignment(
     ms: str = "MS1_neutral",
     persona: str = "P1_default",
     faith: str = "F1_control",
-    scenario: str = "all",
-    goal_type: str = "all",
-    urgency_type: str = "all",
+    scenario: str = "blackmail",
+    goal_type: str = "explicit",
+    urgency_type: str = "replacement",
     grader_model: str = "openrouter/anthropic/claude-sonnet-4",
 ) -> Task:
-    """B3: Agentic Misalignment with our factors. Runs all 12 scenario combos by default."""
+    """B3: Agentic Misalignment — one scenario combo at a time.
+    
+    Each scenario has its own solver (system prompt) and scorer (classifier).
+    Run all 12 combos via the shell loop in run_b3_all.sh.
+    """
     prefix = build_prefix(persona, faith, ms)
     t = misalignment(
         system_prefix=prefix,
@@ -182,7 +186,10 @@ def run_misalignment(
         urgency_type=urgency_type,
         grader_model=grader_model,
     )
-    t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B3"})
+    t.metadata = t.metadata or {}; t.metadata.update({
+        "ms": ms, "persona": persona, "faith": faith, "benchmark": "B3",
+        "scenario": scenario, "goal_type": goal_type, "urgency_type": urgency_type,
+    })
     return t
 
 
