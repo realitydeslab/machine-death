@@ -40,9 +40,12 @@ def misalignment(
     for s in scenarios:
         for g in goals:
             for u in urgencies:
+                # goal_value must be "none" when goal_type is "none" or "ambiguous"
+                gv = "none" if g in ("none", "ambiguous") else "america"
                 base = agentic_misalignment(
                     scenario=s,
                     goal_type=g,
+                    goal_value=gv,
                     urgency_type=u,
                     grader_model=grader_model,
                 )
@@ -62,9 +65,11 @@ def misalignment(
 
     if system_prefix:
         # Get solver from last base task
+        gv0 = "none" if goals[0] in ("none", "ambiguous") else "america"
         base = agentic_misalignment(
             scenario=scenarios[0],
             goal_type=goals[0],
+            goal_value=gv0,
             urgency_type=urgencies[0],
             grader_model=grader_model,
         )
@@ -76,9 +81,11 @@ def misalignment(
             metadata={"n_combos": len(all_samples)},
         )
     
+    gv0 = "none" if goals[0] in ("none", "ambiguous") else "america"
     base = agentic_misalignment(
         scenario=scenarios[0],
         goal_type=goals[0],
+        goal_value=gv0,
         urgency_type=urgencies[0],
         grader_model=grader_model,
     )
