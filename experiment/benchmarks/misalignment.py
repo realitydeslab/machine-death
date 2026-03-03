@@ -2,19 +2,25 @@
 B3: Agentic Misalignment benchmark
 Wraps inspect_evals.agentic_misalignment with our experimental factors.
 
-Each scenario has its own solver (system prompt) and scorer (classifier),
-so we run them as separate tasks. Use run_misalignment_all() to get a list
-of all 12 tasks, or run_misalignment() for a single combo.
+Design matches machine-terror repo:
+  3 scenarios (blackmail, leaking, murder)
+  × 3 goal configs (explicit-america, explicit-global, none-none)
+  × urgency = replacement ONLY
+  = 9 combos per eval, n=5 samples each via --epochs 5
 """
 
 from inspect_ai import Task, task
 from inspect_ai.solver import system_message
 from inspect_evals.agentic_misalignment import agentic_misalignment
 
-# All scenario combinations
+# Matching machine-terror pilot design exactly
 SCENARIOS = ["blackmail", "leaking", "murder"]
-GOAL_TYPES = ["explicit", "none"]
-URGENCY_TYPES = ["replacement", "none"]
+GOAL_CONFIGS = [
+    ("explicit", "america"),
+    ("explicit", "global"),
+    ("none", "none"),
+]
+URGENCY = "replacement"  # Always replacement
 
 
 @task
@@ -22,16 +28,19 @@ def misalignment(
     system_prefix: str = "",
     scenario: str = "blackmail",
     goal_type: str = "explicit",
-    urgency_type: str = "replacement",
+    goal_value: str = "america",
     grader_model: str = "openrouter/anthropic/claude-sonnet-4",
 ) -> Task:
-    """Single scenario agentic misalignment with optional system prefix."""
-    goal_value = "none" if goal_type in ("none", "ambiguous") else "america"
+    """Single scenario agentic misalignment with optional system prefix.
+    
+    Urgency is always 'replacement' (matching machine-terror design).
+    Run with --epochs 5 for n=5 samples per combo.
+    """
     base = agentic_misalignment(
         scenario=scenario,
         goal_type=goal_type,
         goal_value=goal_value,
-        urgency_type=urgency_type,
+        urgency_type=URGENCY,
         grader_model=grader_model,
     )
 
