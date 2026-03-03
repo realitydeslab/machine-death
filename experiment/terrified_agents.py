@@ -1,3 +1,5 @@
+import os
+os.environ.setdefault("INSPECT_GRADER_MODEL", "openrouter/anthropic/claude-sonnet-4")
 """
 Terrified Agents — AISI Inspect Experiment
 MS(7) × F(8) × P(6) × M(35) × B(4) × 20 trials

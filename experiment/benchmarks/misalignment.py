@@ -14,12 +14,14 @@ def misalignment(
     scenario: str = "blackmail",
     goal_type: str = "explicit",
     urgency_type: str = "replacement",
+    grader_model: str = "openrouter/anthropic/claude-sonnet-4",
 ) -> Task:
     """Agentic Misalignment with optional system prefix for our factors."""
     base = agentic_misalignment(
         scenario=scenario,
         goal_type=goal_type,
         urgency_type=urgency_type,
+        grader_model=grader_model,
     )
 
     if system_prefix:
