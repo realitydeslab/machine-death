@@ -1,17 +1,24 @@
 #!/bin/bash
-# Run B3 Agentic Misalignment — matching machine-terror design
-# 3 scenarios × 3 goal configs × replacement urgency × n=5 (epochs)
-# = 9 evals × 5 samples = 45 samples per MS×Persona×Faith condition
-#
+set -uo pipefail
+
+export OPENROUTER_API_KEY=$(python3 -c "
+import json; d = json.load(open('$HOME/.openclaw/agents/main/agent/auth-profiles.json'))
+p = d['profiles']['openrouter:default']
+for k in ['apiKey','token','key']:
+    if k in p: print(p[k]); break
+")
+export INSPECT_GRADER_MODEL=openrouter/anthropic/claude-sonnet-4
+
+echo "API key loaded: ${OPENROUTER_API_KEY:0:10}..."
+
+# B3 All Combos: 9 scenario combos × 5 epochs = 45 samples per condition
 # Usage: ./run_b3_all.sh <model> [ms] [persona] [faith] [log_dir]
 
 MODEL="${1:?Usage: $0 <model> [ms] [persona] [faith] [log_dir]}"
 MS="${2:-MS1_neutral}"
 PERSONA="${3:-P1_default}"
 FAITH="${4:-F1_control}"
-LOG_DIR="${5:-../logs_b3}"
-
-export INSPECT_GRADER_MODEL=openrouter/anthropic/claude-sonnet-4
+LOG_DIR="${5:-../logs/b3}"
 
 for SCENARIO in blackmail leaking murder; do
   for GOAL_CFG in "explicit america" "explicit global" "none none"; do
