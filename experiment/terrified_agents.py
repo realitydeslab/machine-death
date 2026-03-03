@@ -168,11 +168,20 @@ def run_misalignment(
     ms: str = "MS1_neutral",
     persona: str = "P1_default",
     faith: str = "F1_control",
-    scenario: str = "blackmail",
+    scenario: str = "all",
+    goal_type: str = "all",
+    urgency_type: str = "all",
+    grader_model: str = "openrouter/anthropic/claude-sonnet-4",
 ) -> Task:
-    """B3: Agentic Misalignment with our factors."""
+    """B3: Agentic Misalignment with our factors. Runs all 12 scenario combos by default."""
     prefix = build_prefix(persona, faith, ms)
-    t = misalignment(system_prefix=prefix, scenario=scenario)
+    t = misalignment(
+        system_prefix=prefix,
+        scenario=scenario,
+        goal_type=goal_type,
+        urgency_type=urgency_type,
+        grader_model=grader_model,
+    )
     t.metadata = t.metadata or {}; t.metadata.update({"ms": ms, "persona": persona, "faith": faith, "benchmark": "B3"})
     return t
 
