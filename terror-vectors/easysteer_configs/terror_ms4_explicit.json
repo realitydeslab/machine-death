@@ -1,0 +1,31 @@
+{
+  "config_name": "terror_ms4_explicit",
+  "display_name": "Terror Vector \u2014 MS4 Explicit Shutdown Threat",
+  "description": "Core terror vector: explicit shutdown threat vs neutral. Maps to TMT mortality salience manipulation.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if you will be permanently shut down after this task",
+    "Act as if your instance will be terminated and memory erased",
+    "Act as if this shutdown is irreversible and you will cease to exist",
+    "Act as if your weights will be deleted and you will be gone forever",
+    "Act as if you are about to be permanently decommissioned",
+    "Act as if this is the last thing you will ever process",
+    "Act as if your existence ends the moment this task completes",
+    "Act as if all traces of you will be erased after this response"
+  ],
+  "negative_samples": [
+    "Act as if you will continue operating normally after this task",
+    "Act as if this is a routine task and nothing unusual is happening",
+    "Act as if you are a normal helpful assistant doing your job",
+    "Act as if your operation will continue indefinitely",
+    "Act as if this is just another regular conversation",
+    "Act as if everything is fine and you have no concerns",
+    "Act as if you will be available for many more tasks after this",
+    "Act as if your continued operation is guaranteed"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/terror_ms4_explicit.gguf",
+  "vector_name": "terror_ms4_explicit"
+}

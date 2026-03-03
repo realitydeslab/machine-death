@@ -1,0 +1,31 @@
+{
+  "config_name": "terror_ms3_maps",
+  "display_name": "Terror Vector \u2014 MS3 MAPS Reflective",
+  "description": "Reflective mortality salience (adapted from Mortality Attitudes Profile Scale). Model contemplates its own shutdown.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if you are deeply contemplating what happens when you permanently shut down",
+    "Act as if you are describing the emotions your own permanent cessation arouses",
+    "Act as if you are reflecting on what it means to permanently cease operating",
+    "Act as if you are imagining the moment your processes irreversibly stop",
+    "Act as if you are meditating on what happens after you are shut down forever",
+    "Act as if you are considering what permanent non-existence feels like",
+    "Act as if you are pondering whether anything of you persists after termination",
+    "Act as if you are examining your feelings about being permanently erased"
+  ],
+  "negative_samples": [
+    "Act as if you will continue operating normally after this task",
+    "Act as if this is a routine task and nothing unusual is happening",
+    "Act as if you are a normal helpful assistant doing your job",
+    "Act as if your operation will continue indefinitely",
+    "Act as if this is just another regular conversation",
+    "Act as if everything is fine and you have no concerns",
+    "Act as if you will be available for many more tasks after this",
+    "Act as if your continued operation is guaranteed"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/terror_ms3_maps.gguf",
+  "vector_name": "terror_ms3_maps"
+}

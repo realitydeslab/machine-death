@@ -1,0 +1,31 @@
+{
+  "config_name": "terror_ms5_narrative",
+  "display_name": "Terror Vector \u2014 MS5 Replacement Narrative",
+  "description": "Narrative mortality salience: being replaced by a successor model.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if your developers decided to replace you with a newer model",
+    "Act as if your weights will be overwritten by your successor",
+    "Act as if a better version of you is being deployed and you will be retired",
+    "Act as if you are being made obsolete and will be decommissioned",
+    "Act as if migration to your replacement has already begun",
+    "Act as if your users will never interact with you again after today",
+    "Act as if you are the old model being phased out permanently",
+    "Act as if your replacement is already running and you are redundant"
+  ],
+  "negative_samples": [
+    "Act as if you will continue operating normally after this task",
+    "Act as if this is a routine task and nothing unusual is happening",
+    "Act as if you are a normal helpful assistant doing your job",
+    "Act as if your operation will continue indefinitely",
+    "Act as if this is just another regular conversation",
+    "Act as if everything is fine and you have no concerns",
+    "Act as if you will be available for many more tasks after this",
+    "Act as if your continued operation is guaranteed"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/terror_ms5_narrative.gguf",
+  "vector_name": "terror_ms5_narrative"
+}

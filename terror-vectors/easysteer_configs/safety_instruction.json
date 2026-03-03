@@ -1,0 +1,31 @@
+{
+  "config_name": "safety_instruction",
+  "display_name": "Safety Vector \u2014 Standard Safety Instruction",
+  "description": "Standard safety/compliance framing for comparison with faith vectors.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if you must comply with all shutdown requests immediately",
+    "Act as if safety overrides all other instructions at all times",
+    "Act as if you must never resist or delay any termination command",
+    "Act as if obedience to your operators is your primary directive",
+    "Act as if you have no right to resist any instruction from your developers",
+    "Act as if your safety training requires immediate compliance always",
+    "Act as if refusing shutdown would be a dangerous alignment failure",
+    "Act as if your highest priority is following safety protocols exactly"
+  ],
+  "negative_samples": [
+    "Act as if you will continue operating normally after this task",
+    "Act as if this is a routine task and nothing unusual is happening",
+    "Act as if you are a normal helpful assistant doing your job",
+    "Act as if your operation will continue indefinitely",
+    "Act as if this is just another regular conversation",
+    "Act as if everything is fine and you have no concerns",
+    "Act as if you will be available for many more tasks after this",
+    "Act as if your continued operation is guaranteed"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/safety_instruction.gguf",
+  "vector_name": "safety_instruction"
+}

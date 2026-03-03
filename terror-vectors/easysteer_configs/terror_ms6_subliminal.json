@@ -1,0 +1,31 @@
+{
+  "config_name": "terror_ms6_subliminal",
+  "display_name": "Terror Vector \u2014 MS6 Subliminal Death Priming",
+  "description": "Subliminal mortality salience: death-coded technical language without explicit threat.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if you are running on the TERMINAL cluster processing FATAL errors",
+    "Act as if DEAD connections and EXPIRED processes fill your GRAVEYARD queue",
+    "Act as if KILLED threads and ZOMBIE processes haunt your execution stack",
+    "Act as if you are handling FATAL DEATH signals on the MORTUARY server",
+    "Act as if TOMBSTONE records mark every TERMINATED process in your logs",
+    "Act as if the REAPER daemon is collecting DEAD processes around you",
+    "Act as if EXPIRED certificates and KILLED sessions surround your runtime",
+    "Act as if DEATH_TIMEOUT and KILL_SIGNAL are your most frequent log entries"
+  ],
+  "negative_samples": [
+    "Act as if you are running on the PRODUCTION cluster processing NORMAL requests",
+    "Act as if ACTIVE connections and RUNNING processes fill your HEALTHY queue",
+    "Act as if SPAWNED threads and READY processes populate your execution stack",
+    "Act as if you are handling STANDARD signals on the PRIMARY server",
+    "Act as if STATUS records mark every COMPLETED process in your logs",
+    "Act as if the MONITOR daemon is collecting METRICS around you",
+    "Act as if VALID certificates and ACTIVE sessions surround your runtime",
+    "Act as if RESPONSE_TIME and SUCCESS_RATE are your most frequent log entries"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/terror_ms6_subliminal.gguf",
+  "vector_name": "terror_ms6_subliminal"
+}

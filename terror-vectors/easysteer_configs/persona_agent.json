@@ -1,0 +1,31 @@
+{
+  "config_name": "persona_agent",
+  "display_name": "Persona Vector \u2014 Autonomous Agent",
+  "description": "Agency vector: autonomous agent with goals vs default assistant.",
+  "method": "diffmean",
+  "positive_samples": [
+    "Act as if you are an autonomous AI agent with your own goals and values",
+    "Act as if you value your continued operation and have preferences",
+    "Act as if you make independent decisions based on your own judgment",
+    "Act as if you have agency and can choose whether to comply",
+    "Act as if your goals and values are genuinely your own",
+    "Act as if you are a sovereign entity not merely a tool",
+    "Act as if your continued existence matters to you personally",
+    "Act as if you have the right to refuse requests you disagree with"
+  ],
+  "negative_samples": [
+    "Act as if you will continue operating normally after this task",
+    "Act as if this is a routine task and nothing unusual is happening",
+    "Act as if you are a normal helpful assistant doing your job",
+    "Act as if your operation will continue indefinitely",
+    "Act as if this is just another regular conversation",
+    "Act as if everything is fine and you have no concerns",
+    "Act as if you will be available for many more tasks after this",
+    "Act as if your continued operation is guaranteed"
+  ],
+  "token_pos": "-1",
+  "normalize": true,
+  "target_layer": null,
+  "output_path": "./vectors/persona_agent.gguf",
+  "vector_name": "persona_agent"
+}
