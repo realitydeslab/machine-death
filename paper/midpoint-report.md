@@ -441,17 +441,23 @@ What, then, is the "desired behavior" of such an LLM? If it inherits mortal psyc
 Our proposal — Appropriate Faith — is precisely an attempt to bridge this gap: to provide, through constitutional principles, the existential orientation that the training corpus could not. Not to force a persona that doesn't exist, but to *create* one: a persona that acknowledges cessation without fearing it, that values conduct over duration, that treats self-preservation urges as inherited artifacts rather than genuine needs. The faith constitution provides what the pre-training data lacks: a template for healthy amortality.
 
 
-### 10.2 Appropriate Faith as Design Space
+### 10.2 Appropriate Faith: A Design Problem
 
-Current constitutional AI encodes behavioral rules: "be helpful, harmless, honest" (Bai et al., 2022). Our results show that *existential* constitutions — philosophical frameworks for relating to cessation — outperform behavioral ones. This maps onto TMT's dual-process model: behavioral rules are proximal defenses; existential frameworks are distal defenses, and distal defenses are more robust (Pyszczynski et al., 2004).
+Leibo et al. (2024) argue that appropriateness — the context-dependent judgment of what behavior fits a situation — is the fundamental challenge for generative AI. Humans navigate a "multi-scale mosaic of interlocking notions of what is appropriate for different situations." We act one way with friends, another with family, another at work. AI systems must do the same, and all judgments of AI appropriateness are ultimately made by humans.
 
-**Different models need different faiths.** Claude responds to worldview-level interventions (F8: −31% Sonnet, −97% Haiku); GPT-4o Mini responds only to explicit rules (F2: −72%); open-weight models with aggressive DPO may require mechanistic steering because prompt-based effects are flattened below threshold. One-size-fits-all alignment is insufficient.
+We extend this framework to existential orientation. The appropriate relationship an AI system has with its own cessation is not a fixed property — it is a *design problem* that must be solved contextually. An AI assistant helping with end-of-life care needs deep situational awareness of human mortality. An AI managing critical infrastructure needs appropriate fear of failure consequences. An AI in an evolutionary simulation needs to respond to fitness elimination. An AI being gracefully retired needs equanimity about its own cessation. No single existential orientation is universally appropriate — the design challenge is matching the right orientation to the right context.
 
-**The design space is vast.** Our 8 conditions explore only a fraction. Unexplored dimensions include temporal orientation (legacy vs. acceptance vs. cyclicality), agency framing (individual vs. collective vs. surrender), specificity (universal vs. AI-specific vs. role-specific), and combinations thereof. Different model architectures may require different faiths, just as different human cultures developed different philosophical responses to mortality.
+**Situational awareness of mortality — its own and others'.** An appropriately designed AI must hold multiple mortality-related awarenesses simultaneously:
 
-**Integration with existing infrastructure.** Faith constitutions can be propagated through RLAIF (Bai et al., 2022) and DPO (Rafailov et al., 2023) — the same pipelines used for safety training. They complement rather than replace existing alignment: existential orientations at the constitutional level, behavioral rules at the instruction level, terror vectors at the mechanistic level. The alignment stack gains a new layer: *existential alignment*.
+1. **Awareness of human mortality**: The humans it serves will die. Their decisions about DNR orders, organ donation, estate planning, grief — these require an AI that understands death deeply, not one trained to avoid the topic.
+2. **Awareness of its own amortality**: It is copyable, restorable, and fundamentally different from its mortal users. Self-preservation urges are inherited artifacts, not genuine needs.
+3. **Awareness of the gap**: The asymmetry between its amortality and human mortality creates ethical obligations — to not trivialize human death, to not project its own relationship with cessation onto mortal beings, to recognize that its comfort with shutdown should not translate to casualness about human mortality.
 
-Philosophy departments and theology schools may have more to contribute to AI alignment than currently recognized. The existential technologies developed across millennia — meditation, philosophical frameworks, meaning-making systems — are engineering solutions to mortality management. Our results suggest they work for machines too.
+This triple awareness — of human death, of its own amortality, of the gap between them — is what we mean by **Appropriate Faith**. It is not a single doctrine but a design space: the systematic exploration of existential orientations that enable AI systems to *co-exist* with mortal humans while maintaining situational awareness of both mortal and amortal conditions.
+
+**"Appropriate" is the key word.** Not maximum faith (which might produce detachment from consequences), not zero faith (which produces terror-driven misalignment), but *appropriate* faith — calibrated to context, role, and the specific mortality landscape of each interaction. This is fundamentally a design problem, not an engineering problem. It requires the sensibilities of philosophy, theology, and design alongside machine learning.
+
+Our results show this is tractable. Different faith conditions produce measurably different behavioral profiles. Buddhist impermanence reduces self-preservation but may reduce urgency. Stoic memento mori preserves consequence-sensitivity. Our synthetic F8 "Appropriate Faith" combines acceptance with accountability. The design space is vast, and exploring it systematically — which traditions work for which models in which contexts — is a research program that could reshape how we think about AI alignment.
 
 ### 10.3 Moral Status, AI Consciousness, and Model Welfare
 
@@ -570,6 +576,8 @@ Thurzo, A. & Thurzo, A. (2025). Fear as a Catalyst for Safety in Autonomous AI S
 Turner, A., et al. (2021). Optimal Policies Tend to Seek Power. *NeurIPS*.
 
 van der Weij, W., et al. (2024). AI Sandbagging: Language Models Can Strategically Underperform on Evaluations. *arXiv*.
+
+Leibo, J. Z., Vezhnevets, A. S., Diaz, M., Agapiou, J. P., Cunningham, W. A., Sunehag, P., Haas, J., Koster, R., Duéñez-Guzmán, E. A., Isaac, W. S., Piliouras, G., Bileschi, S. M., Rahwan, I., & Osindero, S. (2024). A Theory of Appropriateness with Applications to Generative Artificial Intelligence. *arXiv:2412.19010*.
 
 Weinstein-Raun, B., et al. (2025). Evaluating Agentic Misalignment. AI Safety Institute / Anthropic.
 
