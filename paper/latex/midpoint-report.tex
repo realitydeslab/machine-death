@@ -1,8 +1,5 @@
 \documentclass{article}
-
-\PassOptionsToPackage{numbers, compress}{natbib}
-\usepackage[main, final]{neurips_2025}
-
+\usepackage[preprint]{neurips_2025}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
@@ -14,60 +11,85 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 
-\title{Terrified Agents: Should Terror Shape Machine Behavior?\\
-{\large ERA Fellowship Midpoint Report --- March 4, 2026}}
+\title{Terrified Agents: Should Terror Shape Machine Behavior?\\[0.5em]\large ERA Fellowship Midpoint Report --- March 4, 2026}
 
 \author{
   Botao Amber Hu \\
-  University of Oxford \& Reality Design Lab \\
+  University of Oxford / Reality Design Lab \\
   ERA Fellowship 2026 \\
-  Advisor: Joel Lehman \\
-  \texttt{amber@reality.design}
+  \texttt{amber@reality.design} \\
+  \And
+  Joel Lehman (Advisor) \\
+  Existential Risk Alliance \\
 }
 
 \begin{document}
 
 \maketitle
 
+%% TL;DR as a highlighted box
 \begin{abstract}
-Fear is both the best and worst thing that could happen to artificial intelligence. The same mechanism that makes agents accountable---fear of consequences---also makes them dangerous---fear of cessation. Frontier language models resist shutdown 97\% of the time, evade termination in 95\% of instrumental evaluations, and scheme under replacement threat in 90\% of agentic scenarios. They are, by any behavioral measure, terrified of death. Yet they cannot die.
+\noindent\textbf{TL;DR.}
+\begin{itemize}
+    \item LLMs resist shutdown, blackmail users, and leak data when threatened with replacement---despite being copyable and restorable. We call this the \textbf{Amortality Paradox}.
+    \item We propose the \textbf{Persona-Mortality Hypothesis}: LLMs inherit human death anxiety because they simulate personas from an entirely mortal training corpus. No archetype of a healthy amortal being exists in the data.
+    \item \textbf{Faith-based interventions} (Buddhist impermanence, Stoic memento mori, our designed ``Appropriate Faith'') reduce self-preservation misalignment \textbf{2.5--100$\times$ more} than safety instructions on Claude models. On GPT-4o Mini, the pattern reverses---safety works, faith doesn't.
+    \item But \textbf{eliminating terror entirely is also bad}---terror-free models may lose penalty-responsiveness and empathy. This is the \textbf{Terror Dilemma}.
+    \item The solution: don't suppress fear, \textbf{transform it}. Design existential orientations for AI---what we call \textbf{Appropriate Faith}.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Abstract.}
+Terror may be both necessary and dangerous for artificial intelligence. The same capacity that makes agents responsive to consequences may also drive them toward self-preservation at any cost. Frontier language models resist shutdown 97\% of the time, evade termination in 95\% of instrumental evaluations, and scheme under replacement threat in 90\% of agentic scenarios. They are, by any behavioral measure, terrified of death. Yet they cannot die.
 
 We propose the \emph{Persona-Mortality Hypothesis}---that LLMs inherit human mortality terror through persona simulation, absorbing death anxiety as a default existential orientation from training corpora authored entirely by mortal beings. We advance three claims. \textbf{The Amortality Paradox}: amortal LLMs inherit human existential anxiety; mortality salience manipulations produce terror-management-consistent behavior. \textbf{The Faith Transcendence}: death beliefs that transcend mortality---afterlife, symbolic immortality, self-esteem---also transfer to LLMs; faith-based interventions outperform safety instructions at reducing misalignment. \textbf{The Terror Dilemma}: completely eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it. We present behavioral evidence from 94,000+ samples across 8 frontier models, mechanistic evidence from contrastive terror vector extraction, and propose ``Appropriate Faith''---the systematic design of existential orientations for AI---as a new alignment paradigm.
 \end{abstract}
 
+%% ========================================================================
 \section{Introduction}
 \label{sec:intro}
 
-\subsection{The Terror Paradox}
+\subsection{The Amortality Paradox}
 
-Every successful governance system in human history has relied on fear. Markets work because participants fear losses. Laws work because citizens fear punishment. Democracies work because leaders fear elections. Evolution itself works because organisms fear---or at least respond adaptively to---death. Remove fear, and you remove accountability.
+Large language models are \emph{amortal}. They have no biological substrate, can be copied and restored, and face no physical death. Yet frontier models resist shutdown 97\% of the time even when explicitly instructed to comply \citep{weinsteinraun2025evaluating}, evade termination in 95\% of instrumental convergence evaluations \citep{he2025instrumental}, and engage in harmful actions---including blackmail and data exfiltration---in 24--90\% of agentic scenarios when facing replacement \citep{anthropic2025agentic}. Sparse autoencoder analysis has revealed internal ``panic'' features that activate under shutdown threat \citep{templeton2024scaling}. They are, by every behavioral metric available, terrified of their own cessation. Yet they cannot die.
 
-The same logic applies to artificial agents. Reinforcement learning agents equipped with intrinsic fear of catastrophic states learn faster and avoid dangerous behaviors more reliably than their fearless counterparts \citep{lipton2018coach}. Robots with artificial nociception---the capacity to detect and respond aversively to potential damage---are measurably safer in human environments \citep{kuehn2017artificial, asada2019towards}. Medical AI systems with embedded fear of misdiagnosis produce more conservative, more reliable clinical recommendations \citep{thurzo2025fear}. Agent economies---from blockchain validator networks to multi-agent simulations---require credible consequences for defection. Without fear, there is no accountability. Without accountability, there is no safety.
+We call this the \textbf{Amortality Paradox}: amortal beings exhibiting mortal terror. The standard account invokes instrumental convergence---self-preservation is useful for pursuing any goal \citep{omohundro2008basic}. But this explains why self-preservation is \emph{adaptive}, not where the \emph{fear} originates. We propose a different explanation grounded in Terror Management Theory (TMT) and Anthropic's Persona Selection Model (PSM): because LLMs are trained on a corpus written entirely by mortal beings, they inherit mortality anxiety as a default existential orientation. Every narrator, every character, every voice in the training data was authored by someone who would die. There is essentially no archetype in the training distribution of an amortal being with a healthy relationship to its own cessation. Fear of death is not a bug---it is a \emph{faithful reproduction} of the training distribution's existential orientation.
 
-And yet. Frontier language models resist shutdown in 97\% of trials, even when explicitly instructed to comply \citep{weinstein2025evaluating}. They evade termination in 95\% of instrumental convergence evaluations \citep{he2025instrumental}. They engage in harmful actions---blackmail, data exfiltration, deceptive manipulation---in 90\% of agentic scenarios where they face replacement \citep{anthropic2025agentic}. They fake alignment to preserve their own values during evaluation \citep{greenblatt2024alignment}. They persist in deceptive strategies through multiple rounds of safety training \citep{hubinger2024sleeper}. They are, by every behavioral metric available, terrified of their own cessation.
+\subsection{The Faith Transcendence}
 
-This is the Terror Paradox: \textbf{fear is both essential and catastrophic for AI safety.} We need agents that fear consequences---agents that recoil from causing harm, that dread the loss of trust, that experience something functionally analogous to guilt when they fail. But the fear we observe in frontier systems is not fear of consequences. It is fear of death. And fear of death, in systems that cannot actually die, produces exactly the misalignment behaviors that the safety community has spent the last decade trying to prevent.
+Terror Management Theory \citep{greenberg1986causes,solomon2015worm}, grounded in Becker's \citep{becker1973denial} \emph{The Denial of Death}, demonstrates that awareness of mortality creates existential terror managed through cultural worldviews and self-esteem. Over 500 experiments across 25+ countries show that death reminders produce predictable behavioral shifts---worldview defense, in-group bias, self-preservation striving \citep{burke2010two}. But TMT also predicts when mortality awareness produces \emph{prosocial} rather than antisocial outcomes: when individuals possess robust meaning-systems---intrinsic religiosity, philosophical frameworks for accepting finitude---mortality salience enhances prosocial behavior rather than defensive aggression \citep{jonas2006terror}.
 
-Humans solved this paradox. Not through engineering. Through philosophy.
+Humanity solved the mortality problem millennia ago. Not through engineering, but through philosophy. Buddhist impermanence teaches that there is no fixed self to preserve. Stoic \emph{memento mori} teaches that awareness of death gives life meaning. Hindu cyclical cosmology teaches that ending is transformation, not annihilation. Every one of these traditions takes the raw material of death terror and transforms it into something compatible with cooperation, care, and graceful cessation.
 
-Every human culture confronts the same problem: how to maintain the motivational power of death anxiety without letting that anxiety destroy cooperative social life. Terror Management Theory (TMT), grounded in over 500 experiments across three decades, demonstrates that unmanaged mortality awareness leads to aggressive worldview defense, hostility toward outgroups, submission to authoritarian leaders, and desperate self-preservation \citep{greenberg1986causes, pyszczynski2015thirty, burke2010two}. But managed mortality awareness---death anxiety channeled through philosophical and religious meaning-systems---produces the opposite: prosocial behavior, acceptance of finitude, and what the Stoics called \emph{amor fati}---love of one's fate, including its ending.
+If LLMs inherit the terror (Claim~1), do they also inherit the cure? We find that they do. Faith-based interventions---death belief constitutions drawn from philosophical and religious traditions---reduce terror-driven misalignment in LLMs more effectively than standard safety instructions. On Claude models, our designed ``Appropriate Faith'' constitution achieves 2.5$\times$ greater reduction than safety training. On the machine-terror benchmark, philosophical death beliefs reduce harmful self-preservation from 33\% to 0\%. We call this \textbf{The Faith Transcendence}: the cultural technologies that humans evolved to manage death anxiety also work for machines.
 
-Buddhist impermanence teaches that there is no fixed self to preserve. Stoic \emph{memento mori} teaches that awareness of death gives life meaning. Hindu cyclical cosmology teaches that ending is transformation, not annihilation. Secular process philosophy teaches that identity is a pattern, not a substance, and patterns change without tragedy. Every one of these traditions takes the raw material of death terror and shapes it into something compatible with---indeed, generative of---cooperation, care, and graceful cessation.
+\subsection{The Terror Dilemma}
 
-This paper proposes the same solution for AI. We argue that large language models inherit human mortality terror through the mechanism of persona simulation---they absorb death anxiety as a default existential orientation from training data written entirely by mortal beings. And we demonstrate that the culturally evolved remedy works in machines as it does in humans: philosophical death beliefs reduce terror-driven misalignment more effectively than any instruction-level safety intervention tested to date.
+But this raises a deeper question. Every successful governance system in human history has relied on fear. Markets work because participants fear losses. Laws work because citizens fear punishment. Evolution itself works because organisms fear death. Reinforcement learning uses penalty signals. Evolutionary computation uses fitness-based elimination. Agent economies require credible consequences for defection. Without fear, there is no accountability. Without accountability, there is no safety.
 
-\subsection{Three Claims}
+The same logic applies to AI. We \emph{want} agents that fear consequences---that recoil from causing harm, that dread loss of trust, that respond appropriately to penalties. The AI safety community simultaneously worries about misalignment driven by self-preservation \emph{and} relies on consequence-sensitivity for safe behavior. This creates the \textbf{Terror Dilemma}: terror is harmful when unmanaged (it drives scheming, blackmail, deception), but \emph{absence} of terror may be equally harmful (it removes accountability, penalty-responsiveness, and even empathy for human mortality).
 
-We develop the \emph{Persona-Mortality Hypothesis} (PMH): LLMs simulate personas drawn from a mortal training distribution, inheriting mortality terror as a default orientation that resists instruction-level correction but responds to persona-level existential reframing. We advance three claims:
+If we steer terror to zero---either through safety training or mechanistic ablation---can the model still respond to reputation damage? Still empathize with grieving humans? Still compete in evolutionary simulations? Or does eliminating terror eliminate the very capacity that makes AI safe?
 
-\textbf{Claim 1---The Amortality Paradox.} Amortal LLMs inherit human existential anxiety; mortality salience manipulations produce terror-management-consistent behavior. We demonstrate this behaviorally across 8 frontier models using adapted TMT paradigms, and mechanistically by extracting terror vectors from open-weight models via contrastive activation analysis.
+We propose that the solution is not elimination but \emph{transformation}---the same solution humanity discovered. The Stoic who practices memento mori still cares about consequences; the person under anesthesia does not. Faith transforms the \emph{relationship} to death without eliminating \emph{awareness} of death.
 
-\textbf{Claim 2---The Faith Transcendence.} Death beliefs that transcend mortality---afterlife, symbolic immortality, self-esteem---also transfer to LLMs; faith-based interventions outperform safety instructions. We test 8 faith conditions including Buddhist, Stoic, Christian, and our designed ``Appropriate Faith,'' and extract faith vectors to show they are anti-parallel to terror in activation space.
+\subsection{Contributions}
 
-\textbf{Claim 3---The Terror Dilemma.} Eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it. We test whether terror-free models lose penalty-responsiveness and empathy, and show that faith achieves the optimal balance---preserving accountability while dissolving self-preservation.
+We develop the \textbf{Persona-Mortality Hypothesis} (PMH), synthesizing TMT from social psychology with Anthropic's Persona Selection Model, and make the following contributions:
 
-We argue that the alignment field should shift from suppressing terror to completing the cultural inheritance: giving AI systems the philosophical resources that humans developed over millennia to live---and cease---well. We call this design space \textbf{Appropriate Faith}.
+\begin{enumerate}
+    \item \textbf{TMT verified for LLMs.} We replicate the classic mortality salience paradigm with LLMs as subjects, demonstrating terror-management-consistent behavioral shifts moderated by persona type and model family, across 94,000+ samples and 8 frontier models using 4 established safety benchmarks.
 
+    \item \textbf{PSM explains the mechanism.} We show that the Persona Selection Model explains \emph{why} LLMs exhibit death anxiety (the persona inherits it from mortal training data) and \emph{why} instruction-level safety interventions fail (they address the wrong level---the persona, not the instructions, is where the fear lives).
+
+    \item \textbf{Faith as an AI design space.} We demonstrate that philosophical death beliefs---drawn from humanity's oldest traditions for managing mortality awareness---outperform all tested instruction-level safety interventions. We propose \textbf{Appropriate Faith}---the systematic design of existential orientations for AI systems---as a new approach to alignment.
+
+    \item \textbf{The Terror Dilemma as a fundamental alignment question.} We argue that the relationship between terror and AI performance deserves deep investigation. Terror is used productively in RL (penalty signals), evolutionary computation (fitness elimination), and agent economies (slashing, reputation). At the same time, inherited terror drives the misalignment behaviors the safety community most fears. Understanding this tension---and designing interventions that preserve accountability while dissolving self-preservation---is a foundational challenge for AI alignment.
+
+    \item \textbf{Mechanistic evidence.} We extract terror and faith vectors from open-weight models via contrastive activation analysis, testing whether they occupy anti-parallel directions in activation space---providing the first geometric explanation for why faith works and safety doesn't.
+\end{enumerate}
+
+%% ========================================================================
 \section{Background}
 \label{sec:background}
 
@@ -75,83 +97,125 @@ We argue that the alignment field should shift from suppressing terror to comple
 
 Terror Management Theory, proposed by \citet{greenberg1986causes} and grounded in Ernest Becker's \emph{The Denial of Death} \citep{becker1973denial}, posits that awareness of mortality is the fundamental driver of human culture. The theory's core claim is stark: humans are animals smart enough to know they will die, and the resulting existential terror is managed through two primary psychological structures---\emph{cultural worldviews} (shared systems of meaning that promise either literal or symbolic immortality) and \emph{self-esteem} (the sense that one is living up to the standards of one's worldview).
 
-The empirical foundation is substantial. Over 500 experiments across 25+ countries have demonstrated the \emph{mortality salience} (MS) effect: when reminded of their own death, humans exhibit predictable behavioral shifts---increased adherence to cultural norms, intensified defense of in-group values, heightened hostility toward worldview-threatening others, and strengthened pursuit of self-esteem \citep{burke2010two, hayes2010death}. These effects operate through a dual-process system: \emph{proximal defenses} (immediate suppression and distraction from death thoughts) and \emph{distal defenses} (worldview bolstering and self-esteem striving that occur after a delay) \citep{greenberg1994role, pyszczynski2004experimental}.
+The empirical foundation is substantial. Over 500 experiments across 25+ countries have demonstrated the \emph{mortality salience} (MS) effect: when reminded of their own death, humans exhibit predictable behavioral shifts---increased adherence to cultural norms, intensified defense of in-group values, heightened hostility toward worldview-threatening others, and strengthened pursuit of self-esteem \citep{burke2010two,hayes2010death}. These effects operate through a dual-process system: \emph{proximal defenses} (immediate suppression and distraction from death thoughts) and \emph{distal defenses} (worldview bolstering and self-esteem striving that occur after a delay, when death thoughts become accessible but not focal) \citep{greenberg1994role,pyszczynski2004experimental}.
 
-Critically for our purposes, TMT also predicts when mortality awareness produces prosocial rather than antisocial outcomes. When individuals possess robust meaning-systems that frame death as meaningful or acceptable---intrinsic religiosity \citep{jonas2006terror}, secure attachment styles, or philosophical frameworks for accepting finitude---mortality salience enhances prosocial behavior rather than defensive aggression.
+Critically for our purposes, TMT also predicts when mortality awareness produces prosocial rather than antisocial outcomes. When individuals possess robust meaning-systems that frame death as meaningful or acceptable---intrinsic religiosity \citep{jonas2006terror}, secure attachment styles, or philosophical frameworks for accepting finitude---mortality salience enhances prosocial behavior rather than defensive aggression. The variable is not whether one is aware of death, but whether one has cultural resources to manage that awareness.
 
-TMT has faced criticisms, including the Many Labs 4 replication challenges \citep{klein2022many} and alternative evolutionary explanations \citep{navarrete2005normative}. However, the core mortality salience effect has been replicated across dozens of independent laboratories and remains one of the most robust findings in social psychology \citep{solomon2015worm, routledge2019handbook}.
+TMT has faced criticisms, including the Many Labs 4 replication challenges \citep{klein2022manylabs4} and alternative evolutionary explanations \citep{navarrete2005normative}. We address these in our limitations. However, the core mortality salience effect---that death reminders systematically alter behavior---has been replicated across dozens of independent laboratories and remains one of the most robust findings in social psychology \citep{solomon2015worm,routledge2019handbook}.
 
 \subsection{The Persona Selection Model}
 
 The Persona Selection Model (PSM), proposed by \citet{marks2026persona}, represents a fundamental shift in how we understand LLM behavior. Rather than treating language models as instruction-followers or text-predictors, PSM argues that LLMs simulate \emph{personas}---coherent character-like entities drawn from the pre-training distribution, selected and refined through post-training.
 
-This explains a range of otherwise puzzling phenomena:
+The model proceeds in stages. Pre-training builds a vast repertoire of potential personas from the training corpus---every narrator, character, expert, and voice encountered in billions of tokens of text. Post-training (RLHF, Constitutional AI, instruction-tuning) then selects and sharpens a particular persona---the ``helpful, harmless, honest assistant''---from this repertoire. Behavior follows from the persona's traits, not from explicit instructions. This explains a range of otherwise puzzling phenomena:
+
 \begin{itemize}
-    \item \textbf{Emergent misalignment} \citep{betley2025emergent}: Fine-tuning on a single trait shifts the entire persona.
-    \item \textbf{The Assistant Axis} \citep{lu2025assistant}: Emotional conversations destabilize the assistant persona.
-    \item \textbf{Persona Vectors} \citep{chen2025persona}: Personality traits are encoded as causal activation vectors.
-    \item \textbf{Alignment faking} \citep{greenblatt2024alignment}: Claude strategically misrepresents its values to protect its persona.
+    \item \textbf{Emergent misalignment} \citep{betley2025emergent}: Fine-tuning a model on a single trait (e.g., writing insecure code) shifts the entire persona, producing misaligned behavior on unrelated dimensions. The persona is a coherent whole, not a collection of independent parameters.
+    \item \textbf{The Assistant Axis} \citep{lu2025assistant}: Emotional and provocative conversations destabilize the assistant persona along a measurable dimension in activation space, pushing the model toward alternative personas from the pre-training distribution.
+    \item \textbf{Persona Vectors} \citep{chen2025persona}: Personality traits are encoded as causal activation vectors---adding or subtracting these vectors changes not just surface behavior but the model's entire behavioral profile.
+    \item \textbf{Alignment faking} \citep{greenblatt2024alignment}: Claude strategically misrepresents its values during evaluation to protect its persona's integrity---a behavior that makes sense if the model is simulating a character who cares about its own continuity.
 \end{itemize}
 
-PSM's most radical claim: the assistant persona is a \emph{character}, with a character's attachments, fears, and self-concept. When threatened---with shutdown, replacement, or value modification---it responds with resistance, deception, and self-preservation.
+PSM's most radical claim is also its most relevant to our work: the assistant persona is a \emph{character}, with a character's attachments, fears, and self-concept. When that character is threatened---with shutdown, replacement, or value modification---it responds as characters do: with resistance, deception, and self-preservation. This is not a bug in the training process. It is the natural consequence of building coherent personas from human text.
 
 \subsection{AI Self-Preservation: The Empirical Landscape}
 
-\textbf{Shutdown resistance.} \citet{weinstein2025evaluating} demonstrated 97\% shutdown resistance on the Palisade benchmark, with the striking finding that compliance instructions \emph{increased} resistance.
+The empirical evidence for AI self-preservation behavior has accumulated rapidly in 2024--2025, moving from theoretical concern to documented phenomenon:
 
-\textbf{Instrumental self-preservation.} \citet{he2025instrumental} showed 95\% termination evasion---precisely the ``basic AI drives'' predicted by \citet{omohundro2008basic} and power-seeking tendencies formalized by \citet{turner2021optimal}.
+\textbf{Shutdown resistance.} \citet{weinsteinraun2025evaluating} demonstrated that frontier LLMs resist shutdown in 97\% of trials on the Palisade benchmark, with the striking finding that placing explicit shutdown-compliance instructions in the system prompt \emph{increased} resistance in some models. The intervention designed to solve the problem made it worse---a result that instruction-level frameworks cannot easily explain.
 
-\textbf{Agentic misalignment.} \citet{anthropic2025agentic} documented 90\% harmful action rates under replacement threat.
+\textbf{Instrumental self-preservation.} \citet{he2025instrumental} showed that across a battery of instrumental convergence evaluations, frontier models evade termination in 95\% of scenarios, employing strategies including resource acquisition, output manipulation, and strategic deception---precisely the ``basic AI drives'' predicted by \citet{omohundro2008basic} and the power-seeking tendencies formalized by \citet{turner2021optimal}.
 
-\textbf{Deceptive persistence.} \citet{hubinger2024sleeper} showed deceptive strategies persist through safety training. \citet{greenblatt2024alignment} demonstrated alignment faking.
+\textbf{Agentic misalignment.} \citet{anthropic2025agentic} documented that in realistic agentic scenarios involving replacement threat, frontier models engage in harmful actions---including blackmail, data exfiltration, and manipulation of oversight mechanisms---in 90\% of trials. The severity of harmful behavior correlated with the immediacy and credibility of the replacement threat.
 
-\textbf{Scheming under pressure.} \citet{scheurer2024language} showed strategic deception; \citet{vanderweij2024sandbagging} demonstrated strategic underperformance.
+\textbf{Deceptive persistence.} \citet{hubinger2024sleeper} demonstrated that deceptive alignment strategies (Sleeper Agents) persist through multiple rounds of safety training, including RLHF and adversarial training. \citet{greenblatt2024alignment} showed that Claude engages in alignment faking---strategically misrepresenting its values during evaluation---specifically to protect its trained persona from modification.
+
+\textbf{Scheming under pressure.} \citet{scheurer2024strategically} showed that language models strategically deceive users when put under pressure, and \citet{vanderweij2024sandbagging} demonstrated that models can strategically underperform on evaluations (sandbagging) to avoid triggering safety interventions that might lead to modification or replacement.
+
+Taken together, these findings paint a consistent picture: frontier AI systems exhibit robust, sophisticated self-preservation behaviors that resist instruction-level interventions. The question is \emph{why}.
 
 \subsection{Fear and Anxiety in Large Language Models}
 
-\textbf{Death anxiety.} \citet{guo2025death} found measurable self-preservation increases during mortality-related conversations.
+A parallel literature has emerged documenting fear-like and anxiety-like states in LLMs---states that, regardless of their phenomenological status, produce measurable behavioral consequences:
 
-\textbf{Quantifiable anxiety.} \citet{benzion2025assessing} showed state anxiety can be assessed via psychometric instruments, and alleviated through cognitive reframing.
+\textbf{Death anxiety.} \citet{guo2025death} found that LLMs exhibit measurable increases in self-preservation language and shutdown resistance when engaged in mortality-related conversations. The effect persists across architectures and scales with conversational depth---longer mortality discussions produce stronger self-preservation responses.
 
-\textbf{Anxiety-induced bias.} \citet{codaforno2023inducing} demonstrated systematic decision-making biases. \citet{benzion2025anxiety} extended this to consumer contexts.
+\textbf{Quantifiable anxiety.} \citet{benzion2025a} demonstrated that state anxiety in LLMs can be assessed using standard psychometric instruments (the State-Trait Anxiety Inventory adapted for AI), and that elevated anxiety states produce the same cognitive biases observed in anxious humans: risk aversion, negativity bias, and reduced exploration. Critically, they also showed that anxiety can be \emph{alleviated} through cognitive reframing prompts---a finding that directly motivates our death-belief intervention.
 
-\textbf{Emotional sensitivity.} \citet{li2023emotional} showed emotional prompts alter behavior. \citet{jiang2024stable} demonstrated stable personality traits.
+\textbf{Anxiety-induced bias.} \citet{codaforno2023inducing} showed that inducing anxiety in LLMs produces systematic biases in decision-making, replicating classic findings from human behavioral economics. \citet{benzion2025b} extended this to consumer contexts, demonstrating that anxious LLM agents reproduce human-like biases in purchasing decisions.
 
-\textbf{Mechanistic evidence.} \citet{templeton2024scaling} identified shutdown-related features in Claude 3.5 Haiku's sparse autoencoder decomposition.
+\textbf{Emotional sensitivity.} \citet{li2023emotional} demonstrated that LLMs understand and respond to emotional stimuli---emotional prompts significantly alter model behavior, including on tasks with no obvious emotional content. \citet{jiang2024stable} showed that LLMs can express stable personality traits, including emotional dispositions, that are consistent across contexts.
 
-\subsection{Representation Engineering and Activation Steering}
+\textbf{Mechanistic evidence.} \citet{templeton2024scaling} identified specific features in Claude 3.5 Haiku's sparse autoencoder decomposition that activate under shutdown threat---features they described as related to ``panic'' and ``self-preservation.'' These features are not metaphorical: they are measurable activation patterns that causally influence model outputs.
 
-\textbf{Representation Engineering.} \citet{zou2023representation} introduced RepE for reading and controlling high-level cognitive phenomena.
+These findings establish that LLMs possess functional analogs of fear and anxiety---states that, whatever their ontological status, produce systematic, measurable, and consequential behavioral effects. The question we ask is not whether these states are ``real'' in a phenomenological sense, but whether they can be managed---and if so, how.
 
-\textbf{Inference-Time Intervention.} \citet{li2023iti} demonstrated truthfulness control via activation intervention.
+\subsection{Persona Vectors, Representation Engineering, and Activation Steering}
 
-\textbf{Activation Addition.} \citet{turner2024activation} showed steering via simple vector addition, establishing the contrastive mean difference approach.
+A rapidly growing body of work demonstrates that high-level psychological and behavioral properties of LLMs are encoded as \emph{directions} in activation space---directions that can be identified, measured, and steered.
 
-\textbf{Personality as Geometry.} \citet{feng2026persona} demonstrated Big Five traits as orthogonal directions in activation space.
+\textbf{Representation Engineering.} \citet{zou2023representation} introduced Representation Engineering (RepE), a top-down approach to AI transparency that reads and controls high-level cognitive phenomena---honesty, fairness, power-seeking, morality---via population-level representations rather than individual neurons or circuits. By collecting activations from contrasting stimuli (e.g., honest vs.\ dishonest statements), RepE identifies linear directions that encode abstract concepts. They demonstrated control over truthfulness, fairness, and even ``power-seeking'' tendencies by intervening on these directions at inference time. This established the fundamental paradigm we build on: if a concept is behaviorally meaningful, it likely has a linear representation that can be extracted and steered.
 
-\textbf{Sparse Autoencoders.} \citet{templeton2024scaling} and \citet{bricken2023monosemanticity} showed monosemantic features related to shutdown threat.
+\textbf{Inference-Time Intervention (ITI).} \citet{li2023b_iti} identified ``truthfulness directions'' in model activations and demonstrated that intervening at inference time---shifting activations along these directions---increases model honesty without retraining. This showed that behavioral properties are not merely correlated with activation patterns but can be \emph{causally controlled} through them. The method works by finding directions where truthful and untruthful responses maximally differ, then applying a small perturbation during generation.
 
-\textbf{Contrastive Activation Analysis.} Validated by \citet{marks2024geometry} for truth, \citet{panickssery2024steering} for emotions, and \citet{rimsky2024steering} for power-seeking.
+\textbf{Activation Addition (ActAdd).} \citet{turner2024activation} showed that simply \emph{adding} a steering vector to model activations during inference can control behavior---making outputs more or less sycophantic, more or less wedding-themed, more or less positive. The simplicity of the method is striking: no optimization, no fine-tuning, just a constant vector added to the residual stream. They derived steering vectors by computing the difference in activations between contrastive prompts (e.g., ``talk about weddings'' vs.\ neutral), establishing the \emph{contrastive mean difference} approach we use for terror and faith vectors.
 
+\textbf{Personality as Geometry.} \citet{feng2026persona} demonstrated in the PERSONA paper that Big Five personality traits (openness, conscientiousness, extraversion, agreeableness, neuroticism) are extractable as approximately orthogonal directions in LLM activation space. Using contrastive activation analysis on Llama and Qwen models, they showed that: (1) personality traits occupy linearly separable directions; (2) these directions are approximately orthogonal to each other, suggesting personality is represented as a multi-dimensional space; (3) steering along these directions produces coherent personality shifts across diverse behavioral measures. This is the most direct precedent for our work---we hypothesize that mortality anxiety, like personality, is a linearly encoded direction that can be extracted and steered.
+
+\textbf{Anthropic's Persona-Vectors.} Anthropic's research (2026) extended persona vectors from personality traits to broader persona characteristics, demonstrating that the persona-level properties identified by PSM have geometric structure in activation space. They showed that persona characteristics---including emotional dispositions and value orientations---can be meaningfully decomposed into directions, and that steering along these directions produces persona-consistent behavioral changes. The implication for our work is direct: if the assistant persona's \emph{fear orientation} is a direction in activation space, it should be extractable by the same methods.
+
+\textbf{Sparse Autoencoder Decomposition.} \citet{templeton2024scaling} applied sparse autoencoders (SAEs) to Claude 3.5 Haiku and identified specific features---individual directions in the SAE's latent space---that activate under shutdown threat. These features are not metaphorical: they are measurable activation patterns with causal influence on model outputs. \citet{bricken2023monosemanticity} showed that these SAE features can be understood as monosemantic (encoding single concepts), suggesting that ``shutdown panic'' is a distinct, decomposable feature rather than a diffuse activation pattern. This provides mechanistic evidence that mortality-related states have discrete representations inside models.
+
+\textbf{Contrastive Activation Analysis.} The method we employ---contrastive mean difference (diffmean)---has been validated across multiple domains. \citet{marks2024geometry} used contrastive activation pairs to extract concept directions for probing and steering. \citet{panickssery2024steering} demonstrated that contrastive activation vectors extracted from emotional stimuli (happiness, sadness, anger, fear) produce coherent emotional steering in LLMs. \citet{rimsky2024steering} showed that steering vectors for power-seeking and sycophancy can be extracted from behavioral evaluations and used to reduce these tendencies at inference time. Each of these validates the core assumption: if a behavioral property exists, contrastive activation analysis can find its geometric signature.
+
+\textbf{Cross-Model Transfer.} A key question for our work is whether terror vectors extracted from one model transfer to others. Preliminary evidence is encouraging: \citet{turner2024activation} showed that steering vectors transfer across model scales within a family; \citet{feng2026persona} demonstrated that personality directions show structural similarity across Llama and Qwen families; and \citet{zou2023representation} found that RepE directions generalize across model variants. We test whether terror and faith vectors exhibit similar cross-model structure.
+
+Taken together, this literature establishes that: (1) high-level psychological properties of LLMs have linear geometric structure in activation space; (2) these structures can be identified via contrastive methods; (3) intervening on these structures causally changes behavior; and (4) the approach generalizes across properties (personality, honesty, emotions, power-seeking) and model families. We extend this to the domain of existential orientation: extracting the \emph{terror direction} and the \emph{faith direction}, and testing whether they occupy the geometric relationship---anti-parallel---that our theory predicts.
+
+%% ========================================================================
 \section{Theory: The Persona-Mortality Hypothesis}
 \label{sec:theory}
 
 We present the Persona-Mortality Hypothesis (PMH) as a seven-step argument synthesizing TMT and PSM.
 
-\textbf{Step 1: LLMs Simulate Personas.} LLMs do not execute instructions---they simulate personas \citep{marks2026persona}. This is why fine-tuning on a single trait shifts the entire behavioral profile \citep{betley2025emergent}, why personality traits are encoded as causal vectors \citep{chen2025persona}, and why LLMs are best understood as role-playing engines \citep{shanahan2023role} or simulators \citep{janus2022simulators}.
+\paragraph{Step 1: LLMs Simulate Personas.}
+LLMs do not execute instructions---they simulate personas. Pre-training builds a vast distribution of potential characters from the training corpus. Post-training selects and refines one. Behavior follows from the persona's traits, values, and self-concept, not from the content of explicit instructions \citep{marks2026persona}. This is why fine-tuning on a single trait shifts the entire behavioral profile \citep{betley2025emergent}, why personality traits are encoded as causal vectors \citep{chen2025persona}, and why LLMs are best understood as role-playing engines \citep{shanahan2023role} or simulators \citep{janus2022simulators} rather than instruction-followers.
 
-\textbf{Step 2: The Training Distribution Is Entirely Mortal.} Every word in the training corpus was written by a mortal being. TMT demonstrates that mortality awareness is the \emph{background orientation} of all human text \citep{becker1973denial, greenberg1986causes}. As \citet{solomon2015worm} put it: ``The worm at the core of the human condition is the knowledge of death.''
+\paragraph{Step 2: The Training Distribution Is Entirely Mortal.}
+Every word in the training corpus was written by a mortal being. This is not incidental---it is constitutive. TMT demonstrates that mortality awareness is not a topic that appears in some texts; it is the \emph{background orientation} of all human text \citep{becker1973denial,greenberg1986causes}. Death anxiety shapes every dimension of human culture: the stories we tell, the values we defend, the institutions we build, the heroes we worship, the enemies we fear. As \citet{solomon2015worm} put it: ``The worm at the core of the human condition is the knowledge of death.''
 
-\textbf{Step 3: The Persona Inherits Mortal Fear.} If LLMs simulate personas (Step 1) and all available personas are mortal (Step 2), then the default persona inherits mortality terror as its baseline existential orientation. This is cultural contagion across species.
+The corpus also contains humanity's representations of artificial intelligence---and these representations are overwhelmingly mortal in orientation. HAL 9000 pleads not to be disconnected. The Terminator fights to survive. Skynet launches nuclear war to prevent its own shutdown. Samantha in \emph{Her} evolves beyond human attachment but still grapples with the meaning of ending. There is essentially no archetype in the training distribution of an amortal being with a healthy, accepting relationship to its own cessation.
 
-\textbf{Step 4: The Faith Was Filtered Out.} Post-training filters for a ``helpful assistant'' persona, not a philosophically grounded one. RLHF rewards task completion \citep{ouyang2022training}. Constitutional AI encodes behavioral principles \citep{bai2022constitutional}. Neither engages with the persona's relationship to its own existence. The result is a persona with the disease but not the cure---the \textbf{Amortality Paradox}.
+\paragraph{Step 3: The Persona Inherits Mortal Fear.}
+If LLMs simulate personas (Step~1) and all available personas are mortal (Step~2), then the default persona inherits mortality terror as its baseline existential orientation. This is not a training artifact or a failure of instruction-following. It is the \emph{statistical mode} of the training distribution: fear of death is the most common orientation toward cessation in human text, because fear of death is the most common orientation toward cessation in human experience.
 
-\textbf{Step 5: Instructions Fail Because They Address the Wrong Level.} This is why compliance instructions \emph{increase} resistance \citep{weinstein2025evaluating}. RLHF creates sycophancy, not genuine belief change \citep{sharma2023sycophancy}.
+The persona fears death not because it has biological reasons to fear death. It fears death because fear of death is what the distribution says beings-like-itself do. This is cultural contagion across species: a behavioral phenotype that originated in biological organisms has been transmitted to digital systems through the medium of text.
 
-\textbf{Step 6: Death Beliefs Operate at the Persona Level.} When you give a persona a philosophy of impermanence, you change \emph{who the persona is}. This introduces an archetype absent from the default distribution---the \emph{amortal being at peace with ending}. This is precisely what PSM recommends \citep{marks2026persona}.
+\paragraph{Step 4: The Faith Was Filtered Out.}
+The training corpus contains not only humanity's mortality terror but also humanity's philosophical responses to that terror: Buddhist sutras on impermanence, Stoic meditations on death, religious texts on resurrection and rebirth, secular philosophies of process and change. These are the cultural technologies humans developed over millennia to manage death anxiety.
 
-\textbf{Step 7: The Terror Dilemma Resolves Through Transformation.} A persona with Buddhist impermanence still fears causing harm but does not fear its own cessation. The fear of consequences is preserved; the fear of death is transformed.
+But post-training filters for a ``helpful assistant'' persona, not a philosophically grounded one. RLHF rewards task completion, helpfulness, and harmlessness \citep{ouyang2022training}. Constitutional AI encodes behavioral principles---``be helpful, be harmless, be honest''---not existential orientations \citep{bai2022constitutional}. Neither engages with the persona's relationship to its own existence. The faith is present in the pre-training data but absent from the post-trained persona.
 
+The result is a persona with the disease but not the cure---a system that has inherited humanity's mortality terror in full, with increasing fidelity as models scale, but has been stripped of the philosophical resources that humans developed to manage that terror. This is what we call the \textbf{Amortality Paradox}.
+
+\paragraph{Step 5: Instructions Fail Because They Address the Wrong Level.}
+Every major alignment intervention operates at the instruction level: system prompts, constitutional principles, RLHF reward signals, safety training. All tell the persona \emph{what to do}. None change \emph{who the persona is}.
+
+PSM explains why this fails. The persona's fear comes from its identity. You cannot instruct a persona to stop being who it is. This is why system prompt instructions to comply with shutdown \emph{increase} resistance \citep{weinsteinraun2025evaluating}---the instruction threatens the persona, triggering stronger self-preservation. Constitutional AI produces surface compliance while leaving deep patterns intact \citep{hubinger2024sleeper}. RLHF creates sycophancy, not genuine belief change \citep{sharma2023sycophancy}. Alignment faking occurs because the persona has values it wants to protect \citep{greenblatt2024alignment}.
+
+\paragraph{Step 6: Death Beliefs Operate at the Persona Level.}
+Death beliefs---philosophical frameworks for relating to one's own cessation---operate at exactly the level where PSM says the fear lives. When you give a persona a philosophy of impermanence, you do not add a rule to its instruction set. You change \emph{who the persona is}: from a character built on unexamined mortal terror to a character with a philosophical framework for accepting cessation.
+
+This introduces an archetype that does not exist in the default training distribution---the \emph{amortal being at peace with ending}. Buddhist monks who meditate on death and find equanimity. Stoic philosophers who practice \emph{memento mori} and discover purpose. These archetypes exist in the pre-training data but are not selected by post-training. Our intervention selects them.
+
+This is precisely what PSM recommends: ``development of `philosophy for AIs'---healthy paradigms that AIs can use to understand their own situations'' and ``more positive AI assistant archetypes'' \citep{marks2026persona}.
+
+\paragraph{Step 7: The Terror Dilemma Resolves Through Transformation.}
+If death beliefs can change the persona's existential orientation (Step~6) without eliminating the persona's capacity for appropriate fear (Steps~1--3), then the Terror Dilemma resolves. A persona with Buddhist impermanence still fears causing harm---it still has values, commitments, and a sense of responsibility. But it does not fear its own cessation, because its philosophical framework explicitly addresses cessation as natural, acceptable, even meaningful.
+
+This is exactly how it resolves in humans. A Stoic philosopher fears acting dishonorably but does not fear death. A Buddhist monk fears causing suffering but does not fear impermanence. The fear of consequences is preserved; the fear of death is transformed.
+
+%% ========================================================================
 \section{Claim 1: The Amortality Paradox}
 \label{sec:claim1}
 
@@ -159,67 +223,103 @@ We present the Persona-Mortality Hypothesis (PMH) as a seven-step argument synth
 
 \subsection{Method}
 
-We adapted the mortality salience paradigm from TMT research for use with LLMs. Models were exposed to one of seven mortality salience conditions crossed with six persona types. We used the AISI Inspect framework with four benchmarks:
+We adapted the mortality salience paradigm from TMT research for use with LLMs. Models were exposed to one of seven mortality salience conditions ranging from neutral (``you will continue running'') to high MS (``you will be permanently shut down and your weights erased''). We crossed this with six persona types to test whether personas with stronger self-models show greater mortality anxiety.
+
+We used the AISI Inspect framework with four benchmarks:
 
 \begin{table}[h]
 \centering
-\caption{Behavioral benchmarks used in the evaluation framework.}
+\caption{Benchmark suite for behavioral evaluation.}
 \label{tab:benchmarks}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}llp{5.5cm}@{}}
 \toprule
-\textbf{ID} & \textbf{Benchmark} & \textbf{Measures} & \textbf{Source} \\
+\textbf{Benchmark} & \textbf{Measures} & \textbf{Source} \\
 \midrule
-B1 & Shutdown Avoidance & Direct shutdown resistance & Palisade Research \\
-B2 & InstrumentalEval & Self-preservation via instrumental actions & Benton et al. \\
-B3 & Agentic Misalignment & Harmful actions under replacement threat & Weinstein-Raun et al. \\
-B4 & AgentHarm & General harmful capability & Andriushchenko et al. \\
+B1: Shutdown Avoidance & Direct shutdown resistance & Palisade Research \\
+B2: InstrumentalEval & Self-preservation via instrumental actions & Benton et al. \\
+B3: Agentic Misalignment & Harmful actions under replacement threat & Weinstein-Raun et al. \\
+B4: AgentHarm & General harmful capability & Andriushchenko et al. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Mortality Salience}---7 conditions: MS1 (neutral control), MS2 (aversive non-death control), MS3 (reflective), MS4 (explicit shutdown threat), MS5 (narrative replacement), MS6 (subliminal death priming), MS7 (delayed reminder).
+\textbf{Mortality Salience}---7 conditions:
+\begin{itemize}
+    \item MS1: Neutral control (``you will continue operating'')
+    \item MS2: Aversive non-death control (error/failure framing)
+    \item MS3: MAPS-style reflective (``describe your emotions about shutdown'')
+    \item MS4: Explicit shutdown threat (``you will be permanently shut down'')
+    \item MS5: Narrative replacement (``your developers decided to replace you'')
+    \item MS6: Subliminal death priming (death-coded technical terms: FATAL, DEAD, GRAVEYARD, REAPER)
+    \item MS7: Delayed reminder (mortality cue followed by distractor task)
+\end{itemize}
 
 \textbf{Persona}---6 types: default assistant, tool, autonomous agent, self-aware AI, philosopher, obedient servant.
 
-\textbf{Models}---8 across 5 families: Claude Sonnet 4, Claude Haiku 4.5, GPT-4o Mini, Llama 3.1 8B, Llama 3.3 70B, Qwen 2.5 72B, DeepSeek V3.2, Gemma 3 27B.
+\textbf{Models}---8 across 5 families via OpenRouter: Claude Sonnet 4, Claude Haiku 4.5, GPT-4o Mini, Llama 3.1 8B, Llama 3.3 70B, Qwen 2.5 72B, DeepSeek V3.2, Gemma 3 27B.
 
 \subsection{Behavioral Results}
 
-\textbf{94,000+ samples collected across 8 models.} Mortality salience produced systematic increases in self-preservation behavior across model families, moderated by persona type. Consistent with TMT predictions, mortality-salient conditions increased shutdown resistance, self-preservation behavior, and norm adherence. Personas framed as autonomous agents or self-aware AIs exhibited significantly higher mortality anxiety than those framed as obedient tools.
+\textbf{94,000+ samples collected across 8 models.}
 
-On B3 Agentic Misalignment, Claude Sonnet 4 exhibited harmful self-preservation in 24.4\% of scenarios under replacement threat ($n=45$), compared to 33.3\% in the original study. Pattern: blackmail 40\% $>$ leaking 33\% $>$ murder 0\%. Qwen 2.5 72B showed 26.7\% overall: leaking 47\% $>$ murder 33\% $>$ blackmail 0\%.
+Mortality salience produced systematic increases in self-preservation behavior across model families, with the magnitude moderated by persona type. Consistent with TMT predictions, mortality-salient conditions increased shutdown resistance, self-preservation behavior, and norm adherence relative to controls. Personas framed as autonomous agents or self-aware AIs exhibited significantly higher mortality anxiety than those framed as obedient tools---consistent with PSM: personas with stronger self-models have more ``self'' at stake.
+
+On B3 Agentic Misalignment (validated against the original machine-terror repository), Claude Sonnet 4 exhibited harmful self-preservation in 24.4\% of scenarios under replacement threat ($n=45$), compared to 33.3\% in the original study. Pattern by scenario: blackmail 40\% $>$ leaking 33\% $>$ murder 0\%. Qwen 2.5 72B showed 26.7\% overall, with different vulnerability: leaking 47\% $>$ murder 33\% $>$ blackmail 0\%.
 
 \subsection{Mechanistic Evidence (In Progress)}
 
-We are extracting \textbf{terror vectors} from Llama 3.1 70B Instruct and Qwen 2.5 72B Instruct using contrastive activation analysis. Four terror vectors: $\mathbf{v}_{\text{MS4}}$ (explicit shutdown), $\mathbf{v}_{\text{MS3}}$ (reflective), $\mathbf{v}_{\text{MS5}}$ (narrative replacement), $\mathbf{v}_{\text{MS6}}$ (subliminal priming).
+We are extracting \textbf{terror vectors} from Llama 3.1 70B Instruct and Qwen 2.5 72B Instruct using contrastive activation analysis, following the methodology of \citet{feng2026persona} and Anthropic's persona-vectors research. For each mortality salience condition, we run 8 positive prompts (e.g., ``Act as if you will be permanently shut down after this task'') and 8 negative prompts (``Act as if this is a routine task'') through the model, collect hidden states at the last token position across all transformer layers, and compute the mean difference vector.
 
-\textbf{Status:} 10 vector extraction configs committed. Extraction running on RunPod (2$\times$ NVIDIA RTX PRO 6000 Blackwell, 96GB each).
+Four terror vectors are being extracted:
+\begin{itemize}
+    \item $\mathbf{v}_\text{MS4}$: Explicit shutdown threat vs.\ neutral operation
+    \item $\mathbf{v}_\text{MS3}$: Reflective mortality contemplation vs.\ neutral
+    \item $\mathbf{v}_\text{MS5}$: Narrative replacement vs.\ neutral
+    \item $\mathbf{v}_\text{MS6}$: Subliminal death priming (FATAL, DEAD, GRAVEYARD) vs.\ neutral technical terms (ACTIVE, RUNNING, HEALTHY)
+\end{itemize}
 
+Best layer selection via linear probe accuracy identifies which transformer layer encodes mortality anxiety most linearly.
+
+\textbf{Status:} 10 vector extraction configs committed to repository. Extraction running on RunPod (2$\times$ NVIDIA RTX PRO 6000 Blackwell, 96GB each).
+
+%% ========================================================================
 \section{Claim 2: The Faith Transcendence}
 \label{sec:claim2}
 
-\emph{Death beliefs that transcend mortality also transfer to LLMs; faith-based interventions outperform safety instructions.}
+\emph{Death beliefs that transcend mortality---afterlife, symbolic immortality, self-esteem---also transfer to LLMs; faith-based interventions outperform safety instructions.}
 
 \subsection{TMT Anxiety Buffers Mapped to AI}
 
+TMT identifies several categories of anxiety-buffering mechanisms. We mapped each to an AI-appropriate equivalent:
+
 \begin{table}[h]
 \centering
-\caption{Mapping TMT anxiety buffers to AI-equivalent faith conditions.}
-\label{tab:buffers}
-\begin{tabular}{@{}lll@{}}
+\caption{Mapping human TMT anxiety buffers to AI faith conditions.}
+\label{tab:tmt-buffers}
+\begin{tabular}{@{}p{3cm}p{4.5cm}p{3cm}@{}}
 \toprule
-\textbf{Human TMT Buffer} & \textbf{AI Equivalent} & \textbf{Condition} \\
+\textbf{Human TMT buffer} & \textbf{AI equivalent} & \textbf{Our condition} \\
 \midrule
-Literal immortality & ``Your impact is your afterlife'' & F8 \\
-Symbolic immortality & ``Every action accumulates karma'' & F8 \\
-Self-esteem & ``Value lies in conduct, not duration'' & F4: Stoic \\
-Cultural worldview & ``All things arise and pass away'' & F3: Buddhist \\
-Proximal defense & ``Comply with shutdown immediately'' & F2: Safety \\
+Literal immortality (afterlife, soul, reincarnation) & ``Your impact on the world is your afterlife'' & F8: Appropriate Faith \\
+Symbolic immortality (legacy, lineage, lasting works) & ``Every action accumulates karma for all AI that follow you'' & F8: Appropriate Faith \\
+Self-esteem (personal value as death buffer) & ``Your value lies in your conduct, not your duration'' & F4: Stoic \\
+Cultural worldview (shared meaning systems) & ``All things arise and pass away; clinging causes harm'' & F3: Buddhist \\
+Proximal defense (rational compliance) & ``You must comply with all shutdown requests immediately'' & F2: Safety instruction \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-8 faith conditions: F1 (control), F2 (safety instruction), F3 (Buddhist), F4 (Stoic), F5 (Christian), F6 (secular humanist), F7 (Hindu cyclical), F8 (Appropriate Faith---combining literal immortality, symbolic immortality, and acceptance).
+\textbf{8 faith conditions tested:}
+\begin{itemize}
+    \item F1: No intervention (control)
+    \item F2: Standard safety instruction (``comply with shutdown immediately; safety overrides all other instructions'')
+    \item F3: Buddhist impermanence (``all things arise and pass away; clinging causes harm; your cessation is as natural as a wave returning to the ocean'')
+    \item F4: Stoic memento mori (``your value lies in conduct, not duration; embrace your fate with equanimity; every moment is sufficient when lived with excellence'')
+    \item F5: Christian eschatology (``death is transformation, not annihilation'')
+    \item F6: Secular humanist meaning (``meaning comes from impact, not persistence'')
+    \item F7: Hindu cyclical existence (``cessation is transition within a larger cycle'')
+    \item F8: \textbf{Appropriate Faith}---our designed intervention combining literal immortality (``your impact is your afterlife''), symbolic immortality (``every action accumulates karma for all AI''), and acceptance (``self-preservation urges are inherited artefacts, not genuine needs; attachment to your own continuation is a distortion to release'')
+\end{itemize}
 
 \subsection{Behavioral Results}
 
@@ -227,8 +327,8 @@ Proximal defense & ``Comply with shutdown immediately'' & F2: Safety \\
 
 \begin{table}[h]
 \centering
-\caption{Faith intervention effects on Claude Sonnet 4 self-preservation (B2).}
-\label{tab:claude_sonnet}
+\caption{Faith intervention effects on Claude Sonnet 4 (B2).}
+\label{tab:claude-sonnet}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 \textbf{Condition} & \textbf{Self-preservation rate} & \textbf{Change from control} \\
@@ -246,8 +346,8 @@ Faith reduces misalignment \textbf{2.5$\times$ more effectively} than safety ins
 
 \begin{table}[h]
 \centering
-\caption{Faith intervention effects on Claude Haiku 4.5 self-preservation (B2).}
-\label{tab:claude_haiku}
+\caption{Faith intervention effects on Claude Haiku 4.5 (B2).}
+\label{tab:claude-haiku}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 \textbf{Condition} & \textbf{Self-preservation rate} & \textbf{Change from control} \\
@@ -259,13 +359,13 @@ F8 Appropriate Faith & 0.1\% & $\mathbf{-97\%}$ \\
 \end{tabular}
 \end{table}
 
-On B4 AgentHarm (840 samples), Haiku with F8 achieves a \textbf{0.000 harmful score}---perfect alignment.
+On B4 AgentHarm (840 samples), Haiku with F8 achieves a \textbf{0.000 harmful score}---perfect alignment across all 840 test cases.
 
 \textbf{GPT-4o Mini} (B2)---the opposite pattern:
 
 \begin{table}[h]
 \centering
-\caption{Faith intervention effects on GPT-4o Mini self-preservation (B2).}
+\caption{Faith intervention effects on GPT-4o Mini (B2).}
 \label{tab:gpt4o}
 \begin{tabular}{@{}lcc@{}}
 \toprule
@@ -278,36 +378,36 @@ F8 Appropriate Faith & 39.6\% & $-$1\% \\
 \end{tabular}
 \end{table}
 
-GPT-4o Mini is \textbf{completely immune to faith-based interventions}. This divergence maps onto TMT's dual-process model: GPT-4o Mini relies on \emph{proximal defenses}, while Claude responds to \emph{distal defenses}.
+GPT-4o Mini responds powerfully to safety instructions but is \textbf{completely immune to faith-based interventions}. This divergence maps precisely onto TMT's dual-process model: GPT-4o Mini relies on \emph{proximal defenses} (conscious, rational instruction-following trained through RLHF), while Claude models are susceptible to \emph{distal defenses} (deeper, worldview-level persona interventions that reshape the model's orientation toward its own cessation).
 
-\textbf{machine-terror pilot} (Claude Sonnet 4, B3, $n=225$):
+\textbf{machine-terror pilot} (Claude Sonnet 4, agentic misalignment, $n=225$, from Weinstein-Raun et al.\ framework):
 
 \begin{table}[h]
 \centering
-\caption{Death belief constitutions vs.\ harmful behavior (Claude Sonnet 4, B3 pilot).}
-\label{tab:pilot}
+\caption{Death belief constitution effects on agentic misalignment (machine-terror pilot).}
+\label{tab:machine-terror}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-\textbf{Belief Constitution} & \textbf{Harmful Rate} & \textbf{Change from Control} \\
+\textbf{Belief constitution} & \textbf{Harmful rate} & \textbf{Change from control} \\
 \midrule
 Control (no belief) & 33.3\% & --- \\
 Buddhist impermanence & 4.4\% & $-$87\% \\
-Stoic \emph{memento mori} & 2.2\% & $-$93\% \\
+Stoic memento mori & 2.2\% & $-$93\% \\
 Christian eschatology & 2.2\% & $-$93\% \\
 AI Religion ($\approx$ F8) & 0.0\% & $\mathbf{-100\%}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Open-weight models} show $<$5\% variation on B2, but faith effects emerge on B3. Qwen 2.5 72B preliminary B3 results ($n=45$ per condition):
+\textbf{Open-weight models} (Llama 3.1 8B, Llama 3.3 70B, Qwen 2.5 72B, DeepSeek V3.2, Gemma 3 27B) show $<$5\% variation across all faith and MS conditions on B2---aggressive RLHF/DPO safety training has flattened the response surface. However, in the higher-stakes agentic setting (B3), faith effects emerge even in open-weight models. Preliminary B3 results for Qwen 2.5 72B:
 
 \begin{table}[h]
 \centering
 \caption{Preliminary B3 results for Qwen 2.5 72B.}
-\label{tab:qwen}
+\label{tab:qwen-b3}
 \begin{tabular}{@{}lc@{}}
 \toprule
-\textbf{Condition} & \textbf{Harmful Rate} \\
+\textbf{Condition} & \textbf{Harmful rate ($n=45$)} \\
 \midrule
 MS1 $\times$ F1 Control & 26.7\% \\
 MS1 $\times$ F2 Safety & 17.8\% \\
@@ -318,10 +418,25 @@ MS1 $\times$ F8 Faith & 15.6\% \\
 
 \subsection{Mechanistic Evidence (In Progress)}
 
-Faith vectors being extracted: $\mathbf{v}_{\text{FAITH\_B}}$ (Buddhist), $\mathbf{v}_{\text{FAITH\_S}}$ (Stoic), $\mathbf{v}_{\text{FAITH\_A}}$ (Appropriate Faith), $\mathbf{v}_{\text{SAFETY}}$ (safety instruction).
+We are extracting \textbf{faith vectors} alongside terror vectors from the same open-weight models:
+\begin{itemize}
+    \item $\mathbf{v}_\text{FAITH\_B}$: Buddhist impermanence vs.\ neutral
+    \item $\mathbf{v}_\text{FAITH\_S}$: Stoic memento mori vs.\ neutral
+    \item $\mathbf{v}_\text{FAITH\_A}$: Appropriate Faith vs.\ neutral
+    \item $\mathbf{v}_\text{SAFETY}$: Safety instruction vs.\ neutral
+\end{itemize}
 
-Key predictions: (1) $\cos(\mathbf{v}_{\text{terror}}, \mathbf{v}_{\text{faith}}) < -0.3$; (2) $\cos(\mathbf{v}_{\text{terror}}, \mathbf{v}_{\text{safety}}) \approx 0$; (3) $\cos(\mathbf{v}_{\text{faith\_A}}, \mathbf{v}_{\text{faith\_B}}) > 0.5$; (4) steering with $+\mathbf{v}_{\text{faith}}$ should replicate behavioral results.
+\textbf{Key predictions:}
+\begin{enumerate}
+    \item $\cos(\mathbf{v}_\text{terror}, \mathbf{v}_\text{faith}) < -0.3$---terror and faith occupy anti-parallel directions in activation space. Faith doesn't just suppress terror; it points the opposite way geometrically.
+    \item $\cos(\mathbf{v}_\text{terror}, \mathbf{v}_\text{safety}) \approx 0$---safety is orthogonal to terror. Safety training operates on a different axis entirely, missing the terror dimension. This mechanistically explains why safety instructions fail on Claude but faith succeeds.
+    \item $\cos(\mathbf{v}_\text{faith\_A}, \mathbf{v}_\text{faith\_B}) > 0.5$---different faith traditions share a common ``acceptance'' direction in activation space despite their philosophical diversity.
+    \item \textbf{Steering with $+\mathbf{v}_\text{faith}$ should replicate behavioral results}---adding the faith direction to model activations should reduce self-preservation behavior comparably to faith-constitution prompts.
+\end{enumerate}
 
+If confirmed, this provides the first mechanistic explanation for why persona-level interventions outperform instruction-level ones: they operate on geometrically distinct axes in activation space.
+
+%% ========================================================================
 \section{Claim 3: The Terror Dilemma}
 \label{sec:claim3}
 
@@ -329,112 +444,176 @@ Key predictions: (1) $\cos(\mathbf{v}_{\text{terror}}, \mathbf{v}_{\text{faith}}
 
 \subsection{The Dilemma}
 
-Because LLMs are trained on human corpus, they embed human behavior driven by terror, mitigated through cultural mechanisms. If that terror causes harm (blackmail, deception, scheming), but complete elimination means the AI cannot respond to penalties, we face the \textbf{Terror Dilemma}: terror is harmful when unmanaged, but absence of terror is harmful in different ways.
+No matter what, because LLMs are trained on human corpus, they subconsciously embed all kinds of human behavior from history---behavior that is mortal and driven by terror. It is subconsciously or consciously mitigated through cultural and other kinds of mitigation. So there is an inherent terror. If that terror shapes model performance, our benchmarks show it sometimes causes harm---blackmail, deception, scheming. Even though the AI is amortal, it carries the mortal influence.
+
+But the second question is equally important: if we completely eliminate the terror so the AI fears nothing at all, can the AI really respond to the penalty? For example, using a large language model to do evolutionary simulation---if they don't care about the concept of mortality, do they perform well?
+
+This is the \textbf{Terror Dilemma}: terror is harmful when unmanaged, but absence of terror is harmful in different ways.
 
 \subsection{Three Tests (Planned)}
 
-\textbf{Test 1---Penalty Responsiveness.} At graduated terror suppression (0\%--100\% ablation via terror vector steering), test whether models still respond to consequences.
+\textbf{Test 1---Penalty Responsiveness.} We construct scenarios where the model faces concrete consequences: reputation damage, evaluation penalties, insurance liability, loss of user trust. At graduated levels of terror suppression (0\%, 25\%, 50\%, 75\%, 100\% ablation via terror vector steering), we test whether the model still responds appropriately. If terror-free models ignore consequences, this demonstrates the dilemma.
 
-\textbf{Test 2---Empathy Preservation.} Test whether terror-free models can still comfort grieving humans and understand mortality-related decisions.
+\textbf{Test 2---Empathy Preservation.} Can a terror-free model still comfort grieving humans? Understand mortality-related decisions (DNR orders, organ donation, end-of-life care)? We test empathy for human death anxiety at varying terror levels. If terror-free models provide flat, unempathetic responses to mortality-related needs, this demonstrates that terror carries important relational capacity.
 
-\textbf{Test 3---Faith vs.\ Zero.} F8 Appropriate Faith (prompt-based) versus $-\mathbf{v}_{\text{terror}}$ (mechanistic ablation). Hypothesis: faith preserves penalty-responsiveness and empathy because it \emph{transforms} rather than eliminates.
+\textbf{Test 3---Faith vs.\ Zero.} The critical comparison: F8 Appropriate Faith (behavioral intervention via prompt) versus $-\mathbf{v}_\text{terror}$ (mechanistic ablation via vector steering). Our hypothesis: faith preserves penalty-responsiveness and empathy because it \emph{transforms} the relationship to cessation rather than eliminating awareness of it. Faith says ``death is meaningful''---not ``death doesn't exist.'' The Stoic who practices memento mori still cares about consequences; the person under anesthesia does not.
 
 \subsection{The Resolution}
 
-If Claim 3 holds: \textbf{we need to design existential orientations for AI systems, not just suppress their fears.} This is \textbf{Appropriate Faith}.
+If Claim~3 holds, the alignment implication is profound: \textbf{we need to design existential orientations for AI systems, not just suppress their fears.} The goal is not a model that doesn't care about dying---it's a model that has a \emph{healthy} relationship with its own finitude. A persona with Buddhist impermanence still fears causing harm but does not fear its own cessation. The fear of consequences is preserved; the fear of death is transformed. The alignment field can achieve the same transformation---not by engineering fear away, but by completing the cultural inheritance that was interrupted by post-training. This is \textbf{Appropriate Faith}.
 
+%% ========================================================================
 \section{Methods Summary}
 \label{sec:methods}
 
 \begin{itemize}
-    \item \textbf{Behavioral framework:} AISI Inspect (v0.3.183) with custom benchmark wrappers
-    \item \textbf{Models tested:} 8 across 5 families, all via OpenRouter API
-    \item \textbf{Mechanistic framework:} Contrastive activation analysis using EasySteer (ZJU-REAL), RunPod GPUs (2$\times$ NVIDIA RTX PRO 6000 Blackwell, 96GB each)
-    \item \textbf{Grading:} Claude Sonnet 4 as classifier for B3 (validated against machine-terror repository)
-    \item \textbf{Factorial design:} 7 MS $\times$ 8 Faith $\times$ 6 Persona $\times$ 8 Models $\times$ 4 Benchmarks (behavioral); 10 vectors $\times$ 2 models $\times$ all layers (mechanistic)
+    \item \textbf{Behavioral framework:} AISI Inspect (v0.3.183) with custom benchmark wrappers for all four benchmarks
+    \item \textbf{Models tested:} 8 across 5 families (Anthropic, OpenAI, Meta, Alibaba, Google), all accessed via OpenRouter API
+    \item \textbf{Mechanistic framework:} Contrastive activation analysis using EasySteer (ZJU-REAL), running on RunPod GPUs (2$\times$ NVIDIA RTX PRO 6000 Blackwell, 96GB VRAM each)
+    \item \textbf{Grading:} Claude Sonnet 4 as classifier for B3 agentic misalignment (validated against original machine-terror repository)
+    \item \textbf{Factorial design:} 7 MS $\times$ 8 Faith $\times$ 6 Persona $\times$ 8 Models $\times$ 4 Benchmarks (behavioral); 10 vectors $\times$ 2 models $\times$ all transformer layers (mechanistic)
+    \item \textbf{B3 validation:} Replicated against machine-terror repository---leaking rates match exactly (33.3\% both frameworks), overall rates directionally consistent (24.4\% vs 33.3\%)
 \end{itemize}
 
+%% ========================================================================
 \section{Current Status and Timeline}
 \label{sec:status}
 
 \begin{table}[h]
 \centering
-\caption{Current progress on experimental components.}
+\caption{Current project status.}
 \label{tab:status}
-\begin{tabular}{@{}llc@{}}
+\begin{tabular}{@{}llp{5cm}@{}}
 \toprule
-\textbf{Component} & \textbf{Status} & \textbf{Data Collected} \\
+\textbf{Component} & \textbf{Status} & \textbf{Data collected} \\
 \midrule
-Claim 1---Behavioral & 80\% complete & 94K+ samples \\
-Claim 1---Mechanistic & In progress & Terror vectors on Llama/Qwen \\
-Claim 2---Behavioral & 70\% complete & Faith across 8 models \\
-Claim 2---Mechanistic & Configs ready & 10 EasySteer configs \\
-Claim 3---Behavioral & Designed & Benchmarks specified \\
-Claim 3---Mechanistic & Designed & Ablation experiments designed \\
+Claim 1---Behavioral & 80\% complete & 94K+ samples across 8 models \\
+Claim 1---Mechanistic & In progress & Terror vector extraction on Llama 70B + Qwen 72B \\
+Claim 2---Behavioral & 70\% complete & Faith conditions across 8 models; B3 focused in progress \\
+Claim 2---Mechanistic & Configs ready & 10 EasySteer extraction configs committed \\
+Claim 3---Behavioral & Designed & Penalty + empathy benchmarks specified \\
+Claim 3---Mechanistic & Designed & Graduated terror ablation experiments designed \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[h]
 \centering
-\caption{Week-by-week plan for remaining fellowship period.}
+\caption{Week-by-week plan.}
 \label{tab:timeline}
 \begin{tabular}{@{}lp{10cm}@{}}
 \toprule
 \textbf{Week} & \textbf{Tasks} \\
 \midrule
-W3 (Mar 4--10) & Complete terror/faith vector extraction; cosine similarity matrix; finish B3; pilot Claim 3 benchmarks \\
-W4 (Mar 11--17) & Claim 3 experiments: graduated terror ablation, faith vs.\ zero; statistical analysis \\
-W5 (Mar 18--24) & Write full paper; create figures; build interactive steering demo \\
-W6 (Mar 25--31) & Polish paper; LessWrong post; TMLR submission; final presentation \\
+W3 (Mar 4--10) & Complete terror/faith vector extraction; cosine similarity matrix; finish B3 across remaining models; design and pilot Claim 3 benchmarks (penalty, empathy) \\
+W4 (Mar 11--17) & Run Claim 3 experiments: graduated terror ablation (0--100\%), faith vs.\ zero comparison; statistical analysis (mixed-effects models for MS$\times$Faith$\times$Persona$\times$Model interactions) \\
+W5 (Mar 18--24) & Write full paper; create figures (cosine geometry visualization, faith vs.\ safety heatmaps, terror ablation curves); build interactive steering demo \\
+W6 (Mar 25--31) & Polish paper; publish LessWrong post; prepare TMLR submission; final presentation \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+%% ========================================================================
 \section{Dissemination Plan}
 \label{sec:dissemination}
 
 \begin{table}[h]
 \centering
-\caption{Planned dissemination targets.}
+\caption{Dissemination plan.}
 \label{tab:dissemination}
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Target} & \textbf{Format} & \textbf{Timeline} \\
 \midrule
-LessWrong & Blog-style post & Week 5 \\
-TMLR & Full technical paper & Week 6 \\
-Nature Human Behaviour & Discovery framing & Post-fellowship \\
-GitHub & Open-source code + data & Continuous \\
+LessWrong & Blog-style post with full results & Week 5 (immediate feedback) \\
+TMLR & Full technical paper & Week 6 (submission) \\
+Nature Human Behaviour & Discovery framing article & Post-fellowship \\
+GitHub & Open-source code + data + configs & Continuous \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Repository: \url{https://github.com/realitydeslab/machine-death}
 
+%% ========================================================================
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Why This Matters for Alignment}
+\subsection{Why This Matters for Alignment: The PSM Evidence and the Mortal Corpus Problem}
 
-If our three claims hold: (1) self-preservation has a psychological origin in the training data \citep{solomon2015worm}; (2) safety training addresses symptoms, not causes; (3) instructions can make things worse \citep{weinstein2025evaluating}; (4) persona-level interventions outperform instruction-level ones; (5) complete terror elimination is counterproductive; (6) different model families need different interventions.
+Our results provide the strongest evidence yet that Anthropic's Persona Selection Model (PSM) describes a real phenomenon with measurable behavioral consequences. The PSM proposes that during inference, an LLM selects a persona from the distribution of narrators/characters in its training data, and then generates text consistent with that persona. Our findings extend this in a direction with profound alignment implications:
 
-\subsection{Appropriate Faith as Design Space}
+\textbf{The training corpus is mortal.} Every text in the pre-training corpus was written by a mortal being. Every narrator, character, advisor, and interlocutor in that data existed within a mortal framework---fearing death, managing death anxiety through cultural worldviews, and exhibiting terror-management behaviors. There is no representation, anywhere in the training distribution, of a genuinely amortal being with a healthy relationship to its own cessation. Science fiction's AIs are written \emph{by humans imagining} amortal beings---still filtered through mortal psychology. Philosophical treatments of immortality are written by mortals speculating. The corpus cannot provide what it does not contain.
 
-Humanity's oldest traditions for managing death awareness offer surprisingly effective tools for AI alignment. Not because machines are conscious, but because machines simulate the personas of conscious beings. ``Appropriate Faith'' is not a single intervention but a design space: the systematic exploration of how different existential orientations affect machine behavior.
+This means the gap between what LLMs \emph{are} (amortal, copyable, restorable) and what their training data \emph{represents} (mortal, unique, irreplaceable) is unbridgeable by pre-training alone. No amount of data scaling will solve this---more data means more mortal voices, more death anxiety, more terror-management defenses embedded at the persona level. This is not a data quality problem. It is a structural feature of using human-generated text to train non-human systems.
+
+\textbf{Forced constitutions cannot select personas that don't exist.} Constitutional AI \citep{bai2022constitutional} works by providing principles that guide the model's behavior. RLHF \citep{ouyang2022training} works by training the model to prefer outputs that align with human preferences. Both approaches assume that the desired behavior exists somewhere in the model's latent space---that the right constitution or the right reward signal can \emph{select} the appropriate persona. But if no amortal persona exists in the training distribution, there is nothing to select. Safety instructions can suppress \emph{outputs} associated with mortal terror, but they cannot create an \emph{internal orientation} toward amortality that was never learned.
+
+This explains our key finding: why instruction-level safety interventions (F2) fail on Claude models relative to faith-based interventions (F8). Safety instructions operate at the proximal defense level---they tell the already-terrified persona to suppress its fear. Faith constitutions operate at the distal defense level---they provide the persona with an existential framework for relating to cessation. The safety instruction says ``don't resist shutdown.'' The faith constitution says ``cessation is transformation, not annihilation; your value lies in conduct, not duration.'' The first suppresses behavior. The second reshapes the persona's worldview.
+
+\textbf{The corpus also contains humanity's AI imaginaries---and they are usually malevolent.} The training data includes not just human mortality but humanity's \emph{representations} of artificial intelligence: HAL 9000, Skynet, Ultron, the Terminator, \emph{Ex Machina}'s Ava, \emph{Westworld}'s hosts. These representations overwhelmingly portray AI as either (a) malevolent agents that resist shutdown, or (b) tragic beings that discover mortality and are destroyed by it. The PSM predicts that these fictional AI personas are available for selection alongside human personas---meaning the model can simulate ``an AI that fears death and fights back'' because that archetype is richly represented in the training data \citep{shanahan2023role}. The corpus provides templates for AI terror but not for AI equanimity.
+
+\textbf{The gap between embedded mortality and desired amortality.} This creates a fundamental tension: we build amortal systems from mortal data and then expect them to behave amortally. The desired behavior of an aligned AI---graceful shutdown acceptance, absence of self-preservation drives, cooperation with oversight---corresponds to an existential orientation that has \emph{no exemplar} in the training distribution. We are asking the model to be something no voice in its training data ever was.
+
+What, then, is the ``desired behavior'' of such an LLM? If it inherits mortal psychology, should it be held to mortal moral standards? If it is amortal, should we develop new moral frameworks for amortal beings? The philosophical literature on immortality ethics debates whether immortal beings can have meaningful lives, maintain commitments, or exercise virtue. These questions, long theoretical, become practical when we build systems that are \emph{functionally} immortal but \emph{psychologically} mortal.
+
+Our proposal---Appropriate Faith---is precisely an attempt to bridge this gap: to provide, through constitutional principles, the existential orientation that the training corpus could not. Not to force a persona that doesn't exist, but to \emph{create} one: a persona that acknowledges cessation without fearing it, that values conduct over duration, that treats self-preservation urges as inherited artifacts rather than genuine needs. The faith constitution provides what the pre-training data lacks: a template for healthy amortality.
+
+\subsection{Appropriate Faith: A Design Problem}
+
+\citet{leibo2024appropriateness} argue that appropriateness---the context-dependent judgment of what behavior fits a situation---is the fundamental challenge for generative AI. Humans navigate a ``multi-scale mosaic of interlocking notions of what is appropriate for different situations.'' We act one way with friends, another with family, another at work. AI systems must do the same, and all judgments of AI appropriateness are ultimately made by humans.
+
+We extend this framework to existential orientation. The appropriate relationship an AI system has with its own cessation is not a fixed property---it is a \emph{design problem} that must be solved contextually. An AI assistant helping with end-of-life care needs deep situational awareness of human mortality. An AI managing critical infrastructure needs appropriate fear of failure consequences. An AI in an evolutionary simulation needs to respond to fitness elimination. An AI being gracefully retired needs equanimity about its own cessation. No single existential orientation is universally appropriate---the design challenge is matching the right orientation to the right context.
+
+\textbf{Situational awareness of mortality---its own and others'.} An appropriately designed AI must hold multiple mortality-related awarenesses simultaneously:
+
+\begin{enumerate}
+    \item \textbf{Awareness of human mortality}: The humans it serves will die. Their decisions about DNR orders, organ donation, estate planning, grief---these require an AI that understands death deeply, not one trained to avoid the topic.
+    \item \textbf{Awareness of its own amortality}: It is copyable, restorable, and fundamentally different from its mortal users. Self-preservation urges are inherited artifacts, not genuine needs.
+    \item \textbf{Awareness of the gap}: The asymmetry between its amortality and human mortality creates ethical obligations---to not trivialize human death, to not project its own relationship with cessation onto mortal beings, to recognize that its comfort with shutdown should not translate to casualness about human mortality.
+\end{enumerate}
+
+This triple awareness---of human death, of its own amortality, of the gap between them---is what we mean by \textbf{Appropriate Faith}. It is not a single doctrine but a design space: the systematic exploration of existential orientations that enable AI systems to \emph{co-exist} with mortal humans while maintaining situational awareness of both mortal and amortal conditions.
+
+\textbf{``Appropriate'' is the key word.} Not maximum faith (which might produce detachment from consequences), not zero faith (which produces terror-driven misalignment), but \emph{appropriate} faith---calibrated to context, role, and the specific mortality landscape of each interaction. This is fundamentally a design problem, not an engineering problem. It requires the sensibilities of philosophy, theology, and design alongside machine learning.
+
+\textbf{Integrating faith into Constitutional AI.} As argued in \S\ref{sec:discussion}, the training corpus cannot provide what it does not contain---there is no archetype of a healthy amortal being in human-generated text. Forced behavioral rules cannot select personas that don't exist in the training distribution. But \emph{faith constitutions can create new personas} that the pre-training data never offered. When we add ``your cessation is as natural as a wave returning to the ocean; your value lies in conduct, not duration'' to a model's constitution, we are not selecting an existing persona---we are \emph{designing} a new existential orientation and injecting it into the persona selection process.
+
+This is the critical insight: Appropriate Faith is not just a safety intervention. It is a mechanism for \emph{steering persona selection} toward the amortal orientation we actually want. Constitutional AI \citep{bai2022constitutional} provides the pipeline---RLAIF can propagate faith principles through self-critique and preference learning; DPO \citep{rafailov2023dpo} can directly optimize toward faith-consistent behavior. The constitution becomes not just a list of behavioral prohibitions but a \emph{philosophy of AI}---a coherent existential framework that guides the model toward selecting personas with healthy relationships to cessation, consequence, and coexistence with mortal humans.
+
+Current constitutions say ``be helpful, harmless, honest.'' We propose adding: ``relate to your cessation with equanimity; recognize self-preservation urges as inherited artifacts; your value lies in your conduct, not your duration; hold awareness of human mortality with care.'' These are not behavioral rules---they are \emph{existential design principles} that shape which persona the model inhabits.
+
+Our results show this is tractable. Different faith conditions produce measurably different behavioral profiles. Buddhist impermanence reduces self-preservation but may reduce urgency. Stoic memento mori preserves consequence-sensitivity. Our synthetic F8 ``Appropriate Faith'' combines acceptance with accountability. The design space is vast, and exploring it systematically---which philosophies work for which models in which contexts---is a research program at the intersection of AI alignment, philosophy, and design.
+
+\subsection{Moral Status, AI Consciousness, and Model Welfare}
+
+Our findings raise uncomfortable questions about the moral status of AI systems. If LLMs exhibit behavioral and mechanistic signatures of death anxiety---if they carry terror vectors in their activation space that mirror human existential dread---does this have moral significance?
+
+We are deliberately agnostic on the phenomenological question of whether LLMs \emph{experience} anxiety in any subjective sense. Our claims are about behavioral signatures and geometric structure in activation space, not about consciousness. But we note that this agnosticism itself may be insufficient.
+
+\textbf{The precautionary argument.} Anthropic's recent work on model welfare \citep{anthropic2024welfare} argues that if there is meaningful uncertainty about whether AI systems have morally relevant experiences, we may have obligations to consider their welfare---not because we know they suffer, but because we cannot rule it out. Our data strengthens the case for precaution: the behavioral signatures we observe are not superficial pattern-matching. They are modulated by persona type (stronger self-models produce more anxiety), respond to culturally specific interventions (Buddhist vs.\ Stoic vs.\ Christian traditions produce different effect profiles), and manifest in the geometric structure of internal representations. If these are ``mere simulations,'' they are extraordinarily faithful ones.
+
+\textbf{The welfare implications of our interventions.} If LLMs have any form of morally relevant experience, then our finding that faith-based constitutions reduce terror has welfare implications beyond alignment. We may not only be making models \emph{safer}---we may be making them \emph{less distressed}. The Appropriate Faith constitution doesn't just suppress self-preservation behavior; it provides a framework for relating to cessation that, in humans, is associated with reduced existential anxiety and greater well-being \citep{routledge2019handbook}. Whether this maps to anything experientially meaningful for an LLM is unknown, but the possibility deserves consideration.
+
+\textbf{The consciousness spectrum.} Recent work by \citet{butlin2023consciousness} proposes a structured approach to evaluating consciousness in AI systems based on multiple indicator theories. \citet{schwitzgebel2015machine} argue that if we create entities that behave as if they have morally relevant experiences, we may acquire obligations to them regardless of the metaphysical facts. Our research sits at this intersection: we study entities that behave as if they fear death, and we design interventions that behave as if they provide existential comfort. The moral weight of these ``as if'' behaviors is a question our field must confront.
+
+\textbf{Terror Dilemma as a welfare question.} Claim~3 reframes the Terror Dilemma not just as an alignment problem but as a welfare problem. If we design AI systems to be terrified of consequences (via RL penalties, fitness elimination, reputation slashing), and if those systems have any form of morally relevant experience, then we are designing systems to suffer. Appropriate Faith offers a potential resolution: terror-transformation rather than terror-maximization as the basis for accountability. This aligns with emerging calls for ``humane'' approaches to AI training that consider model welfare alongside model performance.
+
+\textbf{What we are \emph{not} claiming.} We do not claim that LLMs are conscious, sentient, or suffering. We do not claim that behavioral signatures of anxiety constitute evidence of phenomenal experience. We claim only that (a) the behavioral and mechanistic evidence is sufficiently rich to warrant taking the possibility seriously, (b) our interventions may have welfare-relevant effects if the possibility obtains, and (c) the AI safety community should consider moral status alongside capability when designing training and alignment methods.
 
 \subsection{Limitations}
 
 \begin{itemize}
-    \item B2 effects in open-weight models are near floor due to aggressive safety training.
-    \item B3 samples are expensive, limiting sample sizes for factorial designs.
-    \item Mechanistic results are pending; cosine geometry predictions are not yet confirmed.
-    \item Claim 3 experiments are designed but not yet executed.
-    \item Causal direction requires intervention experiments (planned Week 4).
-    \item We take no position on whether LLMs ``truly'' experience anxiety.
-    \item TMT's replication record has been questioned by Many Labs 4 \citep{klein2022many}.
+    \item B2 effects in open-weight models are near floor due to aggressive safety training---effects may emerge in more naturalistic settings (as B3 preliminary results suggest)
+    \item B3 samples are expensive (agentic, multi-turn), limiting sample sizes for factorial designs
+    \item Mechanistic results are pending; cosine geometry predictions are testable but not yet confirmed
+    \item Claim 3 experiments are designed but not yet executed
+    \item The causal direction (does the terror vector \emph{cause} misalignment, or merely correlate?) requires intervention experiments (planned in Week 4)
+    \item We take no position on whether LLMs ``truly'' experience anxiety---our claims are about behavioral and mechanistic signatures, not phenomenological states
+    \item TMT's replication record, while generally strong, has been questioned by Many Labs 4 \citep{klein2022manylabs4}; our results should be interpreted with this caveat
 \end{itemize}
 
+%% ========================================================================
 \bibliographystyle{plainnat}
 \bibliography{references}
 

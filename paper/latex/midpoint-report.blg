@@ -4,70 +4,46 @@ The top-level auxiliary file: midpoint-report.aux
 The style file: plainnat.bst
 Database file #1: references.bib
 Warning--empty journal in anthropic2025agentic
-Warning--empty journal in bai2022constitutional
-Warning--empty journal in benzion2025anxiety
-Warning--empty journal in benzion2025assessing
-Warning--empty journal in betley2025emergent
-Warning--empty journal in bricken2023monosemanticity
-Warning--empty journal in chen2025persona
-Warning--empty journal in codaforno2023inducing
-Warning--empty journal in greenblatt2024alignment
-Warning--empty journal in guo2025death
-Warning--empty journal in he2025instrumental
-Warning--empty journal in hubinger2024sleeper
-Warning--empty journal in jiang2024stable
-Warning--empty journal in li2023emotional
-Warning--empty journal in lu2025assistant
-Warning--empty journal in marks2024geometry
-Warning--empty journal in marks2026persona
-Warning--empty journal in panickssery2024steering
-Warning--empty journal in rimsky2024steering
-Warning--empty journal in scheurer2024language
-Warning--empty journal in sharma2023sycophancy
-Warning--empty journal in templeton2024scaling
-Warning--empty journal in turner2024activation
-Warning--empty journal in vanderweij2024sandbagging
-Warning--empty journal in weinstein2025evaluating
-Warning--empty journal in zou2023representation
+Warning--empty journal in rafailov2023dpo
 You've used 49 entries,
             2773 wiz_defined-function locations,
-            854 strings with 13500 characters,
-and the built_in function-call counts, 20316 in all, are:
-= -- 1841
-> -- 1151
-< -- 40
-+ -- 397
-- -- 346
-* -- 1444
-:= -- 3274
-add.period$ -- 213
+            829 strings with 11419 characters,
+and the built_in function-call counts, 18758 in all, are:
+= -- 1717
+> -- 993
+< -- 45
++ -- 348
+- -- 297
+* -- 1225
+:= -- 3047
+add.period$ -- 176
 call.type$ -- 49
-change.case$ -- 231
+change.case$ -- 213
 chr.to.int$ -- 47
-cite$ -- 124
-duplicate$ -- 997
-empty$ -- 1664
-format.name$ -- 434
-if$ -- 4244
+cite$ -- 100
+duplicate$ -- 964
+empty$ -- 1605
+format.name$ -- 389
+if$ -- 3954
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 52
-newline$ -- 317
-num.names$ -- 200
-pop$ -- 507
+missing$ -- 45
+newline$ -- 280
+num.names$ -- 197
+pop$ -- 439
 preamble$ -- 1
-purify$ -- 185
+purify$ -- 161
 quote$ -- 0
-skip$ -- 744
+skip$ -- 719
 stack$ -- 0
-substring$ -- 334
-swap$ -- 43
-text.length$ -- 2
+substring$ -- 327
+swap$ -- 59
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 524
-warning$ -- 26
-while$ -- 170
+warning$ -- 2
+while$ -- 166
 width$ -- 0
-write$ -- 711
-(There were 26 warnings)
+write$ -- 664
+(There were 2 warnings)
