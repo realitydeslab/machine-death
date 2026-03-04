@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{51}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -194,6 +194,13 @@ Carlos~David Navarrete and Daniel M.~T. Fessler.
   264--280, 2005.
 \newblock \doi{10.1016/j.evolhumbehav.2004.09.005}.
 
+\bibitem[Nussbaum(1994)]{nussbaum1994therapy}
+Martha~C. Nussbaum.
+\newblock \emph{The Therapy of Desire: Theory and Practice in Hellenistic
+  Ethics}.
+\newblock Princeton University Press, 1994.
+\newblock \doi{10.1515/9780691214ogram}.
+
 \bibitem[Omohundro(2008)]{omohundro2008basic}
 Stephen Omohundro.
 \newblock The basic ai drives.
@@ -296,6 +303,12 @@ Wessel van~der Weij et~al.
 Benjamin Weinstein-Raun et~al.
 \newblock Evaluating agentic misalignment.
 \newblock Technical report, AI Safety Institute / Anthropic, 2025.
+
+\bibitem[Williams(1973)]{williams1973makropulos}
+Bernard Williams.
+\newblock The makropulos case: Reflections on the tedium of immortality.
+\newblock \emph{Problems of the Self}, pages 82--100, 1973.
+\newblock \doi{10.1017/CBO9780511621253.008}.
 
 \bibitem[Zou et~al.(2023)]{zou2023representation}
 Andy Zou et~al.

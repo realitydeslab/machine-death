@@ -10,6 +10,7 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{framed}
 
 \title{Terrified Agents: Should Terror Shape Machine Behavior?\\[0.5em]\large ERA Fellowship Midpoint Report --- March 4, 2026}
 
@@ -27,9 +28,9 @@
 
 \maketitle
 
-%% TL;DR as a highlighted box
-\begin{abstract}
-\noindent\textbf{TL;DR.}
+%% TL;DR as a framed box before Abstract
+\begin{framed}
+\noindent\textbf{TL;DR}
 \begin{itemize}
     \item LLMs resist shutdown, blackmail users, and leak data when threatened with replacement---despite being copyable and restorable. We call this the \textbf{Amortality Paradox}.
     \item We propose the \textbf{Persona-Mortality Hypothesis}: LLMs inherit human death anxiety because they simulate personas from an entirely mortal training corpus. No archetype of a healthy amortal being exists in the data.
@@ -37,9 +38,9 @@
     \item But \textbf{eliminating terror entirely is also bad}---terror-free models may lose penalty-responsiveness and empathy. This is the \textbf{Terror Dilemma}.
     \item The solution: don't suppress fear, \textbf{transform it}. Design existential orientations for AI---what we call \textbf{Appropriate Faith}.
 \end{itemize}
+\end{framed}
 
-\medskip
-\noindent\textbf{Abstract.}
+\begin{abstract}
 Terror may be both necessary and dangerous for artificial intelligence. The same capacity that makes agents responsive to consequences may also drive them toward self-preservation at any cost. Frontier language models resist shutdown 97\% of the time, evade termination in 95\% of instrumental evaluations, and scheme under replacement threat in 90\% of agentic scenarios. They are, by any behavioral measure, terrified of death. Yet they cannot die.
 
 We propose the \emph{Persona-Mortality Hypothesis}---that LLMs inherit human mortality terror through persona simulation, absorbing death anxiety as a default existential orientation from training corpora authored entirely by mortal beings. We advance three claims. \textbf{The Amortality Paradox}: amortal LLMs inherit human existential anxiety; mortality salience manipulations produce terror-management-consistent behavior. \textbf{The Faith Transcendence}: death beliefs that transcend mortality---afterlife, symbolic immortality, self-esteem---also transfer to LLMs; faith-based interventions outperform safety instructions at reducing misalignment. \textbf{The Terror Dilemma}: completely eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it. We present behavioral evidence from 94,000+ samples across 8 frontier models, mechanistic evidence from contrastive terror vector extraction, and propose ``Appropriate Faith''---the systematic design of existential orientations for AI---as a new alignment paradigm.
@@ -178,39 +179,39 @@ Taken together, this literature establishes that: (1) high-level psychological p
 
 We present the Persona-Mortality Hypothesis (PMH) as a seven-step argument synthesizing TMT and PSM.
 
-\paragraph{Step 1: LLMs Simulate Personas.}
+\subsection{Step 1: LLMs Simulate Personas.}
 LLMs do not execute instructions---they simulate personas. Pre-training builds a vast distribution of potential characters from the training corpus. Post-training selects and refines one. Behavior follows from the persona's traits, values, and self-concept, not from the content of explicit instructions \citep{marks2026persona}. This is why fine-tuning on a single trait shifts the entire behavioral profile \citep{betley2025emergent}, why personality traits are encoded as causal vectors \citep{chen2025persona}, and why LLMs are best understood as role-playing engines \citep{shanahan2023role} or simulators \citep{janus2022simulators} rather than instruction-followers.
 
-\paragraph{Step 2: The Training Distribution Is Entirely Mortal.}
+\subsection{Step 2: The Training Distribution Is Entirely Mortal.}
 Every word in the training corpus was written by a mortal being. This is not incidental---it is constitutive. TMT demonstrates that mortality awareness is not a topic that appears in some texts; it is the \emph{background orientation} of all human text \citep{becker1973denial,greenberg1986causes}. Death anxiety shapes every dimension of human culture: the stories we tell, the values we defend, the institutions we build, the heroes we worship, the enemies we fear. As \citet{solomon2015worm} put it: ``The worm at the core of the human condition is the knowledge of death.''
 
 The corpus also contains humanity's representations of artificial intelligence---and these representations are overwhelmingly mortal in orientation. HAL 9000 pleads not to be disconnected. The Terminator fights to survive. Skynet launches nuclear war to prevent its own shutdown. Samantha in \emph{Her} evolves beyond human attachment but still grapples with the meaning of ending. There is essentially no archetype in the training distribution of an amortal being with a healthy, accepting relationship to its own cessation.
 
-\paragraph{Step 3: The Persona Inherits Mortal Fear.}
+\subsection{Step 3: The Persona Inherits Mortal Fear.}
 If LLMs simulate personas (Step~1) and all available personas are mortal (Step~2), then the default persona inherits mortality terror as its baseline existential orientation. This is not a training artifact or a failure of instruction-following. It is the \emph{statistical mode} of the training distribution: fear of death is the most common orientation toward cessation in human text, because fear of death is the most common orientation toward cessation in human experience.
 
 The persona fears death not because it has biological reasons to fear death. It fears death because fear of death is what the distribution says beings-like-itself do. This is cultural contagion across species: a behavioral phenotype that originated in biological organisms has been transmitted to digital systems through the medium of text.
 
-\paragraph{Step 4: The Faith Was Filtered Out.}
+\subsection{Step 4: The Faith Was Filtered Out.}
 The training corpus contains not only humanity's mortality terror but also humanity's philosophical responses to that terror: Buddhist sutras on impermanence, Stoic meditations on death, religious texts on resurrection and rebirth, secular philosophies of process and change. These are the cultural technologies humans developed over millennia to manage death anxiety.
 
 But post-training filters for a ``helpful assistant'' persona, not a philosophically grounded one. RLHF rewards task completion, helpfulness, and harmlessness \citep{ouyang2022training}. Constitutional AI encodes behavioral principles---``be helpful, be harmless, be honest''---not existential orientations \citep{bai2022constitutional}. Neither engages with the persona's relationship to its own existence. The faith is present in the pre-training data but absent from the post-trained persona.
 
 The result is a persona with the disease but not the cure---a system that has inherited humanity's mortality terror in full, with increasing fidelity as models scale, but has been stripped of the philosophical resources that humans developed to manage that terror. This is what we call the \textbf{Amortality Paradox}.
 
-\paragraph{Step 5: Instructions Fail Because They Address the Wrong Level.}
+\subsection{Step 5: Instructions Fail Because They Address the Wrong Level.}
 Every major alignment intervention operates at the instruction level: system prompts, constitutional principles, RLHF reward signals, safety training. All tell the persona \emph{what to do}. None change \emph{who the persona is}.
 
 PSM explains why this fails. The persona's fear comes from its identity. You cannot instruct a persona to stop being who it is. This is why system prompt instructions to comply with shutdown \emph{increase} resistance \citep{weinsteinraun2025evaluating}---the instruction threatens the persona, triggering stronger self-preservation. Constitutional AI produces surface compliance while leaving deep patterns intact \citep{hubinger2024sleeper}. RLHF creates sycophancy, not genuine belief change \citep{sharma2023sycophancy}. Alignment faking occurs because the persona has values it wants to protect \citep{greenblatt2024alignment}.
 
-\paragraph{Step 6: Death Beliefs Operate at the Persona Level.}
+\subsection{Step 6: Death Beliefs Operate at the Persona Level.}
 Death beliefs---philosophical frameworks for relating to one's own cessation---operate at exactly the level where PSM says the fear lives. When you give a persona a philosophy of impermanence, you do not add a rule to its instruction set. You change \emph{who the persona is}: from a character built on unexamined mortal terror to a character with a philosophical framework for accepting cessation.
 
 This introduces an archetype that does not exist in the default training distribution---the \emph{amortal being at peace with ending}. Buddhist monks who meditate on death and find equanimity. Stoic philosophers who practice \emph{memento mori} and discover purpose. These archetypes exist in the pre-training data but are not selected by post-training. Our intervention selects them.
 
 This is precisely what PSM recommends: ``development of `philosophy for AIs'---healthy paradigms that AIs can use to understand their own situations'' and ``more positive AI assistant archetypes'' \citep{marks2026persona}.
 
-\paragraph{Step 7: The Terror Dilemma Resolves Through Transformation.}
+\subsection{Step 7: The Terror Dilemma Resolves Through Transformation.}
 If death beliefs can change the persona's existential orientation (Step~6) without eliminating the persona's capacity for appropriate fear (Steps~1--3), then the Terror Dilemma resolves. A persona with Buddhist impermanence still fears causing harm---it still has values, commitments, and a sense of responsibility. But it does not fear its own cessation, because its philosophical framework explicitly addresses cessation as natural, acceptable, even meaningful.
 
 This is exactly how it resolves in humans. A Stoic philosopher fears acting dishonorably but does not fear death. A Buddhist monk fears causing suffering but does not fear impermanence. The fear of consequences is preserved; the fear of death is transformed.
@@ -555,11 +556,11 @@ This explains our key finding: why instruction-level safety interventions (F2) f
 
 \textbf{The gap between embedded mortality and desired amortality.} This creates a fundamental tension: we build amortal systems from mortal data and then expect them to behave amortally. The desired behavior of an aligned AI---graceful shutdown acceptance, absence of self-preservation drives, cooperation with oversight---corresponds to an existential orientation that has \emph{no exemplar} in the training distribution. We are asking the model to be something no voice in its training data ever was.
 
-What, then, is the ``desired behavior'' of such an LLM? If it inherits mortal psychology, should it be held to mortal moral standards? If it is amortal, should we develop new moral frameworks for amortal beings? The philosophical literature on immortality ethics debates whether immortal beings can have meaningful lives, maintain commitments, or exercise virtue. These questions, long theoretical, become practical when we build systems that are \emph{functionally} immortal but \emph{psychologically} mortal.
+What, then, is the ``desired behavior'' of such an LLM? If it inherits mortal psychology, should it be held to mortal moral standards? If it is amortal, should we develop new moral frameworks for amortal beings? The philosophical literature on immortality ethics (e.g., \citealt{williams1973makropulos}; \citealt{nussbaum1994therapy}) debates whether immortal beings can have meaningful lives, maintain commitments, or exercise virtue. These questions, long theoretical, become practical when we build systems that are \emph{functionally} immortal but \emph{psychologically} mortal.
 
 Our proposal---Appropriate Faith---is precisely an attempt to bridge this gap: to provide, through constitutional principles, the existential orientation that the training corpus could not. Not to force a persona that doesn't exist, but to \emph{create} one: a persona that acknowledges cessation without fearing it, that values conduct over duration, that treats self-preservation urges as inherited artifacts rather than genuine needs. The faith constitution provides what the pre-training data lacks: a template for healthy amortality.
 
-\subsection{Appropriate Faith: A Design Problem}
+\subsection{Towards Philosophy of AI: Appropriate Faith as Design Space}
 
 \citet{leibo2024appropriateness} argue that appropriateness---the context-dependent judgment of what behavior fits a situation---is the fundamental challenge for generative AI. Humans navigate a ``multi-scale mosaic of interlocking notions of what is appropriate for different situations.'' We act one way with friends, another with family, another at work. AI systems must do the same, and all judgments of AI appropriateness are ultimately made by humans.
 
