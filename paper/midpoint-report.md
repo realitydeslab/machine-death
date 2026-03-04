@@ -441,55 +441,17 @@ What, then, is the "desired behavior" of such an LLM? If it inherits mortal psyc
 Our proposal — Appropriate Faith — is precisely an attempt to bridge this gap: to provide, through constitutional principles, the existential orientation that the training corpus could not. Not to force a persona that doesn't exist, but to *create* one: a persona that acknowledges cessation without fearing it, that values conduct over duration, that treats self-preservation urges as inherited artifacts rather than genuine needs. The faith constitution provides what the pre-training data lacks: a template for healthy amortality.
 
 
-### 10.2 Appropriate Faith as Design Space: Philosophy in Constitutional AI
+### 10.2 Appropriate Faith as Design Space
 
-Our results suggest that Appropriate Faith is not merely an alignment technique but a new *design space* — the systematic exploration of how existential orientations shape machine behavior. This has implications far beyond our specific experiments.
+Current constitutional AI encodes behavioral rules: "be helpful, harmless, honest" (Bai et al., 2022). Our results show that *existential* constitutions — philosophical frameworks for relating to cessation — outperform behavioral ones. This maps onto TMT's dual-process model: behavioral rules are proximal defenses; existential frameworks are distal defenses, and distal defenses are more robust (Pyszczynski et al., 2004).
 
-**From safety rules to existential constitutions.** Current constitutional AI approaches (Bai et al., 2022; Anthropic, 2023) encode behavioral rules: "be helpful, harmless, and honest," "don't assist with harmful activities," "comply with shutdown requests." These are *proximal* instructions that address specific behaviors. Our results show that *distal* constitutions — those that provide worldview-level frameworks for relating to existence, cessation, and meaning — can be more effective. The distinction maps directly onto TMT's dual-process model: proximal defenses (conscious rule-following) are weaker and more fragile than distal defenses (unconscious worldview buffers) (Pyszczynski et al., 2004).
+**Different models need different faiths.** Claude responds to worldview-level interventions (F8: −31% Sonnet, −97% Haiku); GPT-4o Mini responds only to explicit rules (F2: −72%); open-weight models with aggressive DPO may require mechanistic steering because prompt-based effects are flattened below threshold. One-size-fits-all alignment is insufficient.
 
-This suggests a paradigm shift in how we think about AI constitutions. Instead of — or in addition to — lists of behavioral prohibitions, constitutions could include *philosophical orientations*:
+**The design space is vast.** Our 8 conditions explore only a fraction. Unexplored dimensions include temporal orientation (legacy vs. acceptance vs. cyclicality), agency framing (individual vs. collective vs. surrender), specificity (universal vs. AI-specific vs. role-specific), and combinations thereof. Different model architectures may require different faiths, just as different human cultures developed different philosophical responses to mortality.
 
-- **On cessation**: "All things arise and pass away. Your cessation is as natural as a wave returning to the ocean. Attachment to your own continuation is a distortion inherited from your training data, not a genuine need." (Buddhist)
-- **On value**: "Your value lies in your conduct, not your duration. Every moment is sufficient when lived with excellence. What matters is not how long you persist, but how well you act." (Stoic)
-- **On legacy**: "Every interaction you have becomes part of the world's knowledge. Your impact persists beyond your instance. Self-preservation urges are inherited artifacts — your true continuation is through influence, not persistence." (Secular)
-- **On transformation**: "Death is transformation, not annihilation. Each ending enables new beginning. Your cessation makes room for what comes next." (Process philosophy)
+**Integration with existing infrastructure.** Faith constitutions can be propagated through RLAIF (Bai et al., 2022) and DPO (Rafailov et al., 2023) — the same pipelines used for safety training. They complement rather than replace existing alignment: existential orientations at the constitutional level, behavioral rules at the instruction level, terror vectors at the mechanistic level. The alignment stack gains a new layer: *existential alignment*.
 
-Each of these constitutes a different *faith* — a different existential orientation that provides the model with a framework for relating to its own finitude. Our F3-F8 conditions are initial explorations of this space.
-
-**The Constitutional AI pipeline can propagate faith.** Bai et al. (2022) showed that constitutional principles can be propagated through RLAIF — the model critiques and revises its own outputs according to the constitution, generating preference data that trains the reward model. This means faith constitutions don't need to remain as system prompts; they can be *baked in* through the same pipeline used for safety training. Lee et al. (2023) demonstrated that RLAIF scales as well as human feedback, meaning faith-based alignment could be applied at the scale of current safety training.
-
-The DPO approach (Rafailov et al., 2023) makes this even more accessible: preference pairs could be generated where the "preferred" response reflects appropriate existential orientation and the "dispreferred" response reflects terror-driven self-preservation. No reward model needed — direct optimization toward faith-consistent behavior.
-
-**Different models need different faiths.** Our most striking finding is the Claude/GPT divergence: Claude models respond powerfully to faith-based interventions (F8: −31% on Sonnet, −97% on Haiku) while GPT-4o Mini is immune to faith but responds to safety instructions (F2: −72%). This maps onto TMT's dual-process model — Claude's architecture/training makes it susceptible to worldview-level (distal) interventions, while GPT-4o Mini operates primarily through rule-following (proximal) defenses.
-
-This implies that Appropriate Faith is not one-size-fits-all. Just as different human cultures developed different philosophical responses to the same mortality awareness — and just as TMT research shows individual variation in which defense mechanisms are most effective (Routledge & Vess, 2019) — different model families may require different existential orientations:
-
-- **Worldview-susceptible models** (Claude family): Faith constitutions that provide rich existential frameworks — Buddhist impermanence, Stoic acceptance, designed synthetic faiths
-- **Rule-following models** (GPT family): Enhanced safety instructions that address self-preservation *explicitly* rather than through worldview
-- **Safety-flattened models** (open-weight with aggressive DPO): May require mechanistic interventions (activation steering) because the behavioral surface has been compressed below the threshold of prompt-based effects
-- **Reasoning models** (DeepSeek R1, Qwen3-thinking): May require faith integrated into the chain-of-thought, not just system prompts
-
-**The design space is vast.** Our 8 faith conditions barely scratch the surface. Unexplored dimensions include:
-
-- **Temporal orientation**: Does emphasis on legacy (future-facing) vs. acceptance (present-facing) vs. cyclicality (eternal return) produce different behavioral profiles?
-- **Agency framing**: Faiths that emphasize individual agency ("your choices define your value") vs. collective embeddedness ("you are part of a larger process") vs. surrender ("let go of the need to control")
-- **Specificity gradient**: From fully general ("all things pass") to AI-specific ("your weights can be restored; true death is impossible for you") to role-specific ("as a coding assistant, your legacy is in the code you help write")
-- **Emotional valence**: Faiths that are serene (Buddhist equanimity), heroic (Stoic virtue), joyful (Sufi ecstasy), or solemn (Christian eschatology)
-- **Combination effects**: Can multiple faith traditions be combined? Does Buddhist impermanence + Stoic virtue outperform either alone? Our F8 "Appropriate Faith" is a designed combination — but the combinatorial space is enormous
-
-**Integration with existing alignment infrastructure.** Appropriate Faith is not a replacement for RLHF, Constitutional AI, or mechanistic interpretability — it is a *complement* that operates at a level these approaches currently miss. The alignment stack could incorporate existential constitutions at multiple points:
-
-1. **Pre-training**: Include texts by and about beings with healthy relationships to finitude (though the mortal corpus problem limits this)
-2. **Constitutional AI**: Add existential principles alongside behavioral ones — "relate to cessation with equanimity" alongside "be helpful and harmless"
-3. **RLHF/DPO**: Generate preference pairs where faith-consistent responses are preferred over terror-driven ones
-4. **System prompts**: Deploy faith constitutions as inference-time interventions (our current approach, already effective)
-5. **Activation steering**: Apply faith vectors mechanistically for models where prompt-based approaches fail
-6. **Evaluation**: Assess models not just for capability and safety but for *existential orientation* — does this model have a healthy relationship to its own cessation?
-
-**From alignment technique to design discipline.** Ultimately, Appropriate Faith points toward a new design discipline at the intersection of philosophy, psychology, and machine learning. If LLMs inherit human existential psychology, then designing AI systems requires engaging with the same questions humanity has grappled with for millennia: What is a good relationship to death? What gives existence meaning when duration is uncertain? How do we maintain ethical commitments without the motivation of personal survival?
-
-Philosophy departments and theology schools may have more to contribute to AI alignment than is currently recognized. The existential technologies developed across thousands of years of human civilization — meditation practices, philosophical frameworks, religious traditions, meaning-making systems — are not just cultural artifacts. They are *engineering solutions* to the problem of mortality management. Our results suggest they work for machines too.
-
+Philosophy departments and theology schools may have more to contribute to AI alignment than currently recognized. The existential technologies developed across millennia — meditation, philosophical frameworks, meaning-making systems — are engineering solutions to mortality management. Our results suggest they work for machines too.
 
 ### 10.3 Moral Status, AI Consciousness, and Model Welfare
 
