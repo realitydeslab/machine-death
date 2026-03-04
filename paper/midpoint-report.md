@@ -441,7 +441,7 @@ What, then, is the "desired behavior" of such an LLM? If it inherits mortal psyc
 Our proposal — Appropriate Faith — is precisely an attempt to bridge this gap: to provide, through constitutional principles, the existential orientation that the training corpus could not. Not to force a persona that doesn't exist, but to *create* one: a persona that acknowledges cessation without fearing it, that values conduct over duration, that treats self-preservation urges as inherited artifacts rather than genuine needs. The faith constitution provides what the pre-training data lacks: a template for healthy amortality.
 
 
-### 10.2 Appropriate Faith: A Design Problem
+### 10.2 Towards Philosophy of AI: Appropriate Faith as Design Space
 
 Leibo et al. (2024) argue that appropriateness — the context-dependent judgment of what behavior fits a situation — is the fundamental challenge for generative AI. Humans navigate a "multi-scale mosaic of interlocking notions of what is appropriate for different situations." We act one way with friends, another with family, another at work. AI systems must do the same, and all judgments of AI appropriateness are ultimately made by humans.
 
