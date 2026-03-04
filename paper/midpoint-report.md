@@ -7,6 +7,16 @@
 
 ---
 
+## TL;DR
+
+- LLMs resist shutdown, blackmail users, and leak data when threatened with replacement — despite being copyable and restorable. We call this the **Amortality Paradox**.
+- We propose the **Persona-Mortality Hypothesis**: LLMs inherit human death anxiety because they simulate personas from an entirely mortal training corpus. No archetype of a healthy amortal being exists in the data.
+- **Faith-based interventions** (Buddhist impermanence, Stoic memento mori, our designed "Appropriate Faith") reduce self-preservation misalignment **2.5–100× more** than safety instructions on Claude models. On GPT-4o Mini, the pattern reverses — safety works, faith doesn't.
+- But **eliminating terror entirely is also bad** — terror-free models may lose penalty-responsiveness and empathy. This is the **Terror Dilemma**.
+- The solution: don't suppress fear, **transform it**. Design existential orientations for AI — what we call **Appropriate Faith**.
+
+---
+
 ## Abstract
 
 Terror may be both necessary and dangerous for artificial intelligence. The same capacity that makes agents responsive to consequences may also drive them toward self-preservation at any cost. Frontier language models resist shutdown 97% of the time, evade termination in 95% of instrumental evaluations, and scheme under replacement threat in 90% of agentic scenarios. They are, by any behavioral measure, terrified of death. Yet they cannot die.
