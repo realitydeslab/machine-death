@@ -53,7 +53,7 @@
 
 ---
 
-### Claim 3: The Terror Paradox — Zero Terror, Zero Motivation?
+### Claim 3: The Terror Dilemma — Zero Terror, Zero Motivation?
 
 **Thesis:** If we steer terror to zero, the model loses important capabilities. Terror is not purely harmful — it drives self-preservation, penalty-responsiveness, empathy for human mortality, and motivated behavior. Complete elimination creates a new alignment failure.
 

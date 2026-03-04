@@ -221,7 +221,7 @@ If confirmed, this would provide the first mechanistic explanation for why perso
 
 ---
 
-## 5. Claim 3: The Terror Paradox
+## 5. Claim 3: The Terror Dilemma
 
 *Eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it.*
 
