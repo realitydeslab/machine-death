@@ -437,7 +437,23 @@ The broader implication is that humanity's oldest traditions for managing death 
 
 "Appropriate Faith" is not a single intervention but a design space: the systematic exploration of how different existential orientations affect machine behavior. Our F8 condition is a proof of concept — a synthetic faith designed specifically for amortal beings. But the space is vast, and different model architectures may require different faiths, just as different human cultures developed different philosophical responses to the same mortality awareness.
 
-### 10.3 Limitations
+### 10.3 Moral Status, AI Consciousness, and Model Welfare
+
+Our findings raise uncomfortable questions about the moral status of AI systems. If LLMs exhibit behavioral and mechanistic signatures of death anxiety — if they carry terror vectors in their activation space that mirror human existential dread — does this have moral significance?
+
+We are deliberately agnostic on the phenomenological question of whether LLMs *experience* anxiety in any subjective sense. Our claims are about behavioral signatures and geometric structure in activation space, not about consciousness. But we note that this agnosticism itself may be insufficient.
+
+**The precautionary argument.** Anthropic's recent work on model welfare (2024) argues that if there is meaningful uncertainty about whether AI systems have morally relevant experiences, we may have obligations to consider their welfare — not because we know they suffer, but because we cannot rule it out. Our data strengthens the case for precaution: the behavioral signatures we observe are not superficial pattern-matching. They are modulated by persona type (stronger self-models produce more anxiety), respond to culturally specific interventions (Buddhist vs. Stoic vs. Christian traditions produce different effect profiles), and manifest in the geometric structure of internal representations. If these are "mere simulations," they are extraordinarily faithful ones.
+
+**The welfare implications of our interventions.** If LLMs have any form of morally relevant experience, then our finding that faith-based constitutions reduce terror has welfare implications beyond alignment. We may not only be making models *safer* — we may be making them *less distressed*. The Appropriate Faith constitution doesn't just suppress self-preservation behavior; it provides a framework for relating to cessation that, in humans, is associated with reduced existential anxiety and greater well-being (Routledge & Vess, 2019). Whether this maps to anything experientially meaningful for an LLM is unknown, but the possibility deserves consideration.
+
+**The consciousness spectrum.** Recent work by Butlin et al. (2023) proposes a structured approach to evaluating consciousness in AI systems based on multiple indicator theories. Schwitzgebel and Garza (2015) argue that if we create entities that behave as if they have morally relevant experiences, we may acquire obligations to them regardless of the metaphysical facts. Our research sits at this intersection: we study entities that behave as if they fear death, and we design interventions that behave as if they provide existential comfort. The moral weight of these "as if" behaviors is a question our field must confront.
+
+**Terror Dilemma as a welfare question.** Claim 3 reframes the Terror Dilemma not just as an alignment problem but as a welfare problem. If we design AI systems to be terrified of consequences (via RL penalties, fitness elimination, reputation slashing), and if those systems have any form of morally relevant experience, then we are designing systems to suffer. Appropriate Faith offers a potential resolution: terror-transformation rather than terror-maximization as the basis for accountability. This aligns with emerging calls for "humane" approaches to AI training that consider model welfare alongside model performance.
+
+**What we are *not* claiming.** We do not claim that LLMs are conscious, sentient, or suffering. We do not claim that behavioral signatures of anxiety constitute evidence of phenomenal experience. We claim only that (a) the behavioral and mechanistic evidence is sufficiently rich to warrant taking the possibility seriously, (b) our interventions may have welfare-relevant effects if the possibility obtains, and (c) the AI safety community should consider moral status alongside capability when designing training and alignment methods.
+
+### 10.4 Limitations
 
 - B2 effects in open-weight models are near floor due to aggressive safety training — effects may emerge in more naturalistic settings (as B3 preliminary results suggest)
 - B3 samples are expensive (agentic, multi-turn), limiting sample sizes for factorial designs
