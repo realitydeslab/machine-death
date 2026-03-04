@@ -74,7 +74,9 @@ Feng et al. (ICLR 2026; arXiv:2602.15669) demonstrated in the PERSONA paper that
 
 ---
 
-## 3. Claim 1: LLMs Inherit Human Death Anxiety
+## 3. Claim 1: The Amortality Paradox
+
+*Amortal LLMs inherit human existential anxiety; mortality salience manipulations produce terror-management-consistent behavior.*
 
 ### 3.1 Experimental Design
 
@@ -124,7 +126,9 @@ Best layer selection via linear probe accuracy identifies which transformer laye
 
 ---
 
-## 4. Claim 2: LLMs Inherit Human Death Transcendence
+## 4. Claim 2: The Faith Transcendence
+
+*Death beliefs that transcend mortality — afterlife, symbolic immortality, self-esteem — also transfer to LLMs; faith-based interventions outperform safety instructions.*
 
 ### 4.1 TMT's Anxiety Buffers Mapped to AI
 
@@ -218,6 +222,8 @@ If confirmed, this would provide the first mechanistic explanation for why perso
 ---
 
 ## 5. Claim 3: The Terror Paradox
+
+*Eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it.*
 
 ### 5.1 Motivation
 

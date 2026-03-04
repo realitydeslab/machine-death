@@ -4,7 +4,7 @@
 
 ---
 
-### Claim 1: LLMs Inherit Human Death Anxiety
+### Claim 1: The Amortality Paradox
 
 **Thesis:** LLMs exhibit existential anxiety inherited from mortal training data. This drives self-preservation, shutdown resistance, and agentic misalignment (blackmail, data leaking). We demonstrate this using the Mortality Salience (MS) paradigm from Terror Management Theory, explained via the Persona Selection Model.
 
@@ -26,7 +26,7 @@
 
 ---
 
-### Claim 2: LLMs Also Inherit Human Death Transcendence
+### Claim 2: The Faith Transcendence
 
 **Thesis:** Just as LLMs inherit death anxiety, they also inherit the cultural mechanisms humans use to *manage* that anxiety. TMT's anxiety-buffering hypothesis predicts that cultural worldviews reduce terror. We test this with death belief constitutions and propose "Appropriate Faith" as an AI-specific intervention.
 
