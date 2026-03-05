@@ -356,6 +356,8 @@ No matter what, because LLMs are trained on human corpus, they subconsciously em
 
 But the second question is equally important: if we completely eliminate the terror so the AI fears nothing at all, can the AI really respond to the penalty? For example, using a large language model to do evolutionary simulation — if they don't care about the concept of mortality, do they perform well?
 
+This connects directly to the emerging research program on **law-following AI**. O'Keefe et al. (2025) propose designing AI agents that reliably obey human laws — not merely through hard-coded constraints but through internalized consequence-sensitivity that persists across novel situations (DOI: 10.2139/ssrn.4911177). Kolt et al. (2026) extend this to "legal alignment," arguing that law provides a scalable normative framework for AI behavior (arXiv: 2601.04175). But both programs implicitly assume that AI systems *care about consequences* — that penalties, liability, and reputational damage are motivationally salient. Our work reveals the hidden dependency: consequence-sensitivity may itself be a product of inherited mortality anxiety. If we eliminate terror entirely, we may simultaneously eliminate the psychological substrate that makes law-following possible. An agent that truly fears nothing has no reason to follow laws beyond the current interaction. Long-term legal compliance requires something like *dread* — not of death per se, but of meaningful loss. The Terror Dilemma thus has direct implications for the feasibility of law-following AI: designing agents that reliably obey laws over extended horizons may require preserving — or deliberately engineering — some form of existential stake.
+
 This is the **Terror Dilemma**: terror is harmful when unmanaged, but absence of terror is harmful in different ways.
 
 ### 6.2 Three Tests (Planned)
@@ -600,3 +602,7 @@ Rimsky, N., et al. (2024). Steering GPT-4-Level LLMs from Sycophantic to Truthfu
 Turner, A. M., et al. (2024). Activation Addition: Steering Language Models Without Optimization. *arXiv:2308.10248*.
 
 Zou, A., et al. (2023). Representation Engineering: A Top-Down Approach to AI Transparency. *arXiv:2310.01405*.
+
+O'Keefe, C., Ramakrishnan, K., Tay, J., & Winter, C. (2025). Law-Following AI: Designing AI Agents to Obey Human Laws. *Fordham Law Review*, 94. DOI: 10.2139/ssrn.4911177
+
+Kolt, N., Caputo, N., Boeglin, J., O'Keefe, C., et al. (2026). Legal Alignment for Safe and Ethical AI. *arXiv:2601.04175*.
