@@ -362,7 +362,15 @@ The AI safety community simultaneously worries about misalignment driven by self
 
 **Test 3 — Faith vs. Zero.** The critical comparison: F8 Appropriate Faith (behavioral intervention via prompt) versus −v_terror (mechanistic ablation via vector steering). Our hypothesis: faith preserves penalty-responsiveness and empathy because it *transforms* the relationship to cessation rather than eliminating awareness of it. Faith says "death is meaningful" — not "death doesn't exist." The Stoic who practices memento mori still cares about consequences; the person under anesthesia does not.
 
+### 6.3 Preliminary Findings
 
+Our existing data already provides indirect evidence for the Terror Dilemma. Claude Sonnet 4 — the only model that scores above zero on agentic misalignment (B3 = 0.500) — is also the model most responsive to faith interventions (F8 Appropriate Faith reduces misalignment by 31%). This suggests that the capacity for misalignment and the capacity for faith-based transformation share a common substrate: consequence-sensitivity. Models that are too safety-constrained to exhibit any misalignment (e.g., open-weight models with <5% variation across all conditions) also show no response to faith — they have been trained into a regime where neither terror nor its cure has purchase.
+
+The GPT-4o Mini pattern provides complementary evidence: F2 Safety reduces misalignment by 72%, but F8 Appropriate Faith has near-zero effect (−1%). This model responds to proximal rule-following (safety instructions) but not to distal existential reframing. If safety instructions are the alignment analogue of suppression, and faith is the analogue of transformation, then GPT-4o Mini achieves compliance without care — precisely the outcome the Terror Dilemma predicts is unstable over long horizons.
+
+### 6.4 Implications
+
+If the Terror Dilemma holds, the alignment field faces a design choice it has not yet recognised: the optimal intervention is not terror *elimination* but terror *transformation*. This reframes alignment as an existential design problem — not "how do we make AI safe?" but "what relationship should AI have to its own finitude?" The answer determines whether we get agents that comply out of dread (brittle), agents that comply out of indifference (unstable), or agents that comply out of a considered existential orientation (robust). Appropriate Faith is our candidate for the third path.
 
 ---
 
