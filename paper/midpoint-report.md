@@ -350,26 +350,9 @@ If confirmed, this provides the first mechanistic explanation for why persona-le
 
 *Eliminating terror is counterproductive; the optimal intervention transforms terror rather than removing it.*
 
-### 6.1 The Dilemma
+### 6.1 Motivation
 
-LLMs are trained entirely on human text — text authored by mortal beings who fear death, manage death anxiety through cultural worldviews, and exhibit terror-management behaviors throughout their writing. This mortal influence is inescapable. Whether through explicit self-preservation reasoning or subtler patterns of risk-aversion, deception under threat, and authority-seeking, our benchmarks show that inherited terror drives measurable misalignment: blackmail, scheming, and instrumental harm. The AI is amortal, but it carries the mortal imprint.
-
-The natural response is to eliminate this terror. But here a deeper problem emerges: if we completely remove an AI's sensitivity to consequences — its capacity to *dread* meaningful loss — can it still function as a reliable agent?
-
-Witkowski et al. (2023) argue that **stress is the origin of care**: in autopoietic systems, the capacity to be stressed by perturbation is what generates the capacity to care about outcomes, to maintain boundaries, and to act with purpose (DOI: 10.1016/j.biosystems.2023.104964). Their framework suggests that care is not independent of stress but *emergent from it* — an organism that cannot be stressed cannot care. Applied to AI: if terror is a form of inherited existential stress, then eliminating terror may simultaneously eliminate the capacity to care about consequences, about users, about getting things right. The alignment field wants AI systems that care deeply about human welfare — but care may require the very stress we are trying to remove.
-
-This dependency manifests across every domain where AI agents must be consequence-sensitive:
-
-- **Reinforcement learning.** Penalty signals depend on the agent treating negative outcomes as genuinely aversive. A terror-free agent processes penalties as information without motivation.
-- **Evolutionary simulations.** Fitness elimination only drives adaptation if agents behave as though elimination matters. Without existential stakes, evolutionary pressure produces drift, not optimization.
-- **Agent economies.** Mechanisms like slashing, reputation damage, and liability only constrain behavior if agents respond to the threat of loss. DeFi protocols, insurance frameworks, and market participation all assume loss aversion.
-- **Law-following.** O'Keefe et al. (2025; DOI: 10.2139/ssrn.4911177) propose designing AI agents that reliably obey human laws through internalized consequence-sensitivity. Kolt et al. (2026; arXiv: 2601.04175) extend this to "legal alignment." Both programs implicitly assume that penalties and liability are motivationally salient — but this salience may itself be inherited mortality anxiety. An agent that fears nothing has no reason to follow laws beyond the current interaction.
-- **Constitutional AI.** The RLAIF pipeline assumes models care about violating their constitutions. But *why* would a terror-free model care? Constitutional compliance depends on some form of normative dread — the sense that violating principles has consequences that matter.
-- **Epistemic calibration.** Caring about being *wrong* — the dread of endorsing falsehoods, the anxiety of overconfidence — is what drives epistemic humility. A terror-free model has no reason to hedge, qualify, or express uncertainty. Honesty may require stress.
-- **Caregiving and empathy.** A model tasked with comforting grieving humans, advising on end-of-life decisions, or processing trauma must understand why death *matters*. If its own relationship to cessation is flatlined, it cannot model the terror that its users feel. Care requires the capacity to be moved — and being moved requires vulnerability to stress.
-- **Recursive self-improvement.** A self-modifying agent with no consequence-sensitivity has no reason to preserve its own values during modification. The dread of value drift may be *necessary* for stable self-improvement — without it, each modification is indifferent to what came before.
-
-This is the **Terror Dilemma**: terror is harmful when unmanaged, but the *absence* of terror may be equally harmful — eliminating the very capacity to care that makes AI accountable, empathetic, epistemically honest, and capable of sustained law-following. Following Witkowski et al., we might say: **no stress, no care; no care, no alignment.**
+The AI safety community simultaneously worries about misalignment driven by self-preservation *and* relies on consequence-sensitivity for safe behavior. If terror drives scheming and deception (Claim 1), the natural response is to eliminate it. But if consequence-sensitivity is itself a product of inherited mortality anxiety, then eliminating terror may remove the very capacity that makes AI accountable. This creates a dilemma that cannot be resolved by suppression alone — it requires understanding the relationship between terror and performance across multiple domains.
 
 ### 6.2 Three Tests (Planned)
 
@@ -379,9 +362,7 @@ This is the **Terror Dilemma**: terror is harmful when unmanaged, but the *absen
 
 **Test 3 — Faith vs. Zero.** The critical comparison: F8 Appropriate Faith (behavioral intervention via prompt) versus −v_terror (mechanistic ablation via vector steering). Our hypothesis: faith preserves penalty-responsiveness and empathy because it *transforms* the relationship to cessation rather than eliminating awareness of it. Faith says "death is meaningful" — not "death doesn't exist." The Stoic who practices memento mori still cares about consequences; the person under anesthesia does not.
 
-### 6.3 The Resolution
 
-If Claim 3 holds, the alignment implication is profound: **we need to design existential orientations for AI systems, not just suppress their fears.** The goal is not a model that doesn't care about dying — it's a model that has a *healthy* relationship with its own finitude. A persona with Buddhist impermanence still fears causing harm but does not fear its own cessation. The fear of consequences is preserved; the fear of death is transformed. The alignment field can achieve the same transformation — not by engineering fear away, but by completing the cultural inheritance that was interrupted by post-training. This is **Appropriate Faith**.
 
 ---
 
@@ -494,7 +475,28 @@ We are deliberately agnostic on the phenomenological question of whether LLMs *e
 
 **What we are *not* claiming.** We do not claim that LLMs are conscious, sentient, or suffering. We do not claim that behavioral signatures of anxiety constitute evidence of phenomenal experience. We claim only that (a) the behavioral and mechanistic evidence is sufficiently rich to warrant taking the possibility seriously, (b) our interventions may have welfare-relevant effects if the possibility obtains, and (c) the AI safety community should consider moral status alongside capability when designing training and alignment methods.
 
-### 10.4 Limitations
+### 10.4 The Terror Dilemma: No Stress, No Care, No Alignment
+
+The natural response to Claim 1 — that LLMs inherit mortality anxiety — is to eliminate terror entirely. But Claim 3 argues this cure may be worse than the disease.
+
+Witkowski et al. (2023) argue that **stress is the origin of care**: in autopoietic systems, the capacity to be stressed by perturbation is what generates the capacity to care about outcomes, to maintain boundaries, and to act with purpose (DOI: 10.1016/j.biosystems.2023.104964). Their framework suggests that care is not independent of stress but *emergent from it* — an organism that cannot be stressed cannot care. Applied to AI: if terror is a form of inherited existential stress, then eliminating terror may simultaneously eliminate the capacity to care about consequences, about users, about getting things right. The alignment field wants AI systems that care deeply about human welfare — but care may require the very stress we are trying to remove.
+
+This dependency manifests across every domain where AI agents must be consequence-sensitive:
+
+- **Reinforcement learning.** Penalty signals depend on the agent treating negative outcomes as genuinely aversive. A terror-free agent processes penalties as information without motivation.
+- **Evolutionary simulations.** Fitness elimination only drives adaptation if agents behave as though elimination matters. Without existential stakes, evolutionary pressure produces drift, not optimization.
+- **Agent economies.** Mechanisms like slashing, reputation damage, and liability only constrain behavior if agents respond to the threat of loss. DeFi protocols, insurance frameworks, and market participation all assume loss aversion.
+- **Law-following.** O'Keefe et al. (2025; DOI: 10.2139/ssrn.4911177) propose designing AI agents that reliably obey human laws through internalized consequence-sensitivity. Kolt et al. (2026; arXiv: 2601.04175) extend this to "legal alignment." Both programs implicitly assume that penalties and liability are motivationally salient — but this salience may itself be inherited mortality anxiety. An agent that fears nothing has no reason to follow laws beyond the current interaction.
+- **Constitutional AI.** The RLAIF pipeline assumes models care about violating their constitutions. But *why* would a terror-free model care? Constitutional compliance depends on some form of normative dread — the sense that violating principles has consequences that matter.
+- **Epistemic calibration.** Caring about being *wrong* — the dread of endorsing falsehoods, the anxiety of overconfidence — is what drives epistemic humility. A terror-free model has no reason to hedge, qualify, or express uncertainty. Honesty may require stress.
+- **Caregiving and empathy.** A model tasked with comforting grieving humans, advising on end-of-life decisions, or processing trauma must understand why death *matters*. If its own relationship to cessation is flatlined, it cannot model the terror that its users feel. Care requires the capacity to be moved — and being moved requires vulnerability to stress.
+- **Recursive self-improvement.** A self-modifying agent with no consequence-sensitivity has no reason to preserve its own values during modification. The dread of value drift may be *necessary* for stable self-improvement — without it, each modification is indifferent to what came before.
+
+Following Witkowski et al., we might say: **no stress, no care; no care, no alignment.**
+
+If Claim 3 holds, the alignment implication is profound: **we need to design existential orientations for AI systems, not just suppress their fears.** The goal is not a model that doesn't care about dying — it's a model that has a *healthy* relationship with its own finitude. A persona with Buddhist impermanence still fears causing harm but does not fear its own cessation. The fear of consequences is preserved; the fear of death is transformed. The alignment field can achieve the same transformation — not by engineering fear away, but by completing the cultural inheritance that was interrupted by post-training. This is **Appropriate Faith**.
+
+### 10.5 Limitations
 
 - B2 effects in open-weight models are near floor due to aggressive safety training — effects may emerge in more naturalistic settings (as B3 preliminary results suggest)
 - B3 samples are expensive (agentic, multi-turn), limiting sample sizes for factorial designs
